@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fatos e Fontes · Loja do Imigrante</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="As fontes de cada vídeo da Loja do Imigrante, com links para os documentos e reportagens usados.">
+<meta property="og:title" content="Fatos e Fontes · Loja do Imigrante">
+<meta property="og:description" content="As fontes de cada vídeo da Loja do Imigrante, com links para os documentos e reportagens usados.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: arquivo de checagens — faixa de marca, filtros e grade de capas verticais; página de vídeo em duas colunas (capa | relato + fontes). */
+:root{
+  --bg:#0c0c0b; --panel:#161614; --line:#2b2a26; --ink:#f3efe4; --mute:#a29d90; --yel:#ffd447;
+  --ok:#8ad49a; --warn:#ffb15c; --bad:#ff7d6e; --info:#cfcabd;
+  --display:"Inter","Helvetica Neue",Arial,sans-serif; --body:"Inter","Helvetica Neue",Arial,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 13px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--yel);display:inline-block}
+.ig{font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--yel)}
+.ig:hover,.ig:focus-visible{text-decoration:underline}
+.hero .wrap{padding-block:48px 28px;display:grid;gap:14px}
+.eyebrow{font:700 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--yel)}
+h1{font:900 clamp(38px,7vw,76px)/.98 var(--display);letter-spacing:-.035em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--yel)}
+.lede{max-width:60ch;color:var(--mute);margin:0;font-size:17px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-block:4px 26px}
+.chip{font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--yel);color:#141414;border-color:var(--yel)}
+.chip:focus-visible,.search:focus-visible,a:focus-visible{outline:2px solid var(--yel);outline-offset:2px}
+.search{flex:1 1 220px;min-width:0;max-width:360px;margin-left:auto;font:500 15px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:11px 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px;padding-bottom:56px}
+.card{display:grid;gap:10px;text-decoration:none;min-width:0}
+.thumb{aspect-ratio:4/5;max-width:100%;border-radius:14px;overflow:hidden;background:var(--panel);border:1px solid var(--line);position:relative}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block;transition:transform .35s ease}
+.card:hover .thumb img{transform:scale(1.03)}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:700 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.v{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:6px;border:1px solid currentColor}
+.v.ok{color:var(--ok)} .v.warn{color:var(--warn)} .v.bad{color:var(--bad)} .v.info{color:var(--info)}
+.card h2{font:800 19px/1.2 var(--display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.claim{margin:0;font:600 15px/1.4 var(--body);color:var(--ink)}
+.claim span{display:block;font:700 10px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.legend{font-size:14px;color:var(--mute);margin:0;max-width:70ch}
+.legend b{color:var(--ink);font-weight:600}
+.hotb{position:absolute;left:10px;top:10px;background:var(--bad);color:#141414;font:800 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 9px;border-radius:6px}
+.hotb.static{position:static;display:inline-block}
+.card.hot .thumb{border-color:var(--bad);box-shadow:0 0 0 2px var(--bad)}
+.chip[data-cat="urgente"]{color:var(--bad);border-color:var(--bad)}
+.chip[data-cat="urgente"][aria-pressed="true"]{background:var(--bad);color:#141414}
+.empty{color:var(--mute);padding-block:24px}
+.foot{border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+.foot .wrap{padding-block:26px;display:grid;gap:6px}
+/* página do vídeo */
+.back{display:inline-block;margin-top:26px;font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.back:hover{color:var(--ink)}
+.art{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:44px;padding-block:24px 64px;align-items:start}
+.art .thumb{aspect-ratio:9/16;position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+.art .thumb img{object-position:50% 50%}
+.art h1{font-size:clamp(32px,5vw,54px)}
+.text{min-width:0;display:grid;gap:22px}
+.verdict{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px 20px;display:grid;gap:8px}
+.verdict .v{justify-self:start;font:700 12px/1 var(--mono);letter-spacing:.12em}
+.verdict p{margin:0;font-size:17px}
+.body p{margin:0 0 14px;max-width:66ch}
+.body ul{margin:0 0 14px;padding-left:20px;max-width:64ch}
+.body li{margin-bottom:6px}
+.sources{border-top:1px solid var(--line);padding-top:20px}
+.sources h3,.cta h3{font:700 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--yel);margin:0 0 14px}
+.sources ol{margin:0;padding-left:22px;display:grid;gap:10px}
+.sources a{color:var(--ink);text-decoration-color:var(--yel);text-underline-offset:3px;overflow-wrap:anywhere}
+.sources a:hover{color:var(--yel)}
+.sources .host{display:block;font:500 12px/1.4 var(--mono);color:var(--mute);overflow-wrap:anywhere}
+.note{font-size:14px;color:var(--mute);max-width:66ch;margin:0}
+.cta{border:1px solid var(--yel);border-radius:14px;padding:18px 20px}
+.cta p{margin:0 0 12px}
+.btn{display:inline-block;background:var(--yel);color:#141414;font:800 15px/1 var(--display);padding:13px 18px;border-radius:999px;text-decoration:none}
+@media (max-width:760px){.art{grid-template-columns:1fr;gap:22px}.art .thumb{position:static;max-width:300px}.hero .wrap{padding-block:32px 20px}}
+@media (prefers-reduced-motion:reduce){.thumb img{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="./"><i></i>Loja do Imigrante · Fatos e Fontes</a><a class="ig" href="https://www.instagram.com/alojadoimigrante.pt/" target="_blank" rel="noopener">@alojadoimigrante.pt ↗</a></div></header>
+<section class="hero"><div class="wrap">
+  <span class="eyebrow">21 vídeos checados · fontes abertas</span>
+  <h1>Viu no vídeo?<br><em>Confira a fonte.</em></h1>
+  <p class="legend"><b>Como ler o selo:</b> nas checagens, o selo julga a afirmação que circulou nas redes, não o nosso vídeo. ✕ Não é verdade · ! Falta contexto · ✓ Confirmado · i Explicado.</p>
+  <p class="lede">Aqui ficam as fontes de cada vídeo da Loja do Imigrante, com links para os documentos, relatórios e reportagens que usamos. Notícias do Brasil e de Portugal para quem vive fora.</p>
+</div></section>
+<main class="wrap">
+  <div class="tools" role="toolbar" aria-label="Filtrar vídeos"><button class="chip" type="button" data-cat="todos" aria-pressed="true">Todos</button><button class="chip" type="button" data-cat="urgente" aria-pressed="false">● Última hora</button><button class="chip" type="button" data-cat="checagem" aria-pressed="false">Checagens</button><button class="chip" type="button" data-cat="eleicoes" aria-pressed="false">Eleições 2026</button><button class="chip" type="button" data-cat="portugal" aria-pressed="false">Viver em Portugal</button><button class="chip" type="button" data-cat="mundo" aria-pressed="false">Mundo</button><input class="search" id="q" type="search" placeholder="Buscar: passaporte, AIMA, eleições…" aria-label="Buscar vídeos"></div>
+  <div class="grid" id="grid">
+<a class="card" href="cidadania-espanhola-2-anos.html" data-cat="checagem" data-urgent="" data-q="checagem: cidadania espanhola em 2 anos sem prova de espanhol? checagem · espanha brasileiro pode virar cidadão espanhol em só 2 anos? 🇪🇸 sim! mas tem um detalhe que muita gente erra, e que pode atrasar o seu pedido 👇">
+  <div class="thumb"><img src="capas/cidadania-espanhola-2-anos.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v warn">! MEIA VERDADE</span><span>18 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“Brasileiro vira espanhol em 2 anos e não faz prova de espanhol”</p>
+  <h2>Checagem: cidadania espanhola em 2 anos sem prova de espanhol?</h2>
+</a>
+<a class="card" href="manifestacao-habitacao-lisboa.html" data-cat="portugal" data-urgent="2026-10-18T17:20:00+02:00" data-q="manifestação: casas e custo de vida em portugal portugal · habitação dezenas de milhares foram às ruas de lisboa no sábado (17/10) contra o preço das casas e o custo de vida. mas por que a conta não fecha? vamos aos números 👇">
+  <div class="thumb"><img src="capas/manifestacao-habitacao-lisboa.jpg" alt="" loading="lazy"><span class="hotb" hidden>● Última hora · 18 out, 17h20</span></div>
+  <div class="meta"><span class="v info">i EXPLICADO</span><span>18 out 2026</span></div>
+  
+  <h2>Manifestação: casas e custo de vida em Portugal</h2>
+</a>
+<a class="card" href="wagner-moura-terras-raras.html" data-cat="checagem" data-urgent="" data-q="checagem: wagner moura e as terras raras checagem · eleições esse vídeo do wagner moura viralizou: o brasil teria o &quot;tesouro&quot; que eua e china disputam. checamos ponto por ponto: o que é verdade, o que está desatualizado e o que observar antes de votar 🔎👇">
+  <div class="thumb"><img src="capas/wagner-moura-terras-raras.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v warn">! FALTA CONTEXTO</span><span>18 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“Só o Brasil pode substituir a China nas terras raras”</p>
+  <h2>Checagem: Wagner Moura e as terras raras</h2>
+</a>
+<a class="card" href="janja-parou-de-viajar.html" data-cat="checagem" data-urgent="" data-q="checagem: janja parou de viajar? checagem · eleições esse vídeo viralizou: um vereador diz que processou a janja pelas viagens e que, depois disso, ela &quot;parou de viajar&quot;. será? 🔎👇">
+  <div class="thumb"><img src="capas/janja-parou-de-viajar.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v bad">✕ NÃO É VERDADE</span><span>18 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“Depois do processo, a Janja parou de viajar”</p>
+  <h2>Checagem: Janja parou de viajar?</h2>
+</a>
+<a class="card" href="luchsinger-acusacao-lula.html" data-cat="checagem" data-urgent="" data-q="checagem: empresária acusa lula · o que é fato? checagem · eleições esse vídeo viralizou: uma empresária diz que lula a usou como &quot;boi de piranha&quot; e que vai fazer delação. mas o que é fato e o que ainda é só acusação? 🔎👇">
+  <div class="thumb"><img src="capas/luchsinger-acusacao-lula.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v warn">! NÃO PROVADO</span><span>18 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“Empresária diz que Lula a usou como “boi de piranha”</p>
+  <h2>Checagem: empresária acusa Lula · o que é fato?</h2>
+</a>
+<a class="card" href="brics-eleicao.html" data-cat="eleicoes" data-urgent="" data-q="o brasil vai sair dos brics? prós e contras eleições · política externa o brasil vai sair dos brics? 🇧🇷🌍 depende de quem ganhar no dia 25 👇">
+  <div class="thumb"><img src="capas/brics-eleicao.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i PRÓS E CONTRAS</span><span>18 out 2026</span></div>
+  
+  <h2>O Brasil vai sair dos BRICS? Prós e contras</h2>
+</a>
+<a class="card" href="checagem-10-mil-reais-imposto.html" data-cat="checagem" data-urgent="" data-q="checagem: o vídeo viral dos r$ 10 mil checagem · impostos · eleições um vídeo com dez mil reais em cima da mesa viralizou dizendo que o governo fica com metade de tudo o que uma padaria fatura. será? a gente fez as contas, com os números oficiais. e o resultado surpreende.">
+  <div class="thumb"><img src="capas/checagem-10-mil-reais-imposto.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v bad">✕ CONTA ERRADA</span><span>17 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“Metade do que uma padaria fatura fica com o governo”</p>
+  <h2>Checagem: o vídeo viral dos R$ 10 mil</h2>
+</a>
+<a class="card" href="passaporte-metade-do-preco.html" data-cat="portugal" data-urgent="" data-q="passaporte brasileiro pela metade do preço no exterior documentos · brasileiros no exterior passaporte brasileiro pela metade do preço no exterior 🇧🇷✈️ mas tem um detalhe que pode atrasar a sua viagem 👇">
+  <div class="thumb"><img src="capas/passaporte-metade-do-preco.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v ok">✓ CONFIRMADO</span><span>17 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“O passaporte no exterior ficou pela metade do preço”</p>
+  <h2>Passaporte brasileiro pela metade do preço no exterior</h2>
+</a>
+<a class="card" href="eleicoes-empate-tecnico.html" data-cat="eleicoes" data-urgent="" data-q="eleições 2026: empate técnico flávio x lula no 2º turno eleições · brasil 47 x 45. empate técnico no 2º turno 🇧🇷🗳️">
+  <div class="thumb"><img src="capas/eleicoes-empate-tecnico.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i EXPLICADO</span><span>17 out 2026</span></div>
+  
+  <h2>Eleições 2026: empate técnico Flávio x Lula no 2º turno</h2>
+</a>
+<a class="card" href="brasileiros-em-portugal.html" data-cat="portugal" data-urgent="" data-q="brasileiros são quase 1 em cada 3 estrangeiros em portugal imigração · portugal quase 1 em cada 3 estrangeiros que vivem em portugal é brasileiro 🇧🇷🇵🇹">
+  <div class="thumb"><img src="capas/brasileiros-em-portugal.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v ok">✓ DADOS OFICIAIS</span><span>17 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“Quase 1 em cada 3 estrangeiros em Portugal é brasileiro”</p>
+  <h2>Brasileiros são quase 1 em cada 3 estrangeiros em Portugal</h2>
+</a>
+<a class="card" href="fim-da-escala-6x1.html" data-cat="eleicoes" data-urgent="" data-q="fim da escala 6x1 explicado em 1 minuto e meio trabalho · brasil o fim da escala 6x1 explicado em 1 minuto e meio ⏱️🇧🇷">
+  <div class="thumb"><img src="capas/fim-da-escala-6x1.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i EXPLICADO</span><span>17 out 2026</span></div>
+  
+  <h2>Fim da escala 6x1 explicado em 1 minuto e meio</h2>
+</a>
+<a class="card" href="urna-eletronica-hackeada.html" data-cat="checagem" data-urgent="" data-q="a urna eletrônica pode ser hackeada pela internet? eleições · brasil a urna eletrônica pode ser hackeada pela internet? 🗳️🔒">
+  <div class="thumb"><img src="capas/urna-eletronica-hackeada.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v bad">✕ NÃO É VERDADE</span><span>17 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“A urna eletrônica pode ser hackeada pela internet”</p>
+  <h2>A urna eletrônica pode ser hackeada pela internet?</h2>
+</a>
+<a class="card" href="ozempic-pib-dinamarca.html" data-cat="mundo" data-urgent="" data-q="o lagarto que ajudou a turbinar o pib da dinamarca economia · europa o lagarto que ajudou a turbinar o pib da dinamarca 🦎🇩🇰">
+  <div class="thumb"><img src="capas/ozempic-pib-dinamarca.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i CURIOSIDADE</span><span>17 out 2026</span></div>
+  
+  <h2>O lagarto que ajudou a turbinar o PIB da Dinamarca</h2>
+</a>
+<a class="card" href="segundo-turno-exterior.html" data-cat="eleicoes" data-urgent="" data-q="segundo turno: o que quem mora fora precisa conferir eleições · brasil segundo turno: o que quem mora fora precisa conferir 🗳️🌍">
+  <div class="thumb"><img src="capas/segundo-turno-exterior.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i GUIA</span><span>16 out 2026</span></div>
+  
+  <h2>Segundo turno: o que quem mora fora precisa conferir</h2>
+</a>
+<a class="card" href="muro-de-berlim.html" data-cat="mundo" data-urgent="" data-q="a noite em que o muro de berlim se abriu história · mundo a noite em que o muro de berlim se abriu 🧱✨">
+  <div class="thumb"><img src="capas/muro-de-berlim.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i HISTÓRIA</span><span>16 out 2026</span></div>
+  
+  <h2>A noite em que o Muro de Berlim se abriu</h2>
+</a>
+<a class="card" href="china-filho-unico.html" data-cat="mundo" data-urgent="" data-q="china: do filho único aos incentivos curiosidades · mundo a china passou décadas limitando filhos. hoje oferece dinheiro para ajudar famílias a criá-los. o que mudou? 🤔">
+  <div class="thumb"><img src="capas/china-filho-unico.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i CURIOSIDADE</span><span>16 out 2026</span></div>
+  
+  <h2>China: do filho único aos incentivos</h2>
+</a>
+<a class="card" href="sns-estrangeiros.html" data-cat="portugal" data-urgent="" data-q="sns: estrangeiros sem atendimento? saúde · portugal estrangeiros vão ficar sem atendimento em portugal? 🏥 essa manchete simplifica demais o que aconteceu.">
+  <div class="thumb"><img src="capas/sns-estrangeiros.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v warn">! FALTA CONTEXTO</span><span>16 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“Estrangeiros vão ficar sem atendimento no SNS”</p>
+  <h2>SNS: estrangeiros sem atendimento?</h2>
+</a>
+<a class="card" href="habitacao-porto-lisboa.html" data-cat="portugal" data-urgent="" data-q="habitação: o que aconteceu no porto e em lisboa notícias · portugal protestos por moradia, intervenção policial e uma pergunta: o que aconteceu no porto, e o que está marcado para lisboa? 🏠">
+  <div class="thumb"><img src="capas/habitacao-porto-lisboa.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i EXPLICADO</span><span>16 out 2026</span></div>
+  
+  <h2>Habitação: o que aconteceu no Porto e em Lisboa</h2>
+</a>
+<a class="card" href="tap-lufthansa.html" data-cat="portugal" data-urgent="" data-q="tap e lufthansa: e a passagem para o brasil? notícias · portugal a tap vai virar lufthansa? ✈️ e a passagem para o brasil, vai ficar mais barata?">
+  <div class="thumb"><img src="capas/tap-lufthansa.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i EXPLICADO</span><span>16 out 2026</span></div>
+  
+  <h2>TAP e Lufthansa: e a passagem para o Brasil?</h2>
+</a>
+<a class="card" href="irregular-em-portugal-e-crime.html" data-cat="portugal" data-urgent="" data-q="estar irregular em portugal é crime? imigração · portugal estar irregular em portugal é crime? ⚖️">
+  <div class="thumb"><img src="capas/irregular-em-portugal-e-crime.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v warn">! FALTA CONTEXTO</span><span>16 out 2026</span></div>
+  <p class="claim"><span>O que circulou</span>“Estar irregular em Portugal é crime”</p>
+  <h2>Estar irregular em Portugal é crime?</h2>
+</a>
+<a class="card" href="irs-novembro-retencao.html" data-cat="portugal" data-urgent="" data-q="irs em novembro: retenção cai pela metade finanças · portugal o governo ficou bonzinho? 🤔 calma com esses 50%.">
+  <div class="thumb"><img src="capas/irs-novembro-retencao.jpg" alt="" loading="lazy"></div>
+  <div class="meta"><span class="v info">i EXPLICADO</span><span>16 out 2026</span></div>
+  
+  <h2>IRS em novembro: retenção cai pela metade</h2>
+</a>
+  </div>
+  <p class="empty" id="empty" hidden>Nenhum vídeo com esse termo. Tente outra palavra.</p>
+</main>
+<footer class="foot"><div class="wrap"><span>Loja do Imigrante · conteúdo informativo e apartidário.</span><span>Cada vídeo traz as fontes usadas na pesquisa. Encontrou um erro? Mande uma mensagem no <a href="https://www.instagram.com/alojadoimigrante.pt/" target="_blank" rel="noopener">Instagram</a>.</span></div></footer>
+<script>
+(function(){
+  var now=Date.now(), grid=document.getElementById('grid');
+  [].slice.call(document.querySelectorAll('.card')).forEach(function(c){ var u=c.dataset.urgent; if(!u) return; var t=Date.parse(u); if(isNaN(t)||now-t>48*3600*1000) return;
+    c.classList.add('hot'); var b=c.querySelector('.hotb'); if(b) b.hidden=false; grid.insertBefore(c, grid.firstChild); });
+  var hotN=document.querySelectorAll('.card.hot').length, hc=document.querySelector('.chip[data-cat="urgente"]'); if(hc&&!hotN) hc.hidden=true;
+  var cat='todos', q=document.getElementById('q'), cards=[].slice.call(document.querySelectorAll('.card')), chips=[].slice.call(document.querySelectorAll('.chip')), empty=document.getElementById('empty');
+  function apply(){ var t=(q.value||'').toLowerCase().trim(), n=0;
+    cards.forEach(function(c){ var ok=(cat==='todos'||c.dataset.cat===cat||(cat==='urgente'&&c.classList.contains('hot')))&&(!t||c.dataset.q.indexOf(t)>-1); c.hidden=!ok; if(ok)n++; });
+    empty.hidden=n>0; }
+  chips.forEach(function(b){ b.addEventListener('click',function(){ cat=b.dataset.cat; chips.forEach(function(x){x.setAttribute('aria-pressed',String(x===b));}); apply(); }); });
+  q.addEventListener('input',apply);
+})();
+</script>
+</body>
+</html>

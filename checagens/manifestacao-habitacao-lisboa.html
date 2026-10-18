@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Manifestação: casas e custo de vida em Portugal · Loja do Imigrante</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Dezenas de milhares foram às ruas de Lisboa no sábado (17/10) contra o preço das casas e o custo de vida. Mas por que a conta não fecha? Vamos aos números ">
+<meta property="og:title" content="Manifestação: casas e custo de vida em Portugal · Loja do Imigrante">
+<meta property="og:description" content="Dezenas de milhares foram às ruas de Lisboa no sábado (17/10) contra o preço das casas e o custo de vida. Mas por que a conta não fecha? Vamos aos números ">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: arquivo de checagens — faixa de marca, filtros e grade de capas verticais; página de vídeo em duas colunas (capa | relato + fontes). */
+:root{
+  --bg:#0c0c0b; --panel:#161614; --line:#2b2a26; --ink:#f3efe4; --mute:#a29d90; --yel:#ffd447;
+  --ok:#8ad49a; --warn:#ffb15c; --bad:#ff7d6e; --info:#cfcabd;
+  --display:"Inter","Helvetica Neue",Arial,sans-serif; --body:"Inter","Helvetica Neue",Arial,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 13px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--yel);display:inline-block}
+.ig{font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--yel)}
+.ig:hover,.ig:focus-visible{text-decoration:underline}
+.hero .wrap{padding-block:48px 28px;display:grid;gap:14px}
+.eyebrow{font:700 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--yel)}
+h1{font:900 clamp(38px,7vw,76px)/.98 var(--display);letter-spacing:-.035em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--yel)}
+.lede{max-width:60ch;color:var(--mute);margin:0;font-size:17px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-block:4px 26px}
+.chip{font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--yel);color:#141414;border-color:var(--yel)}
+.chip:focus-visible,.search:focus-visible,a:focus-visible{outline:2px solid var(--yel);outline-offset:2px}
+.search{flex:1 1 220px;min-width:0;max-width:360px;margin-left:auto;font:500 15px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:11px 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px;padding-bottom:56px}
+.card{display:grid;gap:10px;text-decoration:none;min-width:0}
+.thumb{aspect-ratio:4/5;max-width:100%;border-radius:14px;overflow:hidden;background:var(--panel);border:1px solid var(--line);position:relative}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block;transition:transform .35s ease}
+.card:hover .thumb img{transform:scale(1.03)}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:700 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.v{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:6px;border:1px solid currentColor}
+.v.ok{color:var(--ok)} .v.warn{color:var(--warn)} .v.bad{color:var(--bad)} .v.info{color:var(--info)}
+.card h2{font:800 19px/1.2 var(--display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.claim{margin:0;font:600 15px/1.4 var(--body);color:var(--ink)}
+.claim span{display:block;font:700 10px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.legend{font-size:14px;color:var(--mute);margin:0;max-width:70ch}
+.legend b{color:var(--ink);font-weight:600}
+.hotb{position:absolute;left:10px;top:10px;background:var(--bad);color:#141414;font:800 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 9px;border-radius:6px}
+.hotb.static{position:static;display:inline-block}
+.card.hot .thumb{border-color:var(--bad);box-shadow:0 0 0 2px var(--bad)}
+.chip[data-cat="urgente"]{color:var(--bad);border-color:var(--bad)}
+.chip[data-cat="urgente"][aria-pressed="true"]{background:var(--bad);color:#141414}
+.empty{color:var(--mute);padding-block:24px}
+.foot{border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+.foot .wrap{padding-block:26px;display:grid;gap:6px}
+/* página do vídeo */
+.back{display:inline-block;margin-top:26px;font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.back:hover{color:var(--ink)}
+.art{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:44px;padding-block:24px 64px;align-items:start}
+.art .thumb{aspect-ratio:9/16;position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+.art .thumb img{object-position:50% 50%}
+.art h1{font-size:clamp(32px,5vw,54px)}
+.text{min-width:0;display:grid;gap:22px}
+.verdict{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px 20px;display:grid;gap:8px}
+.verdict .v{justify-self:start;font:700 12px/1 var(--mono);letter-spacing:.12em}
+.verdict p{margin:0;font-size:17px}
+.body p{margin:0 0 14px;max-width:66ch}
+.body ul{margin:0 0 14px;padding-left:20px;max-width:64ch}
+.body li{margin-bottom:6px}
+.sources{border-top:1px solid var(--line);padding-top:20px}
+.sources h3,.cta h3{font:700 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--yel);margin:0 0 14px}
+.sources ol{margin:0;padding-left:22px;display:grid;gap:10px}
+.sources a{color:var(--ink);text-decoration-color:var(--yel);text-underline-offset:3px;overflow-wrap:anywhere}
+.sources a:hover{color:var(--yel)}
+.sources .host{display:block;font:500 12px/1.4 var(--mono);color:var(--mute);overflow-wrap:anywhere}
+.note{font-size:14px;color:var(--mute);max-width:66ch;margin:0}
+.cta{border:1px solid var(--yel);border-radius:14px;padding:18px 20px}
+.cta p{margin:0 0 12px}
+.btn{display:inline-block;background:var(--yel);color:#141414;font:800 15px/1 var(--display);padding:13px 18px;border-radius:999px;text-decoration:none}
+@media (max-width:760px){.art{grid-template-columns:1fr;gap:22px}.art .thumb{position:static;max-width:300px}.hero .wrap{padding-block:32px 20px}}
+@media (prefers-reduced-motion:reduce){.thumb img{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="./"><i></i>Loja do Imigrante · Fatos e Fontes</a><a class="ig" href="https://www.instagram.com/alojadoimigrante.pt/" target="_blank" rel="noopener">@alojadoimigrante.pt ↗</a></div></header>
+<main class="wrap">
+<a class="back" href="./">← Todas as checagens</a>
+<article class="art">
+  <div class="thumb"><img src="capas/manifestacao-habitacao-lisboa.jpg" alt="Capa do vídeo: Manifestação: casas e custo de vida em Portugal"></div>
+  <div class="text">
+    <div class="meta"><span class="hotb static">● Última hora · 18 out, 17h20</span><span>18 out 2026</span><span>Portugal · Habitação</span></div>
+    <h1>Manifestação: casas e custo de vida em Portugal</h1>
+    <div class="verdict"><span class="v info">i EXPLICADO</span><p>Dezenas de milhares foram às ruas de Lisboa no sábado (17/10) contra o preço das casas e o custo de vida. Mas por que a conta não fecha? Vamos aos números 👇</p></div>
+    <div class="body"><p>📣 Quem chamou: a CGTP, a maior central sindical do país. &quot;Dezenas de milhares&quot; é a estimativa dos organizadores; a polícia não divulgou número. No mesmo dia teve protestos também na França, na Bélgica e na Itália.</p>
+<p>🏠 As casas: desde 2017, o preço das casas em Portugal mais que dobrou. Só no último ano, subiu 16,5% (INE, 2º trimestre de 2026).</p>
+<p>🔑 Aluguel × salário:</p>
+<ul><li>Em Lisboa, um contrato novo custa em média €17,42 por m² (INE).</li><li>Um T2 de 70 m² sai por cerca de €1.219 por mês.</li><li>O salário mínimo é €920, bruto.</li></ul>
+<p>🛒 O resto da conta: a inflação foi de 3,6% em setembro, puxada por comida e combustível.</p>
+<p>↔️ O outro lado: o governo diz que &quot;não vai ceder aos gritos da rua&quot; e aponta medidas já aprovadas: IVA de 6% na construção para aluguel moderado, desconto no IRS e licenciamento mais rápido. Prevê salário mínimo de €970 em 2027. A CGTP pede €1.100.</p>
+<p>🧾 Dica para imigrante: exija contrato de arrendamento registado nas Finanças. Ele serve de comprovante de morada e ainda permite descontar parte do aluguel no IRS.</p></div>
+    <section class="sources"><h3>Fontes (6)</h3><ol><li><a href="https://theprint.in/world/tens-of-thousands-march-in-lisbon-over-housing-and-living-costs/3074927/" target="_blank" rel="noopener">Reuters (via ThePrint)</a><span class="host">theprint.in</span></li><li><a href="https://www.aljazeera.com/news/2026/10/17/cost-of-living-protests-hit-belgium-italy-portugal-and-france" target="_blank" rel="noopener">Al Jazeera</a><span class="host">aljazeera.com</span></li><li><a href="https://www.comparaja.pt/credito-habitacao/noticias/indice-de-precos-da-habitacao-sobe-16-5-no-2o-trimestre-2026" target="_blank" rel="noopener">INE preços da habitação 2T2026 (ComparaJá)</a><span class="host">comparaja.pt</span></li><li><a href="https://www.idealista.pt/news/imobiliario/habitacao/2026/06/26/76239-rendas-aceleram-e-sobem-9-1-no-arranque-do-ano" target="_blank" rel="noopener">INE rendas 1T2026 (idealista)</a><span class="host">idealista.pt</span></li><li><a href="https://www.dnoticias.pt/2026/10/8/508265-governo-assume-salario-minimo-nos-970-euros-no-proximo-ano/" target="_blank" rel="noopener">Salário mínimo 2027 (Lusa/DNoticias)</a><span class="host">dnoticias.pt</span></li><li><a href="https://eco.sapo.pt/2026/03/27/governo-aprova-iva-a-6-incentivos-a-rendas-moderadas-e-novo-regime-juridico-da-construcao/" target="_blank" rel="noopener">Medidas do governo (ECO)</a><span class="host">eco.sapo.pt</span></li></ol></section>
+    <p class="note">ℹ️ Conteúdo informativo e apartidário. Dados verificados em 18/10/2026. O valor do T2 é uma conta feita com o dado do INE (70 m² × €17,42).</p>
+    <div class="cta"><h3>Veja o vídeo</h3><p>Este conteúdo foi publicado em vídeo no Instagram da Loja do Imigrante.</p><a class="btn" href="https://www.instagram.com/alojadoimigrante.pt/" target="_blank" rel="noopener">Abrir @alojadoimigrante.pt</a></div>
+  </div>
+</article>
+</main>
+<footer class="foot"><div class="wrap"><span>Loja do Imigrante · conteúdo informativo e apartidário.</span><span>Cada vídeo traz as fontes usadas na pesquisa. Encontrou um erro? Mande uma mensagem no <a href="https://www.instagram.com/alojadoimigrante.pt/" target="_blank" rel="noopener">Instagram</a>.</span></div></footer>
+</body>
+</html>
