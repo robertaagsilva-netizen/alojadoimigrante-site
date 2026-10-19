@@ -1,0 +1,134 @@
+{
+ "_nota": "Prazos de Portugal. 'aviso' = quantos dias antes começa a aparecer. 'confirmar': true = conferir na agenda fiscal oficial antes de usar (datas de 2027 seguem o padrão de 2026).",
+ "eventos": [
+  {
+   "data": "2026-10-25",
+   "aviso": 2,
+   "antes": "Neste domingo, 25/10, a hora muda: às 2h os relógios voltam para 1h.",
+   "hoje": "Hoje a hora mudou: os relógios voltaram 1 hora. Confira o despertador!",
+   "tipo": "aviso"
+  },
+  {
+   "data": "2026-10-31",
+   "aviso": 3,
+   "antes": "Recibos verdes: a declaração trimestral à Segurança Social (julho a setembro) vai até {data}.",
+   "hoje": "Último dia da declaração trimestral à Segurança Social para quem passa recibos verdes.",
+   "tipo": "prazo"
+  },
+  {
+   "data": "2026-11-01",
+   "aviso": 1,
+   "antes": "Amanhã, 1/11, é feriado: Dia de Todos os Santos.",
+   "hoje": "Hoje é feriado: Dia de Todos os Santos.",
+   "tipo": "aviso"
+  },
+  {
+   "data": "2026-11-30",
+   "aviso": 5,
+   "antes": "IMI: a última prestação (para quem paga mais de 100 €) vence em {data}.",
+   "hoje": "Último dia para pagar a última prestação do IMI.",
+   "tipo": "prazo"
+  },
+  {
+   "data": "2026-12-01",
+   "aviso": 1,
+   "antes": "Amanhã, 1/12, é feriado: Restauração da Independência.",
+   "hoje": "Hoje é feriado: Restauração da Independência.",
+   "tipo": "aviso"
+  },
+  {
+   "data": "2026-12-08",
+   "aviso": 1,
+   "antes": "Amanhã, 8/12, é feriado: Imaculada Conceição.",
+   "hoje": "Hoje é feriado: Imaculada Conceição.",
+   "tipo": "aviso"
+  },
+  {
+   "data": "2026-12-15",
+   "aviso": 4,
+   "antes": "Trabalha por conta de outrem? Pela lei, o subsídio de Natal tem de ser pago até {data}.",
+   "hoje": "Hoje é o prazo legal para o patrão pagar o subsídio de Natal (setor privado).",
+   "tipo": "prazo"
+  },
+  {
+   "data": "2026-12-21",
+   "aviso": 3,
+   "antes": "Recibos verdes com pagamento por conta: o 3.º pagamento do ano vence em {data}.",
+   "hoje": "Último dia do 3.º pagamento por conta do IRS (trabalhadores independentes).",
+   "tipo": "prazo"
+  },
+  {
+   "data": "2026-12-25",
+   "aviso": 1,
+   "antes": "Amanhã é Natal, feriado nacional.",
+   "hoje": "Feliz Natal! Hoje é feriado nacional.",
+   "tipo": "aviso"
+  },
+  {
+   "data": "2027-01-01",
+   "aviso": 1,
+   "antes": "Amanhã, 1/1, é feriado: Ano Novo.",
+   "hoje": "Feliz Ano Novo! Hoje é feriado.",
+   "tipo": "aviso"
+  },
+  {
+   "data": "2027-01-31",
+   "aviso": 4,
+   "antes": "Recibos verdes: a declaração trimestral (outubro a dezembro) vai até {data}.",
+   "hoje": "Último dia da declaração trimestral à Segurança Social (recibos verdes).",
+   "confirmar": true,
+   "tipo": "prazo"
+  },
+  {
+   "data": "2027-03-01",
+   "aviso": 7,
+   "antes": "IRS: valide as suas faturas no e-fatura e confira o agregado familiar até {data}.",
+   "hoje": "Último dia para validar faturas no e-fatura e atualizar o agregado familiar do IRS.",
+   "confirmar": true,
+   "tipo": "prazo"
+  },
+  {
+   "data": "2027-03-16",
+   "aviso": 1,
+   "antes": "A partir de amanhã dá para consultar as deduções do IRS no Portal das Finanças.",
+   "hoje": "Já dá para consultar as deduções do IRS no Portal das Finanças. Reclamações até 31/3.",
+   "confirmar": true,
+   "tipo": "prazo"
+  },
+  {
+   "data": "2027-03-26",
+   "aviso": 1,
+   "antes": "Amanhã é feriado: Sexta-feira Santa.",
+   "hoje": "Hoje é feriado: Sexta-feira Santa.",
+   "tipo": "aviso"
+  },
+  {
+   "data": "2027-03-28",
+   "aviso": 2,
+   "antes": "Neste domingo, 28/3, a hora muda: às 1h os relógios adiantam para 2h.",
+   "hoje": "Hoje a hora mudou: adiantamos 1 hora. Durma mais cedo!",
+   "confirmar": true,
+   "tipo": "aviso"
+  },
+  {
+   "data": "2027-03-31",
+   "aviso": 3,
+   "antes": "IRS: o prazo para reclamar das deduções vai até {data}.",
+   "hoje": "Último dia para reclamar das deduções do IRS no Portal das Finanças.",
+   "confirmar": true,
+   "tipo": "prazo"
+  }
+ ],
+ "mensal": {
+  "dia": 20,
+  "aviso": 2,
+  "texto": "Recibos verdes: as contribuições à Segurança Social se pagam do dia 10 ao dia 20. Hoje é o último dia!"
+ },
+ "fontes": [
+  "https://www.santander.pt/salto/calendario-fiscal",
+  "https://www.idealista.pt/news/financas/fiscalidade/2026/02/18/73586-calendario-do-irs-2026-datas-prazos-e-o-que-fazer-em-cada-fase",
+  "https://crncontabilidade.pt/blog/recibos-verdes-qual-e-o-prazo-da-declaracao-trimestral/",
+  "https://www.doutorfinancas.pt/literacia-financeira/subsidio-de-natal-o-que-diz-a-lei-e-como-calcular/",
+  "https://rfm.pt/atualidade/23809/mudanca-da-hora-outubro-2026-quando-tens-de-atrasar-o-relogio-e-como-preparar-o-sono"
+ ]
+}
