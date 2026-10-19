@@ -26,5 +26,6 @@ jobs:
             **/.git*
             **/.git*/**
             .github/**
+            stories/**
             README.md
             .nojekyll
