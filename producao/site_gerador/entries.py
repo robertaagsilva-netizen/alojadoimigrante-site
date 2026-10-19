@@ -1,6 +1,7 @@
 # slug do site -> (doc do painel, categoria, veredito, pasta/arquivo da capa)
 # veredito: ("ok"|"warn"|"bad"|"info", rótulo)
 E = [
+ ("raio-x-flavio-bolsonaro", "raiox_flavio_3d", "eleicoes", ("info", "RAIO-X"), "flavio/LojaDoImigrante_raioX_Flavio_capa.jpg"),
  ("moro-luchsinger-video", "checagem_moro_3d", "checagem", ("warn", "FALTA CONTEXTO"), "moro/LojaDoImigrante_checagem_Moro_capa.jpg"),
  ("debate-band-lula-flavio", "checagem_debate_band_3d", "eleicoes", ("info", "FRASES CHECADAS"), "deb/LojaDoImigrante_checagem_debate_Band_capa.jpg"),
  ("cidadania-espanhola-2-anos", "cidadania_espanhola_3d", "checagem", ("warn", "MEIA VERDADE"), "esp/LojaDoImigrante_cidadania_espanhola_capa.jpg"),
