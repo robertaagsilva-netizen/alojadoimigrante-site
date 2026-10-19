@@ -1,0 +1,40 @@
+A urna eletrônica pode ser hackeada pela internet? 🗳️🔒
+
+Curiosidade: ela nem tem como se conectar. Veja como funciona a segurança do sistema:
+
+📵 100% offline: a urna não tem Wi-Fi, Bluetooth nem cabo de rede. A placa não tem nem chip de conexão sem fio.
+
+💻 Código aberto: o programa da urna fica aberto por um ano para inspeção de partidos, Polícia Federal, Ministério Público e especialistas em computação.
+
+🔐 Lacre e teste: o sistema é assinado digitalmente e lacrado em cerimônia pública. No dia da eleição, urnas sorteadas passam por um teste de integridade.
+
+🧾 A prova em papel: quando a votação termina, a urna imprime o Boletim de Urna, com o total de votos da seção. Uma via vai para os fiscais dos partidos e outra fica afixada na porta.
+
+📱 Confira você mesmo: qualquer pessoa pode escanear o QR Code do boletim com o app Boletim na Mão e comparar com o resultado publicado pelo TSE.
+
+🌍 Em 2022, missões internacionais como a da OEA avaliaram o sistema como seguro e auditável.
+
+📌 Salve este vídeo e compartilhe com quem tem essa dúvida.
+
+👉 Siga @alojadoimigrante.pt para mais informações úteis para brasileiros no exterior.
+
+Conteúdo informativo e apartidário.
+
+📚 Fontes (verificado em 17/10/2026):
+
+Agência Brasil, urnas off-line, sem Wi-Fi nem Bluetooth:
+https://agenciabrasil.ebc.com.br/radioagencia-nacional/ajudante-digital/ad-46-urnas-eletronicas-mais-que-seguras-line-e-resistentes
+
+TSE, inspeção dos códigos-fonte para 2026:
+https://www.tse.jus.br/comunicacao/noticias/2026/Junho/sociedade-brasileira-de-computacao-inspeciona-codigos-fonte-dos-sistemas-das-eleicoes-2026
+
+TSE, o que é o Boletim de Urna:
+https://www.tse.jus.br/comunicacao/noticias/2022/Outubro/voce-ja-ouviu-falar-do-boletim-de-urna-mas-sabe-o-que-ele-e-tire-suas-duvidas
+
+TSE, avaliação das missões internacionais em 2022:
+https://www.tse.jus.br/comunicacao/noticias/2022/Novembro/organismos-internacionais-e-nacionais-atestam-a-confiabilidade-das-eleicoes-brasileiras
+
+TSE, testes de integridade em 2026:
+https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/eleicoes-de-2026-terao-acompanhamento-do-tcu-nos-testes-de-integridade-das-urnas-eletronicas
+
+#urnaeletronica #eleicoes2026 #brasileirosnoexterior #brasileirosnaeuropa #justicaeleitoral #tse #informacao #lojadoimigrante
