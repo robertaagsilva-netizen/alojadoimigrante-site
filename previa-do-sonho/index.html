@@ -4,339 +4,91 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Prévia · Do Sonho à Europa</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
-<style>
-/* Layout: faixa verde da marca no topo, triagem por chips, guias agrupados por etapa da vida do imigrante, kit grátis, consultoria com preço, FAQ e rodapé legal */
-:root{
-  --bg:#FBF6E8; --surface:#FFFFFF; --card:#FFF3D6; --ink:#0F2A22; --ink2:#46625A;
-  --green:#003D2E; --green2:#0B5440; --yel:#FFD447; --org:#C65A0A; --line:#E8DDBE; --onGreen:#FFF3D6;
-  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif; --body:"Figtree",ui-sans-serif,system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0C1915; --surface:#12241E; --card:#173029; --ink:#F4EEDB; --ink2:#AFC2B9;
-  --green:#062B21; --green2:#0E4234; --yel:#FFD447; --org:#F08A3C; --line:#25403A; --onGreen:#FFF3D6; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0C1915; --surface:#12241E; --card:#173029; --ink:#F4EEDB; --ink2:#AFC2B9;
-  --green:#062B21; --green2:#0E4234; --yel:#FFD447; --org:#F08A3C; --line:#25403A; --onGreen:#FFF3D6; color-scheme:dark}
-*{box-sizing:border-box}
-html{color-scheme:light}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-bottom:84px}
-a{color:inherit}
-.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.02em}
-h2{font-size:clamp(28px,5vw,42px)}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--org)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:999px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-family:var(--body);font-size:16px}
-.btn:focus-visible,.chip:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--org);outline-offset:2px}
-.btn-yel{background:var(--yel);color:#0F2A22}
-.btn-ghost{background:transparent;color:var(--onGreen);box-shadow:inset 0 0 0 2px rgba(255,243,214,.5)}
-.btn-green{background:var(--green);color:var(--onGreen)}
+<title>Do Sonho à Europa · A Loja do Imigrante</title>
+<meta name="description" content="Guias com os links oficiais para a documentação de brasileiros em Portugal: NIF, NISS, AIMA, passaporte, certidões, PB4, equivalência e nacionalidade.">
+<meta property="og:title" content="Do Sonho à Europa · A Loja do Imigrante"><meta property="og:description" content="Guias com os links oficiais para a documentação de brasileiros em Portugal: NIF, NISS, AIMA, passaporte, certidões, PB4, equivalência e nacionalidade."><meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="site.css">
 
-/* faixa de novidade */
-.news{background:var(--yel);color:#0F2A22;font-weight:700;font-size:14px}
-.news .wrap{padding-block:9px;display:flex;gap:10px;align-items:center;justify-content:center;text-align:center}
-.news b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;background:#0F2A22;color:var(--yel);padding:3px 8px;border-radius:4px}
-
-/* hero */
-.hero{background:var(--green);color:var(--onGreen);position:relative;overflow:hidden}
-.hero .wrap{padding-block:44px 52px;display:grid;gap:22px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700}
-.brand i{width:38px;height:38px;border-radius:50%;background:var(--yel);display:grid;place-items:center;font-style:normal;color:#0F2A22;font-family:var(--display);font-weight:800}
-.brand small{display:block;font-weight:500;opacity:.75;font-size:13px}
-.hero h1{font-size:clamp(36px,7.5vw,66px);max-width:15ch}
-.hero h1 em{font-style:normal;color:var(--yel)}
-.hero p{max-width:58ch;margin:0;font-size:18px;opacity:.9}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:10px}
-.stamp{position:absolute;right:-30px;top:30px;width:190px;height:190px;border-radius:50%;border:2px dashed rgba(255,212,71,.45);display:grid;place-items:center;transform:rotate(-12deg);font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--yel);text-align:center;line-height:1.6;opacity:.8}
-.facts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;opacity:.85}
-.facts span::before{content:"✓ ";color:var(--yel);font-weight:700}
-
-section{padding-block:56px}
-.sec-head{display:grid;gap:10px;margin-bottom:24px;max-width:62ch}
-.sec-head p{margin:0;color:var(--ink2)}
-
-/* triagem */
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.chip{border:2px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:999px;font-weight:600;cursor:pointer;font-family:var(--body);font-size:15px}
-.chip[aria-pressed="true"]{background:var(--green);color:var(--onGreen);border-color:var(--green)}
-.stage{margin-top:26px}
-.stage h3{font-size:22px;display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
-.stage h3 small{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--org);text-transform:uppercase}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
-.guide{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:10px;align-content:start;min-width:0}
-.guide .tag{justify-self:start;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--card);color:var(--ink2)}
-.guide h4{margin:0;font-size:18px;font-family:var(--display)}
-.guide p{margin:0;color:var(--ink2);font-size:15px}
-.guide .where{font-size:14px}
-.guide .where b{color:var(--ink)}
-.guide .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.guide .row a{font-size:14px;font-weight:700;padding:9px 12px;border-radius:999px;text-decoration:none}
-.guide .off{background:var(--green);color:var(--onGreen)}
-.guide .help{box-shadow:inset 0 0 0 2px var(--org);color:var(--org)}
-.guide.hide{display:none}
-.soon{font-family:var(--mono);font-size:11px;color:var(--org)}
-
-/* kit grátis */
-.kit{background:var(--green2);color:var(--onGreen)}
-.kit .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start}
-.kit h2 em{font-style:normal;color:var(--yel)}
-.kit ul{margin:14px 0 0;padding-left:20px;display:grid;gap:6px}
-.kit .pdf{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;background:var(--yel);color:#0F2A22;padding:4px 10px;border-radius:4px}
-form{background:var(--surface);color:var(--ink);border-radius:16px;padding:20px;display:grid;gap:12px;min-width:0}
-label{font-size:14px;font-weight:600;display:grid;gap:5px}
-input[type=text],input[type=email],input[type=tel],select{font:inherit;padding:12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
-.consent{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:13px;color:var(--ink2)}
-.consent input{margin-top:3px;width:18px;height:18px;flex:none}
-.ok{background:var(--card);border-radius:10px;padding:12px;font-size:14px}
-
-/* consultoria */
-.offer{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.box{border-radius:16px;padding:22px;display:grid;gap:12px;align-content:start;min-width:0}
-.box.diy{background:var(--surface);border:1px solid var(--line)}
-.box.pro{background:var(--yel);color:#0F2A22}
-.price{font-family:var(--display);font-size:48px;font-weight:800;line-height:1}
-.price small{font-family:var(--body);font-size:15px;font-weight:600}
-.box ul{margin:0;padding-left:20px;display:grid;gap:6px}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px;counter-reset:s}
-.steps div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:14px;min-width:0}
-.steps div::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--green);color:var(--onGreen);font-weight:700;margin-bottom:8px}
-
-/* comunidade */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.duo .box{background:var(--card)}
-
-/* faq */
-details{border-bottom:1px solid var(--line);padding-block:14px}
-summary{font-weight:700;cursor:pointer;font-size:17px}
-details p{margin:8px 0 0;color:var(--ink2);max-width:65ch}
-
-footer{background:var(--green);color:var(--onGreen);font-size:14px}
-footer .wrap{padding-block:34px;display:grid;gap:12px}
-footer a{color:var(--yel)}
-footer .legal{opacity:.8;font-size:13px}
-
-/* barra fixa */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-.dock div{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.dock .btn{padding:12px 10px;font-size:15px}
-
-@media (max-width:760px){
-  .kit .wrap,.offer,.duo{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr 1fr}
-  .stamp{width:130px;height:130px;font-size:10px;right:-36px;top:12px}
-}
-@media (prefers-reduced-motion:no-preference){.guide{transition:transform .15s}.guide:hover{transform:translateY(-2px)}}
-</style>
 </head>
 <body>
-<div style="background:#C65A0A;color:#fff;text-align:center;font:600 13px/1.4 system-ui;padding:8px 16px">PRÉVIA · versão de teste, ainda não é o site oficial</div>
-
-
+<div style="background:#C65A0A;color:#fff;text-align:center;font:600 13px/1.4 system-ui,sans-serif;padding:8px 16px">PRÉVIA · versão de teste, ainda não é o site oficial</div>
 <div class="news"><div class="wrap"><b>NOVO</b><span>Estamos de cara nova: guias atualizados, triagem rápida e kit grátis.</span></div></div>
-
-<header class="hero">
-  <div class="stamp">EXCLUSIVO<br>PARA<br>IMIGRANTES</div>
-  <div class="wrap">
-    <div class="brand"><i>LI</i><span>Do Sonho à Europa<small>por A Loja do Imigrante · mais de 21 anos de experiência</small></span></div>
-    <h1>Resolva a sua documentação <em>sem pagar intermediário.</em></h1>
-    <p>Os links oficiais de Brasil e Portugal, explicados em português e organizados por etapa. Se travar, a nossa equipe faz por você.</p>
-    <div class="ctas">
-      <a class="btn btn-yel" href="#guias">Ver os guias</a>
-      <a class="btn btn-ghost" href="#consultoria">A gente faz por você · €95</a>
-    </div>
-    <div class="facts"><span>Só links oficiais</span><span>Atendimento em português</span><span>Taxas pagas direto ao governo</span></div>
-  </div>
-</header>
-
+<header class="hero"><div class="stamp">EXCLUSIVO<br>PARA<br>IMIGRANTES</div><div class="wrap">
+<div class="brand"><i>LI</i><span>Do Sonho à Europa<small>por A Loja do Imigrante · mais de 21 anos de experiência</small></span></div>
+<h1>Resolva a sua documentação <em>sem pagar intermediário.</em></h1>
+<p>Os links oficiais de Brasil e Portugal, explicados em português e organizados por etapa. Se travar, a nossa equipe faz por você.</p>
+<div class="ctas"><a class="btn btn-yel" href="#guias">Ver os guias</a><a class="btn btn-ghost" href="#consultoria">A gente faz por você · €95</a></div>
+<div class="facts"><span>Só links oficiais</span><span>Atendimento em português</span><span>Taxas pagas direto ao governo</span></div>
+</div></header>
 <main>
-<section id="guias">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Triagem rápida</span>
-      <h2>O que você precisa resolver?</h2>
-      <p>Toque numa opção e veja só o que importa para você. Cada guia leva ao site oficial e diz onde fazer.</p>
-    </div>
-    <div class="chips" role="group" aria-label="Filtrar guias">
-      <button class="chip" aria-pressed="true" data-f="all" id="f-all">Ver tudo</button>
-      <button class="chip" aria-pressed="false" data-f="chegada" id="f-chegada">Acabei de chegar</button>
-      <button class="chip" aria-pressed="false" data-f="residencia" id="f-res">Residência / AIMA</button>
-      <button class="chip" aria-pressed="false" data-f="brasil" id="f-br">Documentos do Brasil</button>
-      <button class="chip" aria-pressed="false" data-f="estudos" id="f-est">Estudos e diploma</button>
-      <button class="chip" aria-pressed="false" data-f="carro" id="f-carro">Carta de condução</button>
-      <button class="chip" aria-pressed="false" data-f="nacionalidade" id="f-nac">Nacionalidade</button>
-    </div>
-
-    <div class="stage" data-s="chegada">
-      <h3>Chegando em Portugal <small>Etapa 1</small></h3>
-      <div class="grid">
-        <article class="guide"><span class="tag">Portugal</span><h4>NIF (número fiscal)</h4><p>O primeiro número que você vai precisar: para alugar casa, abrir conta e trabalhar.</p><p class="where"><b>Onde:</b> Finanças (Portal das Finanças)</p><div class="row"><a class="off" href="https://www.portaldasfinancas.gov.pt" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="NIF" href="#">Travou? A gente faz</a></div></article>
-        <article class="guide"><span class="tag">Portugal</span><h4>NISS (Segurança Social)</h4><p>Necessário para trabalhar com contrato e descontar para a Segurança Social.</p><p class="where"><b>Onde:</b> Segurança Social Direta</p><div class="row"><a class="off" href="https://www.seg-social.pt" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="NISS" href="#">Travou? A gente faz</a></div></article>
-        <article class="guide"><span class="tag">Saúde</span><h4>Número de utente do SNS</h4><p>Para se inscrever no centro de saúde da sua zona e ter médico de família.</p><p class="where"><b>Onde:</b> centro de saúde da sua morada · SNS 24</p><div class="row"><a class="off" href="https://www.sns24.gov.pt" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="número de utente" href="#">Travou? A gente faz</a></div></article>
-      </div>
-    </div>
-
-    <div class="stage" data-s="residencia">
-      <h3>Residência <small>Etapa 2</small></h3>
-      <div class="grid">
-        <article class="guide"><span class="tag">Portugal</span><h4>Autorização de residência</h4><p>Pedido, renovação e acompanhamento do processo na AIMA, que substituiu o SEF.</p><p class="where"><b>Onde:</b> AIMA</p><div class="row"><a class="off" href="https://aima.gov.pt" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="residência / AIMA" href="#">Travou? A gente faz</a></div><span class="soon">Guia completo em breve</span></article>
-        <article class="guide"><span class="tag">Portugal</span><h4>Residência indeferida</h4><p>Recebeu um indeferimento? Entenda o motivo e os prazos antes de fazer qualquer coisa.</p><p class="where"><b>Onde:</b> carta da AIMA · consultoria</p><div class="row"><a class="help" data-h="residência indeferida" href="#">Falar com a equipe</a></div></article>
-      </div>
-    </div>
-
-    <div class="stage" data-s="brasil">
-      <h3>Documentos do Brasil <small>Etapa 3</small></h3>
-      <div class="grid">
-        <article class="guide"><span class="tag">Brasil · consulado</span><h4>Passaporte brasileiro</h4><p>Quem mora em Portugal pede no consulado, com agendamento pelo e-Consular. A taxa é paga ao consulado.</p><p class="where"><b>Onde:</b> Consulado do Brasil · e-Consular</p><div class="row"><a class="off" href="https://www.gov.br/mre/pt-br/assuntos/portal-consular" target="_blank" rel="noopener">Portal Consular</a><a class="help" data-h="passaporte" href="#">Travou? A gente faz</a></div></article>
-        <article class="guide"><span class="tag">Brasil</span><h4>2ª via de certidão</h4><p>Nascimento, casamento ou óbito, pedida online ao cartório onde foi registrada.</p><p class="where"><b>Onde:</b> Registro Civil (Meu Registro)</p><div class="row"><a class="off" href="https://registrocivil.org.br" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="2ª via de certidão" href="#">Travou? A gente faz</a></div></article>
-        <article class="guide"><span class="tag">Brasil</span><h4>Antecedentes criminais</h4><p>Certidão emitida online pela Polícia Federal. Muito pedida em processos de residência e nacionalidade.</p><p class="where"><b>Onde:</b> Polícia Federal</p><div class="row"><a class="off" href="https://www.gov.br/pf/pt-br" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="antecedentes criminais" href="#">Travou? A gente faz</a></div></article>
-        <article class="guide"><span class="tag">Saúde</span><h4>CDAM (antigo PB4)</h4><p>Certificado do acordo de saúde Brasil–Portugal, pedido pelo gov.br antes ou depois de vir.</p><p class="where"><b>Onde:</b> gov.br · Ministério da Saúde</p><div class="row"><a class="off" href="https://www.gov.br/saude/pt-br" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="CDAM / PB4" href="#">Travou? A gente faz</a></div></article>
-        <article class="guide"><span class="tag">Brasil · consulado</span><h4>CPF, título de eleitor e registros</h4><p>Regularizar CPF, votar no exterior e registrar nascimento ou casamento feito em Portugal.</p><p class="where"><b>Onde:</b> Consulado do Brasil</p><div class="row"><a class="off" href="https://www.gov.br/mre/pt-br/assuntos/portal-consular" target="_blank" rel="noopener">Portal Consular</a><a class="help" data-h="CPF / título / registro consular" href="#">Travou? A gente faz</a></div><span class="soon">Guia completo em breve</span></article>
-      </div>
-    </div>
-
-    <div class="stage" data-s="estudos">
-      <h3>Estudos e trabalho <small>Etapa 4</small></h3>
-      <div class="grid">
-        <article class="guide"><span class="tag">Portugal</span><h4>Equivalência do ensino básico e secundário</h4><p>Para matricular os filhos na escola ou provar o seu ensino médio feito no Brasil.</p><p class="where"><b>Onde:</b> escola pública · Direção-Geral da Educação</p><div class="row"><a class="help" data-h="equivalência escolar" href="#">Travou? A gente faz</a></div><span class="soon">Guia completo em breve</span></article>
-        <article class="guide"><span class="tag">Portugal</span><h4>Reconhecimento de diploma</h4><p>Para usar a sua faculdade em Portugal. O tipo de reconhecimento depende do curso e da profissão.</p><p class="where"><b>Onde:</b> universidades · DGES</p><div class="row"><a class="help" data-h="reconhecimento de diploma" href="#">Travou? A gente faz</a></div><span class="soon">Guia completo em breve</span></article>
-      </div>
-    </div>
-
-    <div class="stage" data-s="carro">
-      <h3>Carro <small>Etapa 5</small></h3>
-      <div class="grid">
-        <article class="guide"><span class="tag">Portugal</span><h4>Carta de condução brasileira</h4><p>As regras para conduzir com a carta do Brasil mudaram para cidadãos da CPLP. Veja se o seu caso precisa de troca.</p><p class="where"><b>Onde:</b> IMT</p><div class="row"><a class="off" href="https://www.imt-ip.pt" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="carta de condução" href="#">Travou? A gente faz</a></div><span class="soon">Guia completo em breve</span></article>
-      </div>
-    </div>
-
-    <div class="stage" data-s="nacionalidade">
-      <h3>Nacionalidade <small>Etapa 6</small></h3>
-      <div class="grid">
-        <article class="guide"><span class="tag">Portugal</span><h4>Nacionalidade portuguesa</h4><p>Quem pode pedir, quanto tempo de residência conta e quais documentos levar.</p><p class="where"><b>Onde:</b> IRN · Justiça.gov.pt</p><div class="row"><a class="off" href="https://justica.gov.pt" target="_blank" rel="noopener">Site oficial</a><a class="help" data-h="nacionalidade portuguesa" href="#">Travou? A gente faz</a></div><span class="soon">Guia completo em breve</span></article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="kit" id="kit">
-  <div class="wrap">
-    <div>
-      <span class="eyebrow" style="color:var(--yel)">Grátis</span>
-      <h2>Kit <em>Pasta do Imigrante</em></h2>
-      <p>O checklist dos documentos que todo brasileiro em Portugal precisa ter organizados, com onde tirar cada um, e o calendário de prazos do imigrante.</p>
-      <ul>
-        <li>Checklist por objetivo: chegada, residência, renovação</li>
-        <li>Como nomear e guardar os PDFs para não travar no atendimento</li>
-        <li>Calendário de prazos atualizado</li>
-        <li>Bónus: ebook "O Mapa Invisível da Coragem"</li>
-      </ul>
-      <span class="pdf">PDF · ENVIADO PARA O SEU E-MAIL</span>
-    </div>
-    <form id="lead" novalidate>
-      <label for="ln">Nome<input id="ln" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required></label>
-      <label for="le">E-mail<input id="le" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
-      <label for="lw">WhatsApp (opcional)<input id="lw" name="whatsapp" type="tel" autocomplete="tel" placeholder="+351 …"></label>
-      <label for="lp">Você mora em<select id="lp" name="pais"><option>Portugal</option><option>Brasil (vou mudar)</option><option>Espanha</option><option>Outro país da Europa</option></select></label>
-      <label class="consent" for="lc"><input id="lc" type="checkbox" required><span>Aceito receber o kit e avisos da Loja do Imigrante por e-mail. Posso cancelar quando quiser. Ver <a href="#privacidade">política de privacidade</a>.</span></label>
-      <button class="btn btn-green" type="submit">Quero o kit grátis</button>
-      <div class="ok" id="lok" hidden></div>
-    </form>
-  </div>
-</section>
-
-<section id="consultoria">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Dois caminhos</span>
-      <h2>Faça você mesmo, ou deixe com a gente.</h2>
-    </div>
-    <div class="offer">
-      <div class="box diy">
-        <h3>Resolver sozinho</h3>
-        <div class="price">€0</div>
-        <ul><li>Guias e links oficiais acima</li><li>Kit Pasta do Imigrante grátis</li><li>As taxas oficiais você paga direto ao governo</li></ul>
-        <a class="btn btn-green" href="#guias">Ver os guias</a>
-      </div>
-      <div class="box pro">
-        <h3>Consultoria personalizada</h3>
-        <div class="price">€95 <small>por consulta</small></div>
-        <ul><li>Diagnóstico do seu caso</li><li>Plano de ação com o caminho mais curto</li><li>Checklist feito para você</li><li>Se quiser, a nossa equipe executa o processo</li></ul>
-        <a class="btn btn-green" id="buy" href="#" target="_blank" rel="noopener">Agendar e pagar</a>
-      </div>
-    </div>
-    <div class="steps">
-      <div>Você responde a triagem pelo WhatsApp</div>
-      <div>Agenda e paga a consulta</div>
-      <div>Recebe o plano e o checklist</div>
-      <div>Executa sozinho ou com a nossa equipe</div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap duo">
-    <div class="box"><span class="eyebrow">Comunidade</span><h3>Entre Elas Europa</h3><p style="margin:0">Uma rede de apoio para mulheres imigrantes: conteúdos ao longo da semana, lives e encontros presenciais.</p><a class="btn btn-green" style="justify-self:start" href="#">Conhecer o grupo</a></div>
-    <div class="box"><span class="eyebrow">Notícias checadas</span><h3>Fatos e Fontes</h3><p style="margin:0">As notícias que mexem com o imigrante, com a fonte de cada informação.</p><a class="btn btn-green" style="justify-self:start" href="https://alojadoimigrante.com/checagens/" target="_blank" rel="noopener">Ver as checagens</a></div>
-  </div>
-</section>
-
-<section id="faq" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">Perguntas frequentes</span><h2>Antes de agendar</h2></div>
-    <details><summary>A Loja do Imigrante é um órgão oficial?</summary><p>Não. Somos uma consultoria privada. Os pedidos são feitos nos sites oficiais, e as taxas são pagas direto ao governo.</p></details>
-    <details><summary>Vocês fazem o processo por mim?</summary><p>Sim. Na consultoria você recebe o plano do seu caso e pode escolher que a nossa equipe execute.</p></details>
-    <details><summary>Quanto custa?</summary><p>A consulta custa €95. Os guias e o kit deste site são gratuitos.</p></details>
-    <details><summary>Atendem quem está fora de Portugal?</summary><p>Sim, o atendimento é online, em português.</p></details>
-    <details><summary>Posso falar pelo WhatsApp?</summary><p>Pode: +351 935 149 920. A triagem começa por lá.</p></details>
-  </div>
-</section>
+<section id="guias"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">Triagem rápida</span><h2>O que você precisa resolver?</h2><p>Toque numa opção e veja só o que importa para você. Cada guia diz onde fazer, quanto custa e leva ao site oficial. Informações conferidas em 20/10/2026.</p></div>
+<div class="chips" role="group" aria-label="Filtrar guias"><button class="chip" aria-pressed="true" data-f="all" id="f-all">Ver tudo</button><button class="chip" aria-pressed="false" data-f="chegada" id="f-chegada">Acabei de chegar</button><button class="chip" aria-pressed="false" data-f="residencia" id="f-residencia">Residência / AIMA</button><button class="chip" aria-pressed="false" data-f="brasil" id="f-brasil">Documentos do Brasil</button><button class="chip" aria-pressed="false" data-f="estudos" id="f-estudos">Estudos e diploma</button><button class="chip" aria-pressed="false" data-f="carro" id="f-carro">Carta de condução</button><button class="chip" aria-pressed="false" data-f="nacionalidade" id="f-nacionalidade">Nacionalidade</button></div>
+<div class="stage" data-s="chegada"><h3>Chegando em Portugal <small>Etapa 1</small></h3><div class="grid"><article class="guide"><span class="tag">Portugal</span><h4>NIF e NISS para estrangeiros</h4><p>O NIF (Finanças) e o NISS (Segurança Social) são os primeiros números que você vai precisar em Portugal.</p><div class="row"><a class="off" href="guias/nif-e-niss.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20NIF%20/%20NISS." target="_blank" rel="noopener">Travou? A gente faz</a></div></article><article class="guide"><span class="tag">Saúde</span><h4>Número de utente do SNS</h4><p>Para ter médico de família e para o SNS cobrir as suas consultas.</p><div class="row"><a class="off" href="guias/numero-de-utente-sns.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20n%C3%BAmero%20de%20utente." target="_blank" rel="noopener">Travou? A gente faz</a></div></article></div></div><div class="stage" data-s="residencia"><h3>Residência <small>Etapa 2</small></h3><div class="grid"><article class="guide"><span class="tag">Portugal</span><h4>Renovar a autorização de residência</h4><p>A renovação é pedida online, no portal de renovações da AIMA. Atenção ao prazo.</p><div class="row"><a class="off" href="guias/renovar-residencia-aima.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20renova%C3%A7%C3%A3o%20da%20resid%C3%AAncia." target="_blank" rel="noopener">Travou? A gente faz</a></div></article><article class="guide"><span class="tag">Portugal</span><h4>Residência indeferida</h4><p>Recebeu um indeferimento da AIMA? Entenda o motivo e os prazos antes de fazer qualquer coisa.</p><div class="row"><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20resid%C3%AAncia%20indeferida." target="_blank" rel="noopener">Falar com a equipe</a></div></article></div></div><div class="stage" data-s="brasil"><h3>Documentos do Brasil <small>Etapa 3</small></h3><div class="grid"><article class="guide"><span class="tag">Brasil · consulado</span><h4>Passaporte brasileiro em Portugal</h4><p>Quem mora em Portugal pede no consulado, pelo e-Consular. A taxa é paga ao consulado.</p><div class="row"><a class="off" href="guias/passaporte-brasileiro-em-portugal.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20passaporte." target="_blank" rel="noopener">Travou? A gente faz</a></div></article><article class="guide"><span class="tag">Brasil</span><h4>2ª via de certidão brasileira</h4><p>Nascimento, casamento ou óbito, pedida online ao cartório onde foi registrada.</p><div class="row"><a class="off" href="guias/segunda-via-de-certidao.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%202%C2%AA%20via%20de%20certid%C3%A3o." target="_blank" rel="noopener">Travou? A gente faz</a></div></article><article class="guide"><span class="tag">Brasil</span><h4>Certidão de antecedentes criminais</h4><p>Emitida online e de graça pela Polícia Federal. Vale 90 dias.</p><div class="row"><a class="off" href="guias/antecedentes-criminais.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20antecedentes%20criminais." target="_blank" rel="noopener">Travou? A gente faz</a></div></article><article class="guide"><span class="tag">Saúde</span><h4>CDAM, o antigo PB4</h4><p>Garante atendimento no SNS a brasileiros. Pedido online e gratuito.</p><div class="row"><a class="off" href="guias/cdam-pb4.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20CDAM%20/%20PB4." target="_blank" rel="noopener">Travou? A gente faz</a></div></article><article class="guide"><span class="tag">Brasil · consulado</span><h4>CPF, título de eleitor e registos</h4><p>Regularizar o CPF, votar no exterior e registar nascimento ou casamento feito em Portugal, no consulado.</p><div class="row"><a class="off" href="https://www.gov.br/mre/pt-br/assuntos/portal-consular" target="_blank" rel="noopener">Portal Consular</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20CPF%20/%20t%C3%ADtulo%20/%20registo%20consular." target="_blank" rel="noopener">Travou? A gente faz</a></div><span class="soon">Guia completo em breve</span></article></div></div><div class="stage" data-s="estudos"><h3>Estudos e trabalho <small>Etapa 4</small></h3><div class="grid"><article class="guide"><span class="tag">Portugal</span><h4>Equivalência do ensino básico e secundário</h4><p>Pedida numa escola portuguesa. Gratuita. Serve para universidade e emprego.</p><div class="row"><a class="off" href="guias/equivalencia-ensino-basico-secundario.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20equival%C3%AAncia%20escolar." target="_blank" rel="noopener">Travou? A gente faz</a></div></article><article class="guide"><span class="tag">Portugal</span><h4>Reconhecimento de diploma universitário</h4><p>Três tipos de reconhecimento, com prazos de 30 a 90 dias. Pedido online.</p><div class="row"><a class="off" href="guias/reconhecimento-de-diploma.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20reconhecimento%20de%20diploma." target="_blank" rel="noopener">Travou? A gente faz</a></div></article></div></div><div class="stage" data-s="carro"><h3>Carro <small>Etapa 5</small></h3><div class="grid"><article class="guide"><span class="tag">Portugal</span><h4>Carta de condução brasileira</h4><p>Desde 2022, a carta da CPLP pode valer em Portugal, se cumprir três condições.</p><div class="row"><a class="off" href="guias/carta-de-conducao-brasileira.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20carta%20de%20condu%C3%A7%C3%A3o." target="_blank" rel="noopener">Travou? A gente faz</a></div></article></div></div><div class="stage" data-s="nacionalidade"><h3>Nacionalidade <small>Etapa 6</small></h3><div class="grid"><article class="guide"><span class="tag">Portugal</span><h4>Nacionalidade portuguesa por residência</h4><p>Nova lei em vigor desde 19 de maio de 2026: 7 anos de residência para brasileiros.</p><div class="row"><a class="off" href="guias/nacionalidade-portuguesa.html">Ler o guia</a><a class="help" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20preciso%20de%20ajuda%20com%3A%20nacionalidade%20portuguesa." target="_blank" rel="noopener">Travou? A gente faz</a></div></article></div></div>
+</div></section>
+<section class="kit" id="kit"><div class="wrap">
+<div><span class="eyebrow" style="color:var(--yel)">Grátis</span><h2>Kit <em>Pasta do Imigrante</em></h2>
+<p>O checklist dos documentos que todo brasileiro em Portugal precisa ter organizados, com onde tirar cada um, e o calendário de prazos do imigrante.</p>
+<ul><li>Checklist por objetivo: chegada, residência, renovação</li><li>Como nomear e guardar os PDFs para não travar no atendimento</li><li>Calendário de prazos atualizado</li><li>Bónus: ebook "O Mapa Invisível da Coragem"</li></ul>
+<span class="pdf">PDF · ENVIADO PARA O SEU E-MAIL</span></div>
+<form id="lead" novalidate>
+<label for="ln">Nome<input id="ln" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required></label>
+<label for="le">E-mail<input id="le" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
+<label for="lw">WhatsApp (opcional)<input id="lw" name="whatsapp" type="tel" autocomplete="tel" placeholder="+351 …"></label>
+<label for="lp">Você mora em<select id="lp" name="pais"><option>Portugal</option><option>Brasil (vou mudar)</option><option>Espanha</option><option>Outro país da Europa</option></select></label>
+<label class="consent" for="lc"><input id="lc" type="checkbox" required><span>Aceito receber o kit e avisos da Loja do Imigrante por e-mail. Posso cancelar quando quiser. Ver a <a href="privacidade.html">política de privacidade</a>.</span></label>
+<button class="btn btn-green" type="submit">Quero o kit grátis</button>
+<div class="ok" id="lok" hidden></div>
+</form></div></section>
+<section id="consultoria"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">Dois caminhos</span><h2>Faça você mesmo, ou deixe com a gente.</h2></div>
+<div class="offer">
+<div class="box diy"><h3>Resolver sozinho</h3><div class="price">€0</div><ul><li>Guias e links oficiais acima</li><li>Kit Pasta do Imigrante grátis</li><li>As taxas oficiais você paga direto ao governo</li></ul><a class="btn btn-green" href="#guias">Ver os guias</a></div>
+<div class="box pro"><h3>Consultoria personalizada</h3><div class="price">€95 <small>por consulta</small></div><ul><li>Diagnóstico do seu caso</li><li>Plano de ação com o caminho mais curto</li><li>Checklist feito para você</li><li>Se quiser, a nossa equipe executa o processo</li></ul><a class="btn btn-green" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Quero%20agendar%20a%20consultoria%20de%20%E2%82%AC95." target="_blank" rel="noopener">Agendar e pagar</a></div>
+</div>
+<div class="steps"><div>Você responde a triagem pelo WhatsApp</div><div>Agenda e paga a consulta</div><div>Recebe o plano e o checklist</div><div>Executa sozinho ou com a nossa equipe</div></div>
+</div></section>
+<section style="padding-top:0"><div class="wrap duo">
+<div class="box"><span class="eyebrow">Comunidade</span><h3>Entre Elas Europa</h3><p style="margin:0">Uma rede de apoio para mulheres imigrantes: conteúdos ao longo da semana, lives e encontros presenciais.</p><a class="btn btn-green" style="justify-self:start" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20grupo%20Entre%20Elas%20Europa." target="_blank" rel="noopener">Conhecer o grupo</a></div>
+<div class="box"><span class="eyebrow">Notícias checadas</span><h3>Fatos e Fontes</h3><p style="margin:0">As notícias que mexem com o imigrante, com a fonte de cada informação.</p><a class="btn btn-green" style="justify-self:start" href="https://alojadoimigrante.com/checagens/" target="_blank" rel="noopener">Ver as checagens</a></div>
+</div></section>
+<section id="faq" style="padding-top:0"><div class="wrap">
+<div class="sec-head"><span class="eyebrow">Perguntas frequentes</span><h2>Antes de agendar</h2></div>
+<details><summary>A Loja do Imigrante é um órgão oficial?</summary><p>Não. Somos uma consultoria privada. Os pedidos são feitos nos sites oficiais, e as taxas são pagas direto às entidades.</p></details>
+<details><summary>Vocês fazem o processo por mim?</summary><p>Sim. Na consultoria você recebe o plano do seu caso e pode escolher que a nossa equipe execute.</p></details>
+<details><summary>Quanto custa?</summary><p>A consulta custa €95. Os guias e o kit deste site são gratuitos.</p></details>
+<details><summary>Atendem quem está fora de Portugal?</summary><p>Sim, o atendimento é online, em português.</p></details>
+<details><summary>Posso falar pelo WhatsApp?</summary><p>Pode: +351 935 149 920. A triagem começa por lá.</p></details>
+</div></section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <strong>Do Sonho à Europa · A Loja do Imigrante</strong>
-    <span>WhatsApp: +351 935 149 920 · Instagram: @alojadoimigrante.pt</span>
-    <span><a href="#privacidade" id="privacidade">Política de privacidade</a> · <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a></span>
-    <span class="legal">© 2026 Do Sonho à Europa. Operado por Elos Consentidos Unipessoal Lda · NIPC 515646822. Não somos um órgão do governo.</span>
-  </div>
-</footer>
-
-<nav class="dock" aria-label="Atalhos">
-  <div>
-    <a class="btn btn-green" id="wa" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    <a class="btn btn-yel" href="#consultoria">Agendar · €95</a>
-  </div>
-</nav>
-
 <script>
 (function(){
-  var WA = "351935149920";
-  function wa(t){ return "https://wa.me/" + WA + "?text=" + encodeURIComponent(t); }
-  document.getElementById("wa").href = wa("Olá! Vim pelo site Do Sonho à Europa e preciso de ajuda.");
-  document.getElementById("buy").href = wa("Olá! Quero agendar a consultoria de €95.");
-  document.querySelectorAll("a.help").forEach(function(a){
-    a.href = wa("Olá! Vim pelo site e travei em: " + a.dataset.h + ". Podem ajudar?");
-    a.target = "_blank"; a.rel = "noopener";
-  });
-  var chips = document.querySelectorAll(".chip"), stages = document.querySelectorAll(".stage");
-  chips.forEach(function(c){
-    c.addEventListener("click", function(){
-      chips.forEach(function(x){ x.setAttribute("aria-pressed", x === c ? "true" : "false"); });
-      var f = c.dataset.f;
-      stages.forEach(function(s){ s.hidden = !(f === "all" || s.dataset.s === f); });
-    });
-  });
-  var form = document.getElementById("lead"), ok = document.getElementById("lok");
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var email = document.getElementById("le").value.trim(), nome = document.getElementById("ln").value.trim();
-    if (!nome || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { ok.hidden = false; ok.textContent = "Preencha o seu nome e um e-mail válido."; return; }
-    if (!document.getElementById("lc").checked) { ok.hidden = false; ok.textContent = "Marque a caixa de consentimento para receber o kit."; return; }
-    ok.hidden = false; ok.textContent = "Prévia: no site publicado, o kit vai para " + email + " e o seu contacto fica guardado na lista da Loja do Imigrante.";
+  var chips=document.querySelectorAll(".chip"),stages=document.querySelectorAll(".stage");
+  chips.forEach(function(c){c.addEventListener("click",function(){
+    chips.forEach(function(x){x.setAttribute("aria-pressed",x===c?"true":"false");});
+    var f=c.dataset.f; stages.forEach(function(s){s.hidden=!(f==="all"||s.dataset.s===f);});
+  });});
+  var form=document.getElementById("lead"),ok=document.getElementById("lok");
+  form.addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var email=document.getElementById("le").value.trim(),nome=document.getElementById("ln").value.trim();
+    ok.hidden=false;
+    if(!nome||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ok.textContent="Preencha o seu nome e um e-mail válido.";return;}
+    if(!document.getElementById("lc").checked){ok.textContent="Marque a caixa de consentimento para receber o kit.";return;}
+    ok.textContent="Prévia: no site publicado, o kit vai para "+email+" e o contacto fica na lista da Loja do Imigrante.";
   });
 })();
 </script>
-
+<footer><div class="wrap">
+<strong>Do Sonho à Europa · A Loja do Imigrante</strong>
+<span>WhatsApp: +351 935 149 920 · Instagram: @alojadoimigrante.pt</span>
+<span><a href="privacidade.html">Política de privacidade</a> · <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a> · <a href="https://alojadoimigrante.com/checagens/" target="_blank" rel="noopener">Notícias checadas</a></span>
+<span class="legal">© 2026 Do Sonho à Europa. Operado por Elos Consentidos Unipessoal Lda · NIPC 515646822. Não somos um órgão do governo: os pedidos são feitos nos sites oficiais e as taxas são pagas diretamente às entidades.</span>
+</div></footer>
+<nav class="dock" aria-label="Atalhos"><div>
+<a class="btn btn-green" href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Vim%20pelo%20site%20Do%20Sonho%20%C3%A0%20Europa%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener">Falar no WhatsApp</a>
+<a class="btn btn-yel" href="index.html#consultoria">Agendar · €95</a>
+</div></nav>
 </body>
 </html>
