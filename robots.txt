@@ -1,4 +1,3 @@
 User-agent: *
-Allow: /
-User-agent: *
 Disallow: /do-sonho-a-europa/kit/
+Allow: /
