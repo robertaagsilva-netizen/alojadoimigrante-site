@@ -1,6 +1,9 @@
 # slug do site -> (doc do painel, categoria, veredito, pasta/arquivo da capa)
 # veredito: ("ok"|"warn"|"bad"|"info", rótulo)
 E = [
+ ("lula-miliciano-video", "checagem_lula_miliciano_3d", "checagem", ("warn", "FALTA CONTEXTO"), "lmil/LojaDoImigrante_checagem_Lula_miliciano_capa.jpg"),
+ ("google-lula-video", "checagem_google_lula_3d", "checagem", ("warn", "FALTA CONTEXTO"), "ggl/LojaDoImigrante_checagem_Google_Lula_capa.jpg"),
+ ("raio-x-lula", "raiox_lula_3d", "eleicoes", ("info", "RAIO-X"), "lula/LojaDoImigrante_raioX_Lula_capa.jpg"),
  ("raio-x-flavio-bolsonaro", "raiox_flavio_3d", "eleicoes", ("info", "RAIO-X"), "flavio/LojaDoImigrante_raioX_Flavio_capa.jpg"),
  ("moro-luchsinger-video", "checagem_moro_3d", "checagem", ("warn", "FALTA CONTEXTO"), "moro/LojaDoImigrante_checagem_Moro_capa.jpg"),
  ("debate-band-lula-flavio", "checagem_debate_band_3d", "eleicoes", ("info", "FRASES CHECADAS"), "deb/LojaDoImigrante_checagem_debate_Band_capa.jpg"),
@@ -30,6 +33,8 @@ CATS = [("todos", "Todos"), ("urgente", "● Última hora"), ("checagem", "Checa
 
 # o que circulou nas redes (a afirmação checada). Só para checagens.
 CLAIM = {
+ "lula-miliciano-video": "Não dá pra tirar do Flávio uma única meia verdade",
+ "google-lula-video": "As manchetes do Google provam que Lula é o presidente que mais roubou",
  "moro-luchsinger-video": "As revelações de Luchsinger mostram que Lula mente",
  "cidadania-espanhola-2-anos": "Brasileiro vira espanhol em 2 anos e não faz prova de espanhol",
  "wagner-moura-terras-raras": "Só o Brasil pode substituir a China nas terras raras",
