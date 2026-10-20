@@ -202,6 +202,8 @@ if os.path.exists(OUT):
     shutil.rmtree(OUT)
 os.makedirs(f"{OUT}/guias")
 shutil.copy("site.css", f"{OUT}/site.css")
+os.makedirs(f"{OUT}/kit", exist_ok=True)
+shutil.copy("Pasta_do_Imigrante_2026.pdf", f"{OUT}/kit/Pasta_do_Imigrante_2026.pdf")
 open(f"{OUT}/index.html", "w").write(home())
 open(f"{OUT}/privacidade.html", "w").write(privacidade())
 for g in G:
