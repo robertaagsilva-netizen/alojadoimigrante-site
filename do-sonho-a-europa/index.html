@@ -32,14 +32,12 @@
 <div><span class="eyebrow" style="color:var(--yel)">Grátis</span><h2>Kit <em>Pasta do Imigrante</em></h2>
 <p>O checklist dos documentos que todo brasileiro em Portugal precisa ter organizados, com onde tirar cada um, e o calendário de prazos do imigrante.</p>
 <ul><li>Checklist por objetivo: chegada, residência, renovação</li><li>Como nomear e guardar os PDFs para não travar no atendimento</li><li>Calendário de prazos atualizado</li><li>Bónus: ebook "O Mapa Invisível da Coragem"</li></ul>
-<span class="pdf">PDF · ENVIADO PARA O SEU E-MAIL</span></div>
+<span class="pdf">PDF · DOWNLOAD IMEDIATO</span></div>
 <form id="lead" novalidate>
-<label for="ln">Nome<input id="ln" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required></label>
-<label for="le">E-mail<input id="le" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
-<label for="lw">WhatsApp (opcional)<input id="lw" name="whatsapp" type="tel" autocomplete="tel" placeholder="+351 …"></label>
-<label for="lp">Você mora em<select id="lp" name="pais"><option>Portugal</option><option>Brasil (vou mudar)</option><option>Espanha</option><option>Outro país da Europa</option></select></label>
+<label for="le">Seu e-mail<input id="le" name="EMAIL" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
+<input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 <label class="consent" for="lc"><input id="lc" type="checkbox" required><span>Aceito receber o kit e avisos da Loja do Imigrante por e-mail. Posso cancelar quando quiser. Ver a <a href="privacidade.html">política de privacidade</a>.</span></label>
-<button class="btn btn-green" type="submit">Quero o kit grátis</button>
+<button class="btn btn-green" type="submit" id="lbtn">Quero o e-book grátis</button>
 <div class="ok" id="lok" hidden></div>
 </form></div></section>
 <section id="consultoria"><div class="wrap">
@@ -70,15 +68,19 @@
     chips.forEach(function(x){x.setAttribute("aria-pressed",x===c?"true":"false");});
     var f=c.dataset.f; stages.forEach(function(s){s.hidden=!(f==="all"||s.dataset.s===f);});
   });});
-  var PREVIEW_MSG="Obrigado! O kit gr\u00e1tis est\u00e1 a ser preparado e chega em breve ao seu e-mail. Enquanto isso, fale connosco pelo WhatsApp: +351 935 149 920.";
-  var form=document.getElementById("lead"),ok=document.getElementById("lok");
+  var ACTION="https://03e66062.sibforms.com/serve/MUIFAAfoL7ZXyN73EUbIE1mZFYO20DwGY3i4UFImNW--vkv0SY-vMD_tRJ1pjQEBY8C9J3MsqUw5j-S18PnAgiFdzdhVhvV1wRrbPbLHN6IAPUyIO-csXPftwr_CtnXjhnY-EpoE6cz6hFZGhBudZB41qSWhq58TgjeC-UP31S2mhMZElw-C_OIYHI9x1UCPWFDnzvDr33sQaqEDaA==";
+  var PDF="kit/Pasta_do_Imigrante_2026.pdf";
+  var form=document.getElementById("lead"),ok=document.getElementById("lok"),btn=document.getElementById("lbtn");
   form.addEventListener("submit",function(ev){
     ev.preventDefault();
-    var email=document.getElementById("le").value.trim(),nome=document.getElementById("ln").value.trim();
+    var email=document.getElementById("le").value.trim();
     ok.hidden=false;
-    if(!nome||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ok.textContent="Preencha o seu nome e um e-mail válido.";return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ok.textContent="Escreva um e-mail válido.";return;}
     if(!document.getElementById("lc").checked){ok.textContent="Marque a caixa de consentimento para receber o kit.";return;}
-    ok.textContent=PREVIEW_MSG;
+    btn.disabled=true; ok.textContent="A enviar…";
+    var done=function(){ok.innerHTML='Pronto! O seu e-book está a abrir. Se não abrir, <a href="'+PDF+'" target="_blank" rel="noopener">clique aqui para baixar</a>.';window.location.href=PDF;};
+    var d=new URLSearchParams();d.append("EMAIL",email);d.append("email_address_check","");d.append("locale","pt");
+    try{fetch(ACTION,{method:"POST",mode:"no-cors",body:d}).then(done,done);}catch(e){done();}
   });
 })();
 </script>
