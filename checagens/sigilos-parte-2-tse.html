@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Notícia: sigilos, parte 2: o que aconteceu no TSE? · Loja do Imigrante</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Parte 2 do desafio dos sigilos: o que aconteceu no TSE? 👇">
+<meta property="og:title" content="Notícia: sigilos, parte 2: o que aconteceu no TSE? · Loja do Imigrante">
+<meta property="og:description" content="Parte 2 do desafio dos sigilos: o que aconteceu no TSE? 👇">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: arquivo de checagens — faixa de marca, filtros e grade de capas verticais; página de vídeo em duas colunas (capa | relato + fontes). */
+:root{
+  --bg:#0c0c0b; --panel:#161614; --line:#2b2a26; --ink:#f3efe4; --mute:#a29d90; --yel:#ffd447;
+  --ok:#8ad49a; --warn:#ffb15c; --bad:#ff7d6e; --info:#cfcabd;
+  --display:"Inter","Helvetica Neue",Arial,sans-serif; --body:"Inter","Helvetica Neue",Arial,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 13px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--yel);display:inline-block}
+.ig{font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--yel)}
+.ig:hover,.ig:focus-visible{text-decoration:underline}
+.hero .wrap{padding-block:48px 28px;display:grid;gap:14px}
+.eyebrow{font:700 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--yel)}
+h1{font:900 clamp(38px,7vw,76px)/.98 var(--display);letter-spacing:-.035em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--yel)}
+.lede{max-width:60ch;color:var(--mute);margin:0;font-size:17px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-block:4px 26px}
+.chip{font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--yel);color:#141414;border-color:var(--yel)}
+.chip:focus-visible,.search:focus-visible,a:focus-visible{outline:2px solid var(--yel);outline-offset:2px}
+.search{flex:1 1 220px;min-width:0;max-width:360px;margin-left:auto;font:500 15px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:11px 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px;padding-bottom:56px}
+.card{display:grid;gap:10px;text-decoration:none;min-width:0}
+.thumb{aspect-ratio:4/5;max-width:100%;border-radius:14px;overflow:hidden;background:var(--panel);border:1px solid var(--line);position:relative}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block;transition:transform .35s ease}
+.card:hover .thumb img{transform:scale(1.03)}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:700 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.v{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:6px;border:1px solid currentColor}
+.v.ok{color:var(--ok)} .v.warn{color:var(--warn)} .v.bad{color:var(--bad)} .v.info{color:var(--info)}
+.card h2{font:800 19px/1.2 var(--display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.claim{margin:0;font:600 15px/1.4 var(--body);color:var(--ink)}
+.claim span{display:block;font:700 10px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.legend{font-size:14px;color:var(--mute);margin:0;max-width:70ch}
+.legend b{color:var(--ink);font-weight:600}
+.hotb{position:absolute;left:10px;top:10px;background:var(--bad);color:#141414;font:800 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 9px;border-radius:6px}
+.hotb.static{position:static;display:inline-block}
+.card.hot .thumb{border-color:var(--bad);box-shadow:0 0 0 2px var(--bad)}
+.chip[data-cat="urgente"]{color:var(--bad);border-color:var(--bad)}
+.chip[data-cat="urgente"][aria-pressed="true"]{background:var(--bad);color:#141414}
+.empty{color:var(--mute);padding-block:24px}
+.foot{border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+.foot .wrap{padding-block:26px;display:grid;gap:6px}
+/* página do vídeo */
+.back{display:inline-block;margin-top:26px;font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.back:hover{color:var(--ink)}
+.art{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:44px;padding-block:24px 64px;align-items:start}
+.art .thumb{aspect-ratio:9/16;position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+.art .thumb img{object-position:50% 50%}
+.art h1{font-size:clamp(32px,5vw,54px)}
+.text{min-width:0;display:grid;gap:22px}
+.verdict{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px 20px;display:grid;gap:8px}
+.verdict .v{justify-self:start;font:700 12px/1 var(--mono);letter-spacing:.12em}
+.verdict p{margin:0;font-size:17px}
+.body p{margin:0 0 14px;max-width:66ch}
+.body ul{margin:0 0 14px;padding-left:20px;max-width:64ch}
+.body li{margin-bottom:6px}
+.sources{border-top:1px solid var(--line);padding-top:20px}
+.sources h3,.cta h3{font:700 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--yel);margin:0 0 14px}
+.sources ol{margin:0;padding-left:22px;display:grid;gap:10px}
+.sources a{color:var(--ink);text-decoration-color:var(--yel);text-underline-offset:3px;overflow-wrap:anywhere}
+.sources a:hover{color:var(--yel)}
+.sources .host{display:block;font:500 12px/1.4 var(--mono);color:var(--mute);overflow-wrap:anywhere}
+.note{font-size:14px;color:var(--mute);max-width:66ch;margin:0}
+.cta{border:1px solid var(--yel);border-radius:14px;padding:18px 20px}
+.cta p{margin:0 0 12px}
+.btn{display:inline-block;background:var(--yel);color:#141414;font:800 15px/1 var(--display);padding:13px 18px;border-radius:999px;text-decoration:none}
+@media (max-width:760px){.art{grid-template-columns:1fr;gap:22px}.art .thumb{position:static;max-width:300px}.hero .wrap{padding-block:32px 20px}}
+@media (prefers-reduced-motion:reduce){.thumb img{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="./"><i></i>Loja do Imigrante · Fatos e Fontes</a><a class="ig" href="https://www.instagram.com/alojadoimigrante.pt/" target="_blank" rel="noopener">@alojadoimigrante.pt ↗</a></div></header>
+<main class="wrap">
+<a class="back" href="./">← Todas as checagens</a>
+<article class="art">
+  <div class="thumb"><img src="capas/sigilos-parte-2-tse.jpg" alt="Capa do vídeo: Notícia: sigilos, parte 2: o que aconteceu no TSE?"></div>
+  <div class="text">
+    <div class="meta"><span>22 out 2026</span><span>Eleições · Brasil</span></div>
+    <h1>Notícia: sigilos, parte 2: o que aconteceu no TSE?</h1>
+    <div class="verdict"><span class="v info">i NOTÍCIA EXPLICADA</span><p>Parte 2 do desafio dos sigilos: o que aconteceu no TSE? 👇</p></div>
+    <div class="body"><p>🏛️ HOJE NO TSE (22/10, 11h de Brasília)</p>
+<ul><li>A campanha de Lula, com Camilo Santana, Guilherme Boulos e o presidente do PT, Edinho Silva, entregou um documento dizendo que Lula aceita todas as condições de Flávio.</li><li>E pediu que Flávio divulgue os dados dele ainda hoje.</li></ul>
+<p>🔎 E FLÁVIO?</p>
+<ul><li>Na quarta (21/10), ele já tinha entregado ao TSE uma autorização para abrir os próprios sigilos dos últimos 20 anos, mas com condições sobre o lado de Lula.</li><li>A defesa dele diz que Flávio não é sócio nem beneficiário da Alcazar Holdings, a empresa que a campanha de Lula cobra.</li><li>Até a publicação deste vídeo, não havia notícia de um novo documento de Flávio hoje.</li></ul>
+<p>⚠️ E AGORA?</p>
+<ul><li>Entregar a autorização não abre os dados na hora: bancos, Receita e operadoras precisam enviar os registros, e familiares e assessores também têm que autorizar.</li><li>O TSE ainda não decidiu nada. É bem possível que nada seja aberto antes de domingo.</li></ul>
+<p>📌 Resumo: os dois dizem que aceitam, os dois cobram mais do outro, e os sigilos continuam fechados.</p></div>
+    <section class="sources"><h3>Fontes (5)</h3><ol><li><a href="https://www.metropoles.com/brasil/campanha-de-lula-apresenta-resposta-tse-sobre-sigilo-apos-condicoes-de-flavio-bolsonaro" target="_blank" rel="noopener">Metrópoles (campanha de Lula no TSE)</a><span class="host">metropoles.com</span></li><li><a href="https://www.gazetadopovo.com.br/eleicoes/2026/equipe-lula-entrega-tse-resposta-aceita-desafio-flavio-sigilos/" target="_blank" rel="noopener">Gazeta do Povo (defesa de Flávio e Alcazar)</a><span class="host">gazetadopovo.com.br</span></li><li><a href="https://www.cartacapital.com.br/politica/lula-e-flavio-bolsonaro-formalizam-abertura-de-sigilos-no-tse-a-tres-dias-do-segundo-turno/" target="_blank" rel="noopener">CartaCapital (o que o TSE pode ou não fazer)</a><span class="host">cartacapital.com.br</span></li><li><a href="https://www.oliberal.com/eleicoes/desafio-dos-sigilos-entenda-as-posicoes-de-lula-e-flavio-sobre-dados-1.1185383" target="_blank" rel="noopener">O Liberal (posições dos dois)</a><span class="host">oliberal.com</span></li><li><a href="https://www.congressoemfoco.com.br/noticia/123494/lula-diz-que-espera-flavio-hoje-as-11h-no-tse-para-abrir-sigilos" target="_blank" rel="noopener">Congresso em Foco (a autorização de Flávio, 20 anos)</a><span class="host">congressoemfoco.com.br</span></li></ol></section>
+    <p class="note">ℹ️ Conteúdo informativo e apartidário. Ilustração, mesmas cores para todos. Verificado em 22/10/2026.</p>
+    <div class="cta"><h3>Veja o vídeo</h3><p>Este conteúdo foi publicado em vídeo no Instagram da Loja do Imigrante.</p><a class="btn" href="https://www.instagram.com/alojadoimigrante.pt/" target="_blank" rel="noopener">Abrir @alojadoimigrante.pt</a></div>
+  </div>
+</article>
+</main>
+<footer class="foot"><div class="wrap"><span>Loja do Imigrante · conteúdo informativo e apartidário.</span><span>Cada vídeo traz as fontes usadas na pesquisa. Encontrou um erro? Mande uma mensagem no <a href="https://www.instagram.com/alojadoimigrante.pt/" target="_blank" rel="noopener">Instagram</a>.</span></div></footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "21872373fe264540a79be1f6ea406933"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
