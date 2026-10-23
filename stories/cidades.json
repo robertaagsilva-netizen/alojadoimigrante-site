@@ -1,0 +1,22 @@
+[
+ {"nome":"Coimbra","lat":40.2033,"lon":-8.4103},
+ {"nome":"Braga","lat":41.5454,"lon":-8.4265},
+ {"nome":"Faro","lat":37.0194,"lon":-7.9304},
+ {"nome":"Setúbal","lat":38.5244,"lon":-8.8882},
+ {"nome":"Santarém","lat":39.2369,"lon":-8.6850},
+ {"nome":"Leiria","lat":39.7436,"lon":-8.8071},
+ {"nome":"Aveiro","lat":40.6405,"lon":-8.6538},
+ {"nome":"Viseu","lat":40.6566,"lon":-7.9125},
+ {"nome":"Évora","lat":38.5714,"lon":-7.9135},
+ {"nome":"Funchal","lat":32.6669,"lon":-16.9241},
+ {"nome":"Viana do Castelo","lat":41.6932,"lon":-8.8329},
+ {"nome":"Ponta Delgada","lat":37.7412,"lon":-25.6756},
+ {"nome":"Castelo Branco","lat":39.8222,"lon":-7.4909},
+ {"nome":"Guimarães","lat":41.4425,"lon":-8.2918},
+ {"nome":"Vila Real","lat":41.3006,"lon":-7.7441},
+ {"nome":"Portimão","lat":37.1386,"lon":-8.5377},
+ {"nome":"Bragança","lat":41.8061,"lon":-6.7567},
+ {"nome":"Beja","lat":38.0151,"lon":-7.8632},
+ {"nome":"Guarda","lat":40.5373,"lon":-7.2676},
+ {"nome":"Cascais","lat":38.6979,"lon":-9.4215}
+]
