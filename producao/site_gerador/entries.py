@@ -1,6 +1,31 @@
 # slug do site -> (doc do painel, categoria, veredito, pasta/arquivo da capa)
 # veredito: ("ok"|"warn"|"bad"|"info", rótulo)
 E = [
+ ("nacionalidade-novas-regras", "nacionalidade_novas_regras", "portugal", ("info", "EXPLICADO"), "nacio/LojaDoImigrante_Nacionalidade_novas_regras_capa.jpg"),
+ ("carta-flavio-presidente-eleito", "carta_flavio_pl", "eleicoes", ("info", "NOTÍCIA EXPLICADA"), "carta/LojaDoImigrante_Carta_Flavio_PL_capa.jpg"),
+ ("acidente-trem-urda-atualizacao", "acidente_urda_atualizacao", "mundo", ("info", "ATUALIZAÇÃO"), "trem2/LojaDoImigrante_Acidente_Urda_atualizacao_capa.jpg"),
+ ("flavio-chegou-miami", "flavio_chegou_miami", "eleicoes", ("info", "NOTÍCIA EXPLICADA"), "miami/LojaDoImigrante_Flavio_chegou_Miami_capa.jpg"),
+ ("renovacao-aima-janeiro-2027", "renovacao_aima_janeiro", "portugal", ("ok", "OFICIAL"), "renov/LojaDoImigrante_Renovacao_AIMA_janeiro_capa.jpg"),
+ ("acidente-trem-toledo", "acidente_trens_toledo", "mundo", ("info", "NOTÍCIA"), "trem/LojaDoImigrante_Acidente_trens_Toledo_capa.jpg"),
+ ("demissao-pelo-voto", "demissao_voto_3d", "eleicoes", ("info", "SEUS DIREITOS"), "assedio3d/LojaDoImigrante_Demissao_por_voto_3D_capa.jpg"),
+ ("ficar-ou-sair-lula-flavio", "ficar_ou_sair", "eleicoes", ("info", "EXPLICADO"), "mala/LojaDoImigrante_Ficar_ou_sair_3D_capa.jpg"),
+ ("montenegro-habitacao-turbulencia", "montenegro", "portugal", ("info", "EXPLICADO"), "montenegro/LojaDoImigrante_Montenegro_capa.jpg"),
+ ("cartao-corporativo-lula-bolsonaro", "cartao_corporativo", "checagem", ("info", "MESMOS CRITÉRIOS"), "cartao/LojaDoImigrante_Cartao_corporativo_capa.jpg"),
+ ("flavio-willer-socios", "willer_sociedade", "eleicoes", ("info", "NOTÍCIA EXPLICADA"), "rec8/LojaDoImigrante_Willer_sociedade_capa.jpg"),
+ ("transposicao-sao-francisco", "transposicao", "checagem", ("warn", "EXAGERADO"), "agua/LojaDoImigrante_Transposicao_capa.jpg"),
+ ("bolsonaro-falta-de-ar", "falta_de_ar", "checagem", ("bad", "NÃO É FAKE NEWS"), "faltadear/LojaDoImigrante_Falta_de_ar_capa.jpg"),
+ ("debate-globo-checagem", "debate_globo_3d", "eleicoes", ("info", "FRASES CHECADAS"), "debglobo/LojaDoImigrante_Debate_Globo_capa.jpg"),
+ ("balcao-unico-nif-niss-sns", "balcao_unico_3d", "portugal", ("warn", "NÃO É NOVIDADE"), "balcao/LojaDoImigrante_Balcao_unico_capa.jpg"),
+ ("troca-de-nome-cartorio", "troca_de_nome_3d", "checagem", ("ok", "É VERDADE"), "nome/LojaDoImigrante_Troca_de_nome_capa.jpg"),
+ ("pesquisas-quaest-datafolha-2-turno", "pesquisas_quaest_datafolha_3d", "eleicoes", ("info", "EXPLICADO"), "pesq/LojaDoImigrante_Pesquisas_Quaest_Datafolha_capa.jpg"),
+ ("bolsonaro-mandou-matar-lula", "checagem_bolsonaro_mandou_matar_3d", "checagem", ("warn", "FALTA CONTEXTO"), "punhal/LojaDoImigrante_checagem_Bolsonaro_mandou_matar_capa.jpg"),
+ ("sigilos-parte-2-tse", "sigilos_parte2_3d", "eleicoes", ("info", "NOTÍCIA EXPLICADA"), "sig3/LojaDoImigrante_Sigilos_parte2_capa.jpg"),
+ ("lula-aceita-condicoes-sigilos", "sigilos_lula_aceita_3d", "eleicoes", ("info", "NOTÍCIA EXPLICADA"), "sig2/LojaDoImigrante_Sigilos_Lula_aceita_capa.jpg"),
+ ("governo-numeros-imigracao", "governo_imigracao_3d", "portugal", ("warn", "FALTA CONTEXTO"), "govpt/LojaDoImigrante_Governo_imigracao_capa.jpg"),
+ ("willer-pagou-apagar-noticias", "willer_posts_flavio_3d", "eleicoes", ("info", "NOTÍCIA EXPLICADA"), "willer/LojaDoImigrante_Willer_posts_capa.jpg"),
+ ("lulinha-entregou-sigilos", "lulinha_sigilos_3d", "eleicoes", ("info", "NOTÍCIA EXPLICADA"), "lulinha/LojaDoImigrante_Lulinha_sigilos_capa.jpg"),
+ ("lula-flavio-sigilos", "sigilos_lula_flavio_3d", "eleicoes", ("info", "NOTÍCIA EXPLICADA"), "sig/LojaDoImigrante_sigilos_Lula_Flavio_capa.jpg"),
+ ("icl-flavio-video", "checagem_icl_flavio_3d", "checagem", ("warn", "FALTA CONTEXTO"), "icl/LojaDoImigrante_checagem_ICL_Flavio_capa.jpg"),
  ("lula-miliciano-video", "checagem_lula_miliciano_3d", "checagem", ("warn", "FALTA CONTEXTO"), "lmil/LojaDoImigrante_checagem_Lula_miliciano_capa.jpg"),
  ("google-lula-video", "checagem_google_lula_3d", "checagem", ("warn", "FALTA CONTEXTO"), "ggl/LojaDoImigrante_checagem_Google_Lula_capa.jpg"),
  ("raio-x-lula", "raiox_lula_3d", "eleicoes", ("info", "RAIO-X"), "lula/LojaDoImigrante_raioX_Lula_capa.jpg"),
@@ -33,6 +58,13 @@ CATS = [("todos", "Todos"), ("urgente", "● Última hora"), ("checagem", "Checa
 
 # o que circulou nas redes (a afirmação checada). Só para checagens.
 CLAIM = {
+ "cartao-corporativo-lula-bolsonaro": "Bolsonaro gastou R$ 27,6 milhões no cartão e Lula, R$ 1,4 bilhão",
+ "transposicao-sao-francisco": "Quem concluiu a transposição e levou a água ao Nordeste foi Bolsonaro",
+ "bolsonaro-falta-de-ar": "O vídeo de Bolsonaro imitando falta de ar é fake news",
+ "troca-de-nome-cartorio": "Mais de 40 mil brasileiros trocaram de nome direto no cartório",
+ "bolsonaro-mandou-matar-lula": "Bolsonaro mandou matar Lula",
+ "governo-numeros-imigracao": "A população estrangeira estagnou e 98% das manifestações de interesse foram concluídas",
+ "icl-flavio-video": "As perguntas que Lula não fez provam os crimes de Flávio Bolsonaro",
  "lula-miliciano-video": "Não dá pra tirar do Flávio uma única meia verdade",
  "google-lula-video": "As manchetes do Google provam que Lula é o presidente que mais roubou",
  "moro-luchsinger-video": "As revelações de Luchsinger mostram que Lula mente",
@@ -52,3 +84,7 @@ CLAIM = {
 URGENT = {
  "manifestacao-habitacao-lisboa": "2026-10-18T17:20:00+02:00",
 }
+
+# vídeos ainda fora do grid principal do Instagram: não publicar
+HOLD = {"debate-globo-checagem", "balcao-unico-nif-niss-sns", "governo-numeros-imigracao", "troca-de-nome-cartorio", "willer-pagou-apagar-noticias"}
+E = [x for x in E if x[0] not in HOLD]

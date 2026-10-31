@@ -182,7 +182,7 @@ def main():
     items = []
     for slug, doc, cat, (vk, vl), capa in E:
         d = json.load(open(os.path.join(ROOT, "painel", "docs", doc + ".json")))
-        title = re.sub(r"\s*\(3D\)\s*$", "", d["titulo"]).replace("—", "·")
+        title = re.sub(r"\s*\(3D[^)]*\)\s*$", "", d["titulo"]).replace("—", "·")
         leg = d.get("legenda") or ""
         if not leg.strip():
             leg = d.get("roteiro", "")
@@ -302,6 +302,7 @@ def main():
   </section>
   <nav class="links" aria-label="Links principais">
     <a class="lk main" href="{wa if PREVIEW else 'whatsapp.html'}" target="_blank" rel="noopener"><span class="ic">✆</span><span><b>Agendar consultoria</b><small>Fale com a gente pelo WhatsApp</small></span><span class="go">↗</span></a>
+    <a class="lk" href="do-sonho-a-europa/#kit"><span class="ic">↓</span><span><b>E-book grátis: Pasta do Imigrante</b><small>Checklist de documentos e prazos, em PDF</small></span><span class="go">→</span></a>
     <a class="lk" href="do-sonho-a-europa/"><span class="ic">★</span><span><b>Do Sonho à Europa</b><small>Guias grátis e consultoria</small></span><span class="go">↗</span></a>
     <a class="lk" href="{chk}"><span class="ic">✓</span><span><b>Fatos e Fontes dos vídeos</b><small>As fontes de cada vídeo, com links</small></span><span class="go">→</span></a>
     <a class="lk" href="https://ig.me/m/alojadoimigrante.pt" target="_blank" rel="noopener"><span class="ic">✉</span><span><b>Mandar Direct no Instagram</b><small>@alojadoimigrante.pt</small></span><span class="go">↗</span></a>
