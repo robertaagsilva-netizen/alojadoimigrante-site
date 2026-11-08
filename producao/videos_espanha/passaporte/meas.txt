@@ -1,0 +1,24 @@
+(0.08, 2.76),  # Um seguidor comentou que faltou falar do idioma.
+(3.17, 3.94),  # E ele tem razão.
+(4.44, 7.78),  # Para pedir o passaporte espanhol, não bastam os 2 
+(8.28, 10.34),  # Presta atenção no que mais você precisa.
+(10.92, 16.00),  # Primeiro: os 2 anos de residência legal, seguidos,
+(16.69, 19.64),  # O tempo como turista ou sem documento não conta.
+(20.18, 22.85),  # E o tempo com visto de estudante também não conta.
+(23.45, 24.92),  # Segundo: o idioma.
+(25.38, 30.34),  # O brasileiro precisa passar no DELE A2, a prova de
+(30.82, 33.85),  # Quem é de país onde o espanhol é língua oficial fi
+(34.20, 35.10),  # Mas o brasileiro, não.
+(35.73, 39.04),  # Na Espanha, a prova custa cerca de 138 euros.
+(39.53, 46.69),  # Terceiro: a prova CCSE, com 25 perguntas sobre a C
+(47.13, 48.96),  # Ela também é do Instituto Cervantes.
+(49.45, 51.32),  # Quarto: bom comportamento.
+(51.71, 53.77),  # Ficha limpa, aqui e no Brasil.
+(54.18, 58.37),  # E uma boa notícia: o brasileiro não precisa abrir 
+(58.88, 61.73),  # Resumo: 2 anos legais, espanhol, prova de cultura 
+(62.04, 66.42),  # E o espanhol, você vai usar todo dia, muito antes 
+(66.73, 68.26),  # E você, já fala espanhol?
+(68.77, 70.25),  # Comenta aqui embaixo.
+(70.65, 73.55),  # Precisa de ajuda com o seu processo?
+(73.84, 77.70),  # A Loja do Imigrante te orienta e ajuda com agendam
+(78.00, 79.13),  # O link está na bio.

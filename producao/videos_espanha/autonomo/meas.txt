@@ -1,0 +1,23 @@
+(0.05, 6.61),  # O William perguntou aqui nos comentários: na Espan
+(6.84, 8.56),  # Existe, mas lá se chama autónomo.
+(8.98, 10.41),  # E funciona bem diferente.
+(10.68, 11.28),  # Presta atenção.
+(11.69, 17.22),  # Em Portugal, quem abre atividade com recibo verde 
+(17.62, 18.69),  # Na Espanha, não.
+(19.04, 23.94),  # O autónomo paga uma quota todo mês para a Segurida
+(24.29, 30.44),  # Essa quota depende do quanto você ganha, e vai de 
+(30.79, 40.83),  # A boa notícia: quem se registra como autónomo pela
+(41.20, 47.59),  # Agora, a parte mais importante para o imigrante: n
+(48.02, 51.94),  # Primeiro você precisa de uma autorização de residê
+(52.26, 53.50),  # Os caminhos são três.
+(53.80, 58.40),  # Um: pedir no consulado da Espanha o visto de resid
+(58.72, 65.40),  # Você apresenta o seu projeto de negócio, e a prime
+(65.63, 69.99),  # Dois: quem já tem residência por arraigo, ou como 
+(70.34, 76.70),  # Três: com o novo regulamento, quem trabalha com co
+(77.04, 79.59),  # Resumo: recibo verde na Espanha, tem.
+(79.94, 83.54),  # Mas custa mais desde o começo, e só depois de esta
+(83.94, 87.14),  # E você, prefere trabalhar por conta própria ou com
+(87.45, 88.28),  # Comenta aqui embaixo.
+(88.60, 90.18),  # Precisa de ajuda com o seu processo?
+(90.45, 94.19),  # A Loja do Imigrante te orienta e ajuda com agendam
+(94.40, 95.54),  # O link está na bio.
