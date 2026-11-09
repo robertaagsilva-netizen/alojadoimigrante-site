@@ -1,0 +1,18 @@
+(0.07, 5.36),  # Pediu residência por curso profissional, e a sua e
+(5.81, 10.76),  # Então presta atenção, porque a AIMA acabou de escl
+(11.18, 13.79),  # São mais de 20 mil pessoas nessa situação.
+(14.23, 17.19),  # E muita gente terminou o curso antes da entrevista
+(17.51, 19.24),  # E ficou com medo de ser indeferida.
+(19.66, 25.47),  # A AIMA disse: terminar o curso antes da entrevista
+(25.79, 26.88),  # Mas tem condições.
+(27.27, 31.53),  # Na data certa, você precisava estar matriculado e 
+(31.84, 35.24),  # E vai ter que provar a data em que começou, e a da
+(35.59, 37.79),  # E os outros requisitos continuam valendo.
+(38.19, 40.27),  # Cada caso é analisado um por um.
+(40.63, 47.78),  # Esse entendimento vale para quem já tem processo, 
+(48.14, 54.67),  # E atenção: desde 11 de setembro, a residência por 
+(54.99, 59.17),  # Não dá mais para entrar sem visto e se regularizar
+(59.48, 63.19),  # Resumo: guarde o certificado, as datas e os compro
+(63.52, 65.40),  # Eles podem salvar o seu processo.
+(65.77, 68.17),  # Manda este vídeo para quem fez curso profissional.
+(68.48, 74.39),  # E se você quer conferir se o seu processo está com

@@ -1,0 +1,23 @@
+(0.04, 3.79),  # Imigrante em Portugal pode perder a residência por
+(4.38, 6.41),  # O governo falou sobre isso no Parlamento.
+(6.85, 9.61),  # E muita gente entendeu errado.
+(10.18, 10.91),  # Presta atenção.
+(11.41, 20.53),  # O que aconteceu: no dia 3 de novembro, o secretári
+(21.09, 23.53),  # Mas atenção: isso não é uma lei nova.
+(23.90, 27.42),  # Está no artigo 85 da lei de estrangeiros, que já e
+(28.01, 28.74),  # Como funciona?
+(29.26, 33.13),  # A polícia faz um relatório, e a AIMA decide se can
+(33.60, 35.23),  # A pessoa pode ir ao tribunal.
+(35.71, 38.00),  # Mas o recurso não suspende o cancelamento.
+(38.50, 39.90),  # E manifestar é proibido?
+(40.31, 40.63),  # Não.
+(40.96, 44.67),  # O próprio governo disse que o direito de manifesta
+(45.13, 48.14),  # O problema é ameaça, violência ou desordem.
+(48.64, 54.15),  # O assunto surgiu depois que um estudante brasileir
+(54.58, 55.33),  # E o outro lado?
+(55.69, 58.60),  # O Partido Socialista chamou a fala de intimidação.
+(59.01, 63.77),  # E o sindicato dos técnicos da AIMA disse que ligar
+(64.23, 65.69),  # Resumo: protestar, pode.
+(66.01, 70.21),  # Ameaçar ou causar desordem, pode custar a sua resi
+(70.61, 72.91),  # Manda este vídeo para quem precisa saber disso.
+(73.30, 78.72),  # E se você está com algum problema na sua residênci

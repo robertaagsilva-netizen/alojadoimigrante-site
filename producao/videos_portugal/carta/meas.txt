@@ -1,0 +1,23 @@
+(0.06, 3.58),  # Recebeu uma carta da AIMA dizendo que o seu pedido
+(4.14, 4.60),  # Calma.
+(4.96, 6.25),  # Isso ainda não é o fim.
+(6.79, 8.87),  # Mas o relógio já começou a contar.
+(9.54, 14.34),  # Na maioria dos casos, antes da decisão final, a AI
+(14.75, 15.41),  # É um aviso.
+(15.87, 18.29),  # E você tem 10 dias úteis para responder.
+(18.73, 20.33),  # 10 dias úteis.
+(20.65, 25.32),  # Se você não responder nesse prazo, a decisão negat
+(25.74, 29.15),  # E aí, muitas vezes, é preciso começar um processo 
+(29.75, 31.32),  # O que fazer nesses 10 dias?
+(31.84, 33.58),  # Leia com atenção o motivo.
+(34.03, 37.07),  # Normalmente é um documento que falta, ou que não f
+(37.39, 43.29),  # Por exemplo: comprovativo de morada, contrato de t
+(43.85, 47.83),  # Junte os documentos e responda dentro do prazo, ex
+(48.36, 49.93),  # E se a decisão final já saiu?
+(50.42, 52.89),  # Ainda existe recurso, ou ação no tribunal.
+(53.35, 55.22),  # Nesse caso, procure um advogado.
+(55.75, 59.28),  # Resumo: carta da AIMA não é para guardar na gaveta
+(59.53, 61.82),  # É para responder em 10 dias úteis.
+(62.13, 63.14),  # Salva este vídeo.
+(63.37, 66.09),  # Você ou alguém que você conhece pode precisar.
+(66.47, 71.95),  # E se você recebeu uma carta da AIMA, comenta AJUDA
