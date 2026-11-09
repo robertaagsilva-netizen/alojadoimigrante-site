@@ -1,0 +1,31 @@
+(0.06, 1.06),  # Quer morar em Portugal?
+(1.50, 5.69),  # Então esquece aquele caminho de chegar como turist
+(6.08, 6.71),  # Ele acabou.
+(7.23, 9.25),  # Presta atenção no caminho que existe hoje.
+(9.75, 13.06),  # A manifestação de interesse acabou em junho de 202
+(13.41, 19.18),  # E, com a nova lei de estrangeiros, quem entra como
+(19.67, 25.20),  # O caminho agora é o visto CPLP, para quem é de um 
+(25.64, 29.34),  # Você pede no consulado de Portugal, no Brasil, ant
+(29.79, 31.63),  # E ele não exige proposta de emprego.
+(32.23, 33.21),  # O que você precisa?
+(33.71, 35.56),  # Primeiro: o passaporte válido.
+(35.99, 38.21),  # Segundo: os antecedentes criminais.
+(38.61, 42.65),  # No Brasil, você tira de graça, pela internet, no s
+(42.98, 47.60),  # Depois, leva no cartório para fazer a apostila de 
+(47.94, 51.89),  # E atenção: o certificado da Polícia Federal vale 9
+(52.16, 53.78),  # Então não tira cedo demais.
+(54.25, 57.09),  # Terceiro: mostrar como você vai se sustentar.
+(57.48, 65.42),  # Pode ser com dinheiro guardado, ou com um termo de
+(65.86, 67.44),  # Com o visto, você embarca.
+(67.77, 73.67),  # E, em Portugal, pede na AIMA a autorização de resi
+(73.97, 77.57),  # Mas atenção: o cartão pode demorar muitos meses pa
+(78.02, 79.36),  # E não esquece do Brasil.
+(79.70, 87.55),  # Quem sai de vez tem que fazer a comunicação de saí
+(87.82, 92.33),  # Senão, você continua sendo tratado como residente 
+(92.79, 99.40),  # E se for mandar dinheiro do Brasil para Portugal: 
+(99.70, 103.22),  # A cada 10 mil reais, 350 ficam pelo caminho.
+(103.68, 112.16),  # Resumo: visto no consulado, antecedentes apostilad
+(112.47, 115.12),  # Salva este vídeo para não esquecer nenhum passo.
+(115.47, 117.10),  # Precisa de ajuda com o seu processo?
+(117.41, 121.18),  # A Loja do Imigrante te orienta e ajuda com agendam
+(121.45, 122.61),  # O link está na bio.
