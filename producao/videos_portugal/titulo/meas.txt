@@ -1,0 +1,24 @@
+(0.06, 4.04),  # Brasileiro em Portugal: a Justiça Eleitoral reabri
+(4.66, 7.89),  # E tem um prazo correndo agora, que muita gente vai
+(8.29, 8.99),  # Presta atenção.
+(9.48, 13.35),  # Desde o dia 3 de novembro, o cadastro eleitoral es
+(13.87, 15.79),  # Ele tinha fechado antes das eleições.
+(16.25, 25.71),  # Então agora você pode tirar o primeiro título, reg
+(26.10, 30.69),  # E tudo pela internet, no Autoatendimento Eleitoral
+(31.14, 37.70),  # Você vai precisar do documento com foto, do CPF, e
+(38.10, 41.00),  # Mas atenção: quem vota no exterior só vota para pr
+(41.39, 44.68),  # Prefeito, governador, deputado e senador, não.
+(45.13, 46.86),  # E agora o prazo urgente.
+(47.19, 48.70),  # Não votou nas eleições de outubro?
+(49.08, 50.57),  # Você precisa justificar.
+(51.01, 53.94),  # Quem faltou no primeiro turno tem até 3 de dezembr
+(54.41, 57.97),  # Quem faltou no segundo turno tem até 24 de dezembr
+(58.33, 61.04),  # E cada turno é uma justificativa separada.
+(61.43, 64.04),  # Dá para justificar pelo aplicativo e-Título.
+(64.50, 65.55),  # E se não justificar?
+(65.95, 66.57),  # Tem multa.
+(66.89, 74.83),  # É baixa, mas se acumular três turnos seguidos sem 
+(75.21, 80.41),  # E com o título irregular, você pode ter problema a
+(80.88, 85.98),  # Resumo: justifique a ausência até dezembro, e apro
+(86.37, 88.89),  # Manda este vídeo para um brasileiro que mora em Po
+(89.30, 95.45),  # E se você precisa de ajuda com os seus documentos 
