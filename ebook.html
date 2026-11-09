@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>E-book grátis · Pasta do Imigrante</title>
+<meta name="description" content="Kit grátis Pasta do Imigrante: checklist de documentos e calendário de prazos para quem vive ou quer viver em Portugal.">
+<meta property="og:title" content="E-book grátis: Pasta do Imigrante">
+<meta property="og:description" content="Checklist de documentos e calendário de prazos do imigrante, em PDF. Grátis.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{--bg:#0c0c0b;--panel:#161614;--line:#2b2a26;--ink:#f3efe4;--mute:#a29d90;--yel:#ffd447;
+--display:"Inter","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--display);-webkit-font-smoothing:antialiased}
+main{max-width:520px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-left,0px)) 48px;display:grid;gap:20px}
+.top{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.top img{width:34px;height:34px;border-radius:50%;background:#fff}
+.free{justify-self:start;background:var(--yel);color:#141414;font:800 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:8px 11px;border-radius:6px}
+h1{font:900 clamp(34px,9vw,48px)/1 var(--display);letter-spacing:-.03em;margin:0}
+h1 em{font-style:normal;color:var(--yel)}
+.lede{margin:0;color:var(--mute);font-size:17px}
+form{background:var(--panel);border:2px solid var(--yel);border-radius:18px;padding:20px;display:grid;gap:14px}
+label{display:grid;gap:6px;font:700 13px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+input[type=email]{font:500 17px var(--display);color:var(--ink);background:#0f0f0e;border:1px solid var(--line);border-radius:12px;padding:14px 14px;width:100%}
+input[type=email]:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--yel);outline-offset:2px}
+.consent{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;font:400 13.5px/1.45 var(--display);letter-spacing:0;text-transform:none;color:var(--mute)}
+.consent input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--yel)}
+button{font:800 18px/1 var(--display);background:var(--yel);color:#141414;border:0;border-radius:999px;padding:17px 18px;cursor:pointer}
+button[disabled]{opacity:.6}
+.ok{font-size:15px;color:var(--ink)} .ok a{color:var(--yel)}
+ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px}
+li::before{content:"✓";color:var(--yel);font-weight:800}
+.small{font-size:13.5px;color:var(--mute);margin:0}
+.small a{color:var(--ink)}
+</style>
+</head>
+<body>
+<main>
+  <a class="top" href="index.html"><img src="logo.png" alt="">A Loja do Imigrante</a>
+  <span class="free">Grátis · PDF</span>
+  <h1>Kit <em>Pasta do Imigrante</em></h1>
+  <p class="lede">O checklist dos documentos que todo brasileiro em Portugal precisa ter organizados, e o calendário de prazos do imigrante.</p>
+  <form id="lead" novalidate>
+    <label for="le">Seu melhor e-mail<input id="le" name="EMAIL" type="email" autocomplete="email" placeholder="voce@email.com" required></label>
+    <input type="text" name="email_address_check" value="" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="consent" for="lc"><input id="lc" type="checkbox" required><span>Aceito receber o kit e avisos da Loja do Imigrante por e-mail. Posso cancelar quando quiser. Ver a <a href="do-sonho-a-europa/privacidade.html">política de privacidade</a>.</span></label>
+    <button type="submit" id="lbtn">Quero o e-book grátis</button>
+    <div class="ok" id="lok" hidden></div>
+  </form>
+  <ul>
+    <li><span>Checklist por objetivo: chegada, residência, renovação</span></li>
+    <li><span>Como nomear e guardar os PDFs para não travar no atendimento</span></li>
+    <li><span>Calendário de prazos atualizado</span></li>
+    <li><span>Bónus: ebook "O Mapa Invisível da Coragem"</span></li>
+  </ul>
+  <p class="small">Precisa de ajuda com o seu caso? <a href="https://wa.me/351935149920?text=Ol%C3%A1%21%20Baixei%20o%20e-book%20e%20quero%20ajuda%20com%20o%20meu%20caso." target="_blank" rel="noopener">Fale no WhatsApp</a> ou veja os <a href="do-sonho-a-europa/">guias grátis</a>.</p>
+</main>
+<script>
+(function(){
+  var ACTION="https://03e66062.sibforms.com/serve/MUIFAAfoL7ZXyN73EUbIE1mZFYO20DwGY3i4UFImNW--vkv0SY-vMD_tRJ1pjQEBY8C9J3MsqUw5j-S18PnAgiFdzdhVhvV1wRrbPbLHN6IAPUyIO-csXPftwr_CtnXjhnY-EpoE6cz6hFZGhBudZB41qSWhq58TgjeC-UP31S2mhMZElw-C_OIYHI9x1UCPWFDnzvDr33sQaqEDaA==";
+  var PDF="do-sonho-a-europa/kit/Pasta_do_Imigrante_2026.pdf";
+  var form=document.getElementById("lead"),ok=document.getElementById("lok"),btn=document.getElementById("lbtn");
+  form.addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var email=document.getElementById("le").value.trim();
+    ok.hidden=false;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ok.textContent="Escreva um e-mail válido.";return;}
+    if(!document.getElementById("lc").checked){ok.textContent="Marque a caixa de consentimento para receber o kit.";return;}
+    btn.disabled=true; ok.textContent="A enviar…";
+    var done=function(){ok.innerHTML='Pronto! O seu e-book está a abrir. Se não abrir, <a href="'+PDF+'" target="_blank" rel="noopener">clique aqui para baixar</a>.';window.location.href=PDF;};
+    var d=new URLSearchParams();d.append("EMAIL",email);d.append("email_address_check","");d.append("locale","pt");
+    try{fetch(ACTION,{method:"POST",mode:"no-cors",body:d}).then(done,done);}catch(e){done();}
+  });
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "21872373fe264540a79be1f6ea406933"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
