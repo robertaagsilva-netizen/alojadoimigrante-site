@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Calculadora grátis da Loja do Imigrante: descubra quando pode pedir a residência permanente em Portugal, o arraigo ou a nacionalidade espanhola.">
+<link rel="icon" href="logo.png">
+<title>Calculadora do Imigrante</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: uma coluna estreita, como um formulário de repartição; o resultado vira um "carimbo" com a data. */
+:root {
+  --bg: #12110f; --panel: #1c1a17; --line: #34302a; --fg: #f4eedf; --muted: #b3aa98;
+  --accent: #ffd34d; --accent-ink: #1a1405; --ok: #6fd08c; --warn: #ff8a5c;
+  --display: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+.wrap { max-width: 560px; margin: 0 auto; display: grid; gap: 22px; }
+.brand { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-size: clamp(30px, 8vw, 44px); line-height: 1.02; margin: 0; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--accent); }
+.lead { color: var(--muted); margin: 0; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.tab { font: 600 14px var(--body); color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.tab:focus-visible, .btn:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 16px; }
+label { font-weight: 600; display: grid; gap: 8px; }
+label small { font-weight: 400; color: var(--muted); }
+input[type=date] { font: 500 18px var(--mono); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; width: 100%; }
+.stamp { border: 2px dashed var(--accent); border-radius: 12px; padding: 18px; display: grid; gap: 6px; }
+.stamp .k { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.stamp .date { font-family: var(--display); font-size: clamp(28px, 9vw, 40px); color: var(--accent); line-height: 1.05; font-variant-numeric: tabular-nums; }
+.status { font-weight: 700; }
+.status.ok { color: var(--ok); } .status.wait { color: var(--warn); }
+.bar { height: 10px; background: var(--bg); border-radius: 999px; overflow: hidden; border: 1px solid var(--line); }
+.bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .4s ease; }
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+h2 { font-family: var(--display); font-size: 18px; margin: 0; letter-spacing: .01em; }
+ul.check { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+ul.check li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: start; }
+ul.check input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); }
+.ctas { display: grid; gap: 10px; }
+.btn { display: block; text-align: center; text-decoration: none; font: 700 16px var(--body); border-radius: 12px; padding: 14px 16px; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { border: 1px solid var(--line); color: var(--fg); }
+button.btn { width: 100%; border: 0; cursor: pointer; }
+.hook { margin: 0; font-weight: 600; }
+.offer { border: 1px solid var(--accent); border-radius: 12px; padding: 16px; display: grid; gap: 10px; }
+.offer ul { margin: 0; padding-left: 18px; color: var(--muted); }
+.offer .price { font-family: var(--display); font-size: 34px; color: var(--accent); }
+[hidden] { display: none !important; }
+.note { font-size: 13px; color: var(--muted); margin: 0; }
+.note b { color: var(--fg); }
+.ex { font-family: var(--mono); font-size: 11px; color: var(--accent-ink); background: var(--accent); border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: middle; }
+footer { font-size: 12px; color: var(--muted); display: grid; gap: 6px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="brand">A Loja do Imigrante · @alojadoimigrante.pt</div>
+  <h1>Quando eu <em>posso pedir?</em></h1>
+  <p class="lead">Coloque a data e veja uma estimativa de quando você pode fazer o pedido, com a lista dos documentos.</p>
+
+  <div class="tabs" role="tablist" aria-label="Tipo de pedido">
+    <button class="tab" role="tab" id="t-pt" aria-selected="true" data-k="pt">🇵🇹 Residência permanente</button>
+    <button class="tab" role="tab" id="t-arr" aria-selected="false" data-k="arr">🇪🇸 Arraigo</button>
+    <button class="tab" role="tab" id="t-nac" aria-selected="false" data-k="nac">🇪🇸 Nacionalidade</button>
+  </div>
+
+  <section class="panel" aria-live="polite">
+    <label for="d"><span id="q"></span><small id="qhelp"></small>
+      <input type="date" id="d">
+    </label>
+
+    <div class="stamp">
+      <span class="k" id="klabel">Pode pedir a partir de</span>
+      <span class="date" id="out">—</span>
+      <span class="status" id="st"></span>
+      <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    </div>
+
+    <h2>Documentos que você vai precisar</h2>
+    <ul class="check" id="docs"></ul>
+
+    <div class="ctas" id="ctas"></div>
+    <p class="note" id="rule"></p>
+  </section>
+
+  <footer>
+    <p class="note"><b>Isto é uma estimativa.</b> As leis mudam e cada caso é um caso. O resultado não diz se você tem ou não tem direito: isso só se confirma analisando os seus documentos.</p>
+    <p>WhatsApp da Loja do Imigrante: <b>+351 935 149 920</b> · A Loja do Imigrante não é escritório de advocacia.</p>
+  </footer>
+</div>
+
+<script>
+const WA = '351935149920';
+const CHECKLIST_PAY = 'https://buy.stripe.com/4gM8wR3RE3671J93pD0VO0a'; // checklist 9,90 €
+const PAY55 = 'https://buy.stripe.com/7sYfZj3REcGHgE31hv0VO03';
+const PAY125 = 'https://buy.stripe.com/bJe14pgEq4ab5Zpd0d0VO04';
+const C = {
+  pt: { years: 5, q: 'Data em que saiu o seu PRIMEIRO título de residência em Portugal',
+    help: 'É a data do primeiro cartão (ou da autorização CPLP), não a data em que você chegou.',
+    label: 'Pode pedir a residência permanente a partir de', ex: '2022-03-15',
+    rule: 'Regra usada: 5 anos de residência legal em Portugal (Lei de Estrangeiros). Títulos CPLP em papel e períodos fora do país podem mudar a contagem.',
+    docs: ['Passaporte válido', 'Título de residência válido', 'Comprovativo de meios de subsistência (contrato, recibos ou IRS)', 'Comprovativo de alojamento (contrato de arrendamento e recibo, ou certidão predial; atestado da Junta não é aceite)', 'Comprovativo de português básico (certificado ou diploma reconhecido)', 'Autorização para a AIMA consultar o registo criminal', 'Declarações de não dívida das Finanças e da Segurança Social'],
+    ctaOk: ['Fazemos o seu pedido · 125 €', PAY125], ctaWait: ['Quero confirmar a minha data · consultoria 55 €', PAY55], name: 'residência permanente em Portugal' },
+  arr: { years: 2, q: 'Data em que você começou a morar na Espanha',
+    help: 'Use a data do seu primeiro empadronamento: é o que comprova o tempo no país.',
+    label: 'Pode pedir o arraigo a partir de', ex: '2025-01-10',
+    rule: 'Regra usada: 2 anos de permanência na Espanha (Reglamento de Extranjería em vigor desde maio de 2025). Cada tipo de arraigo (social, sociolaboral, socioformativo, familiar) tem requisitos próprios.',
+    docs: ['Passaporte válido', 'Histórico de empadronamento (os 2 anos)', 'Antecedentes penais do Brasil (e dos países onde viveu nos últimos 5 anos), apostilados', 'Formulário EX-10 e taxa modelo 790-052', 'Documentos do tipo de arraigo: contrato de trabalho, curso, meios econômicos ou vínculo familiar'],
+    ctaOk: ['Quero ver qual arraigo é o meu · consultoria 55 €', PAY55], ctaWait: ['Quero me preparar desde já · consultoria 55 €', PAY55], name: 'arraigo na Espanha' },
+  nac: { years: 2, q: 'Data da sua PRIMEIRA residência legal na Espanha',
+    help: 'Só conta o tempo com residência legal. O tempo irregular não entra.',
+    label: 'Pode pedir a nacionalidade espanhola a partir de', ex: '2024-09-01',
+    rule: 'Regra usada: brasileiros pedem a nacionalidade espanhola com 2 anos de residência legal e contínua. É preciso aprovar os exames DELE A2 (espanhol) e CCSE (cultura e constituição).',
+    docs: ['Passaporte válido', 'TIE (cartão de residência) válido', 'Certidão de nascimento brasileira, apostilada e traduzida', 'Antecedentes penais do Brasil, apostilados e traduzidos', 'Certificado de empadronamento', 'Aprovação no DELE A2', 'Aprovação no CCSE', 'Taxa modelo 790, código 026'],
+    ctaOk: ['Quero ajuda com o meu pedido · consultoria 55 €', PAY55], ctaWait: ['Quero me preparar desde já · consultoria 55 €', PAY55], name: 'nacionalidade espanhola' }
+};
+let k = 'pt';
+const $ = id => document.getElementById(id);
+const store = { get(x) { try { return localStorage.getItem(x); } catch (e) { return null; } }, set(x, v) { try { localStorage.setItem(x, v); } catch (e) {} } };
+function addYears(d, n) { const r = new Date(d.getFullYear() + n, d.getMonth(), d.getDate()); if (r.getMonth() !== d.getMonth()) r.setDate(0); return r; }
+const fmt = d => d.toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' });
+function monthsBetween(a, b) { let m = (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()); if (b.getDate() < a.getDate()) m--; return Math.max(0, m); }
+function wa(text) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); }
+function render() {
+  const c = C[k];
+  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.k === k ? 'true' : 'false'));
+  $('q').textContent = c.q; $('qhelp').textContent = c.help; $('klabel').textContent = c.label; $('rule').textContent = c.rule;
+  const saved = store.get('calc_' + k);
+  const inp = $('d');
+  if (!inp.dataset.k || inp.dataset.k !== k) { inp.value = saved || c.ex; inp.dataset.k = k; inp.dataset.ex = saved ? '' : '1'; }
+  const ul = $('docs'); ul.innerHTML = '';
+  c.docs.forEach((t, i) => { const li = document.createElement('li'); const id = 'doc_' + k + '_' + i; li.innerHTML = '<input type="checkbox" id="' + id + '"><label for="' + id + '" style="font-weight:400">' + t + '</label>'; ul.appendChild(li); });
+  calc();
+}
+function calc() {
+  const c = C[k]; const v = $('d').value; const ctas = $('ctas');
+  if (!v) { $('out').textContent = '—'; $('st').textContent = 'Escolha uma data.'; $('st').className = 'status'; $('bar').style.width = '0'; ctas.innerHTML = ''; return; }
+  const start = new Date(v + 'T00:00:00'); const end = addYears(start, c.years); const today = new Date(); today.setHours(0, 0, 0, 0);
+  const isEx = $('d').dataset.ex === '1';
+  $('out').innerHTML = fmt(end) + (isEx ? '<span class="ex">exemplo</span>' : '');
+  const total = end - start, done = Math.min(Math.max(today - start, 0), total);
+  $('bar').style.width = (total > 0 ? Math.round(done / total * 100) : 0) + '%';
+  const ok = today >= end; const m = monthsBetween(today, end);
+  $('st').textContent = ok ? 'Pela estimativa, você já pode pedir.' : (m >= 1 ? 'Faltam cerca de ' + m + (m === 1 ? ' mês.' : ' meses.') : 'Falta menos de um mês.');
+  $('st').className = 'status ' + (ok ? 'ok' : 'wait');
+  const msg = 'Olá! Usei a calculadora da Loja do Imigrante. Pedido: ' + c.name + '. Data informada: ' + fmt(start) + '. Estimativa: ' + fmt(end) + '.';
+  const lead = ok ? 'Chegou a sua vez? Evite atrasos por causa de um documento errado ou vencido.' : 'Aproveite esse tempo para deixar tudo pronto antes da hora do pedido.';
+  ctas.innerHTML = '<p class="hook">' + lead + '</p>' +
+    '<button class="btn primary" id="wantck" type="button">Quero o checklist completo</button>' +
+    '<div class="offer" id="offer" hidden>' +
+      '<b>Checklist Completo do Imigrante · Portugal e Espanha</b>' +
+      '<ul><li>Cada documento explicado: onde pedir, validade e como entregar</li><li>Quanto custa o pedido em 2026 (com as taxas oficiais)</li><li>Os erros mais comuns que atrasam o pedido</li><li>A ordem certa para juntar tudo</li></ul>' +
+      '<p class="note">PDF de 8 páginas. Depois do pagamento, o guia abre na hora.</p>' +
+      '<div class="price">9,90 €</div>' +
+      '<a class="btn primary" target="_blank" rel="noopener" href="' + (CHECKLIST_PAY || wa(msg + ' Quero o checklist completo de 9,90 €.')) + '">Quero o meu checklist</a>' +
+    '</div>' +
+    '<a class="btn ghost" target="_blank" rel="noopener" href="' + wa(msg + ' Quero ajuda.') + '">Prefiro falar no WhatsApp</a>';
+  $('wantck').addEventListener('click', () => { $('offer').hidden = false; $('wantck').hidden = true; });
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => { k = t.dataset.k; render(); }));
+$('d').addEventListener('input', () => { $('d').dataset.ex = ''; store.set('calc_' + k, $('d').value); calc(); });
+render();
+</script>
+
+</body>
+</html>
