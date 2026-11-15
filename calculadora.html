@@ -78,7 +78,7 @@ footer { font-size: 12px; color: var(--muted); display: grid; gap: 6px; }
 <div class="wrap">
   <div class="brand">A Loja do Imigrante · @alojadoimigrante.pt</div>
   <h1>Quando eu <em>posso pedir?</em></h1>
-  <p class="lead">Responda a algumas perguntas e veja o seu caminho, uma estimativa da data e a lista dos documentos.</p>
+  <p class="lead">Responda a algumas perguntas e veja o seu caminho e uma estimativa da data em que pode pedir.</p>
   <section class="panel" id="app" aria-live="polite"></section>
   <footer>
     <p class="note"><b>Isto é uma estimativa.</b> As leis mudam e cada caso é um caso. O resultado não diz se você tem ou não tem direito: isso só se confirma analisando os seus documentos.</p>
@@ -216,9 +216,7 @@ function renderCalc() {
   app.innerHTML = stepsBar(4) + backBtn() +
     '<label class="d" for="d"><span>' + c.q + '</span><small>' + c.help + '</small><input type="date" id="d" value="' + (saved || c.ex) + '"></label>' +
     '<div class="stamp"><span class="k">' + c.label + '</span><span class="date" id="out">—</span><span class="status" id="st"></span><div class="bar" aria-hidden="true"><i id="bar"></i></div></div>' +
-    alerts +
-    '<h2>Documentos que você vai precisar</h2><ul class="check">' + c.docs.map((t, i) => '<li><input type="checkbox" id="doc' + i + '"><label for="doc' + i + '">' + t + '</label></li>').join('') + '</ul>' +
-    '<div class="ctas" id="ctas"></div><p class="note">' + c.rule + '</p><button class="btn ghost" id="restart" type="button">Recomeçar</button>';
+    '<div class="ctas" id="ctas"></div>' + alerts + '<p class="note">' + c.rule + '</p><button class="btn ghost" id="restart" type="button">Recomeçar</button>';
   const inp = $('d'); inp.dataset.ex = saved ? '' : '1';
   inp.addEventListener('input', () => { lc('contaUmaVez', 'calc_mudou_data'); inp.dataset.ex = ''; store.set(key, inp.value); calc(c); });
   bindBack(); $('restart').onclick = restart;
@@ -237,10 +235,13 @@ function calc(c) {
   const msg = 'Olá! Usei a calculadora da Loja do Imigrante. Pedido: ' + c.name + '. Data informada: ' + fmt(start) + '. Estimativa: ' + fmt(end) + '.';
   const lead = ok ? 'Chegou a sua vez? Evite atrasos por causa de um documento errado ou vencido.' : 'Aproveite esse tempo para deixar tudo pronto antes da hora do pedido.';
   ctas.innerHTML = '<p class="hook">' + lead + '</p>' +
+    '<div class="offer">' +
+      '<b>No Checklist Completo do Imigrante você recebe:</b>' +
+      '<ul><li>A lista de documentos do seu pedido, com onde pedir cada um e a validade</li><li>Quanto você vai pagar de taxa em 2026, com os valores oficiais</li><li>Os erros mais comuns que atrasam ou fazem indeferir o pedido</li><li>A ordem certa para juntar tudo</li></ul>' +
+    '</div>' +
     '<button class="btn primary" id="wantck" type="button">Quero o checklist completo</button>' +
     '<div class="offer" id="offer" hidden>' +
       '<b>Checklist Completo do Imigrante · Portugal e Espanha</b>' +
-      '<ul><li>Cada documento explicado: onde pedir, validade e como entregar</li><li>Quanto custa o pedido em 2026 (com as taxas oficiais)</li><li>Os erros mais comuns que atrasam o pedido</li><li>A ordem certa para juntar tudo</li></ul>' +
       '<p class="note">PDF de 8 páginas. Depois do pagamento, o guia abre na hora.</p>' +
       '<div class="price">9,90 €</div>' +
       '<a class="btn primary" target="_blank" rel="noopener" href="' + CHECKLIST_PAY + '">Quero o meu checklist</a>' +
