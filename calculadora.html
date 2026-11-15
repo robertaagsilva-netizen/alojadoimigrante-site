@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: uma coluna estreita, como um formulário de repartição; o resultado vira um "carimbo" com a data. */
+/* Layout: perguntas uma a uma, como uma triagem; o resultado vira um "carimbo" com a data. */
 :root {
   --bg: #12110f; --panel: #1c1a17; --line: #34302a; --fg: #f4eedf; --muted: #b3aa98;
   --accent: #ffd34d; --accent-ink: #1a1405; --ok: #6fd08c; --warn: #ff8a5c;
@@ -19,20 +19,27 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.5;
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.5; margin: 0;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
-.wrap { max-width: 560px; margin: 0 auto; display: grid; gap: 22px; }
+.wrap { max-width: 560px; margin: 0 auto; display: grid; gap: 20px; }
 .brand { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
 h1 { font-family: var(--display); font-size: clamp(30px, 8vw, 44px); line-height: 1.02; margin: 0; text-wrap: balance; }
 h1 em { font-style: normal; color: var(--accent); }
 .lead { color: var(--muted); margin: 0; }
-.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-.tab { font: 600 14px var(--body); color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
-.tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.tab:focus-visible, .btn:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 16px; }
-label { font-weight: 600; display: grid; gap: 8px; }
-label small { font-weight: 400; color: var(--muted); }
+.steps { display: flex; gap: 6px; }
+.steps i { flex: 1; height: 4px; border-radius: 99px; background: var(--line); }
+.steps i.on { background: var(--accent); }
+.q { font-family: var(--display); font-size: 20px; line-height: 1.2; margin: 0; }
+.qhelp { color: var(--muted); font-size: 14px; margin: -8px 0 0; }
+.opts { display: grid; gap: 10px; }
+.opt { text-align: left; font: 600 16px var(--body); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; display: grid; gap: 2px; }
+.opt small { font-weight: 400; color: var(--muted); font-size: 13px; }
+.opt:hover { border-color: var(--accent); }
+.opt:focus-visible, .btn:focus-visible, input:focus-visible, .back:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.back { background: none; border: 0; color: var(--muted); font: 500 14px var(--body); cursor: pointer; padding: 0; justify-self: start; }
+label.d { font-weight: 600; display: grid; gap: 8px; }
+label.d small { font-weight: 400; color: var(--muted); }
 input[type=date] { font: 500 18px var(--mono); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; width: 100%; }
 .stamp { border: 2px dashed var(--accent); border-radius: 12px; padding: 18px; display: grid; gap: 6px; }
 .stamp .k { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
@@ -42,15 +49,19 @@ input[type=date] { font: 500 18px var(--mono); color: var(--fg); background: var
 .bar { height: 10px; background: var(--bg); border-radius: 999px; overflow: hidden; border: 1px solid var(--line); }
 .bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .4s ease; }
 @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
-h2 { font-family: var(--display); font-size: 18px; margin: 0; letter-spacing: .01em; }
+.alert { border-radius: 12px; padding: 12px 14px; background: #2a1d15; border: 1px solid #6b3b22; font-size: 14px; }
+.alert b { color: var(--warn); }
+h2 { font-family: var(--display); font-size: 18px; margin: 0; }
 ul.check { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 ul.check li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: start; }
 ul.check input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); }
+ul.check label { font-weight: 400; }
 .ctas { display: grid; gap: 10px; }
 .btn { display: block; text-align: center; text-decoration: none; font: 700 16px var(--body); border-radius: 12px; padding: 14px 16px; }
 .btn.primary { background: var(--accent); color: var(--accent-ink); }
-.btn.ghost { border: 1px solid var(--line); color: var(--fg); }
+.btn.ghost { border: 1px solid var(--line); color: var(--fg); background: transparent; }
 button.btn { width: 100%; border: 0; cursor: pointer; }
+button.btn.ghost { border: 1px solid var(--line); }
 .hook { margin: 0; font-weight: 600; }
 .offer { border: 1px solid var(--accent); border-radius: 12px; padding: 16px; display: grid; gap: 10px; }
 .offer ul { margin: 0; padding-left: 18px; color: var(--muted); }
@@ -67,33 +78,8 @@ footer { font-size: 12px; color: var(--muted); display: grid; gap: 6px; }
 <div class="wrap">
   <div class="brand">A Loja do Imigrante · @alojadoimigrante.pt</div>
   <h1>Quando eu <em>posso pedir?</em></h1>
-  <p class="lead">Coloque a data e veja uma estimativa de quando você pode fazer o pedido, com a lista dos documentos.</p>
-
-  <div class="tabs" role="tablist" aria-label="Tipo de pedido">
-    <button class="tab" role="tab" id="t-pt" aria-selected="true" data-k="pt">🇵🇹 Residência permanente</button>
-    <button class="tab" role="tab" id="t-arr" aria-selected="false" data-k="arr">🇪🇸 Arraigo</button>
-    <button class="tab" role="tab" id="t-nac" aria-selected="false" data-k="nac">🇪🇸 Nacionalidade</button>
-  </div>
-
-  <section class="panel" aria-live="polite">
-    <label for="d"><span id="q"></span><small id="qhelp"></small>
-      <input type="date" id="d">
-    </label>
-
-    <div class="stamp">
-      <span class="k" id="klabel">Pode pedir a partir de</span>
-      <span class="date" id="out">—</span>
-      <span class="status" id="st"></span>
-      <div class="bar" aria-hidden="true"><i id="bar"></i></div>
-    </div>
-
-    <h2>Documentos que você vai precisar</h2>
-    <ul class="check" id="docs"></ul>
-
-    <div class="ctas" id="ctas"></div>
-    <p class="note" id="rule"></p>
-  </section>
-
+  <p class="lead">Responda a algumas perguntas e veja o seu caminho, uma estimativa da data e a lista dos documentos.</p>
+  <section class="panel" id="app" aria-live="polite"></section>
   <footer>
     <p class="note"><b>Isto é uma estimativa.</b> As leis mudam e cada caso é um caso. O resultado não diz se você tem ou não tem direito: isso só se confirma analisando os seus documentos.</p>
     <p>WhatsApp da Loja do Imigrante: <b>+351 935 149 920</b> · A Loja do Imigrante não é escritório de advocacia.</p>
@@ -103,52 +89,141 @@ footer { font-size: 12px; color: var(--muted); display: grid; gap: 6px; }
 <script>
 const WA = '351935149920';
 const CHECKLIST_PAY = 'https://buy.stripe.com/4gM8wR3RE3671J93pD0VO0a'; // checklist 9,90 €
-const PAY55 = 'https://buy.stripe.com/7sYfZj3REcGHgE31hv0VO03';
-const PAY125 = 'https://buy.stripe.com/bJe14pgEq4ab5Zpd0d0VO04';
-const C = {
-  pt: { years: 5, q: 'Data em que saiu o seu PRIMEIRO título de residência em Portugal',
-    help: 'É a data do primeiro cartão (ou da autorização CPLP), não a data em que você chegou.',
-    label: 'Pode pedir a residência permanente a partir de', ex: '2022-03-15',
-    rule: 'Regra usada: 5 anos de residência legal em Portugal (Lei de Estrangeiros). Títulos CPLP em papel e períodos fora do país podem mudar a contagem.',
-    docs: ['Passaporte válido', 'Título de residência válido', 'Comprovativo de meios de subsistência (contrato, recibos ou IRS)', 'Comprovativo de alojamento (contrato de arrendamento e recibo, ou certidão predial; atestado da Junta não é aceite)', 'Comprovativo de português básico (certificado ou diploma reconhecido)', 'Autorização para a AIMA consultar o registo criminal', 'Declarações de não dívida das Finanças e da Segurança Social'],
-    ctaOk: ['Fazemos o seu pedido · 125 €', PAY125], ctaWait: ['Quero confirmar a minha data · consultoria 55 €', PAY55], name: 'residência permanente em Portugal' },
-  arr: { years: 2, q: 'Data em que você começou a morar na Espanha',
-    help: 'Use a data do seu primeiro empadronamento: é o que comprova o tempo no país.',
-    label: 'Pode pedir o arraigo a partir de', ex: '2025-01-10',
-    rule: 'Regra usada: 2 anos de permanência na Espanha (Reglamento de Extranjería em vigor desde maio de 2025). Cada tipo de arraigo (social, sociolaboral, socioformativo, familiar) tem requisitos próprios.',
-    docs: ['Passaporte válido', 'Histórico de empadronamento (os 2 anos)', 'Antecedentes penais do Brasil (e dos países onde viveu nos últimos 5 anos), apostilados', 'Formulário EX-10 e taxa modelo 790-052', 'Documentos do tipo de arraigo: contrato de trabalho, curso, meios econômicos ou vínculo familiar'],
-    ctaOk: ['Quero ver qual arraigo é o meu · consultoria 55 €', PAY55], ctaWait: ['Quero me preparar desde já · consultoria 55 €', PAY55], name: 'arraigo na Espanha' },
-  nac: { years: 2, q: 'Data da sua PRIMEIRA residência legal na Espanha',
-    help: 'Só conta o tempo com residência legal. O tempo irregular não entra.',
-    label: 'Pode pedir a nacionalidade espanhola a partir de', ex: '2024-09-01',
-    rule: 'Regra usada: brasileiros pedem a nacionalidade espanhola com 2 anos de residência legal e contínua. É preciso aprovar os exames DELE A2 (espanhol) e CCSE (cultura e constituição).',
-    docs: ['Passaporte válido', 'TIE (cartão de residência) válido', 'Certidão de nascimento brasileira, apostilada e traduzida', 'Antecedentes penais do Brasil, apostilados e traduzidos', 'Certificado de empadronamento', 'Aprovação no DELE A2', 'Aprovação no CCSE', 'Taxa modelo 790, código 026'],
-    ctaOk: ['Quero ajuda com o meu pedido · consultoria 55 €', PAY55], ctaWait: ['Quero me preparar desde já · consultoria 55 €', PAY55], name: 'nacionalidade espanhola' }
+const CONSULTA_PAY = 'https://buy.stripe.com/28E6oJ73QeOPcnNbW90VO0b'; // consultoria 30 min
+
+/* ---------- Árvore de perguntas ---------- */
+const Q = {
+  pais: { q: 'Onde você mora hoje?', opts: [
+    { t: '🇵🇹 Em Portugal', go: 'pt' },
+    { t: '🇪🇸 Na Espanha', go: 'es' },
+    { t: '🌎 Ainda não moro na Europa', s: 'Brasil ou outro país', end: 'fora' } ] },
+  pt: { q: 'Qual é a sua situação em Portugal?', opts: [
+    { t: 'Tenho autorização de residência', s: 'cartão de residência, válido ou em renovação', go: 'pt_tipo' },
+    { t: 'Ainda não tenho título', s: 'pedido pendente, manifestação de interesse ou entrei como turista', end: 'pt_sem' },
+    { t: 'O meu pedido foi indeferido ou está parado', end: 'indef' },
+    { t: 'Quero a nacionalidade portuguesa', end: 'pt_nac' } ] },
+  pt_tipo: { q: 'Que tipo de título você tem (ou teve primeiro)?', opts: [
+    { t: 'Autorização de residência normal', s: 'trabalho, estudo, reagrupamento, D7, D8…', set: { tipo: 'normal' }, go: 'pt_buraco' },
+    { t: 'Autorização de residência CPLP', s: 'em papel ou cartão', set: { tipo: 'cplp' }, go: 'pt_buraco' } ] },
+  pt_buraco: { q: 'Desde o primeiro título, ficou algum período sem título válido?', help: 'Por exemplo: o cartão venceu e você demorou a renovar.', opts: [
+    { t: 'Não, sempre tive título válido', set: { buraco: false }, calc: 'pt_perm' },
+    { t: 'Sim, ou não tenho certeza', set: { buraco: true }, calc: 'pt_perm' } ] },
+  es: { q: 'Qual é a sua situação na Espanha?', opts: [
+    { t: 'Estou sem documentos (irregular)', s: 'quero regularizar pelo arraigo', go: 'es_aus' },
+    { t: 'Tenho residência legal (TIE)', s: 'quero a nacionalidade espanhola', go: 'es_nacio' },
+    { t: 'O meu pedido foi negado ou está parado', end: 'indef' } ] },
+  es_aus: { q: 'Desde que chegou à Espanha, ficou mais de 90 dias fora do país?', opts: [
+    { t: 'Não', set: { ausencia: false }, calc: 'es_arr' },
+    { t: 'Sim, ou não tenho certeza', set: { ausencia: true }, calc: 'es_arr' } ] },
+  es_nacio: { q: 'Qual é a sua nacionalidade de origem?', opts: [
+    { t: 'Brasileira ou de outro país ibero-americano', s: 'também Portugal, Andorra, Filipinas e Guiné Equatorial', set: { anos: 2 }, calc: 'es_nac' },
+    { t: 'Outra nacionalidade', set: { anos: 10 }, calc: 'es_nac' } ] }
 };
-let k = 'pt';
+
+/* ---------- Cálculos ---------- */
+const CALC = {
+  pt_perm: () => ({
+    years: 5, name: 'residência permanente em Portugal', ex: '2022-03-15',
+    q: 'Data em que saiu o seu PRIMEIRO título de residência em Portugal',
+    help: 'É a data do primeiro cartão (ou da autorização CPLP), não a data em que você chegou.',
+    label: 'Pode pedir a residência permanente a partir de',
+    rule: 'Regra usada: 5 anos de autorização de residência em Portugal (Lei de Estrangeiros, art. 80.º).',
+    alerts: [
+      S.tipo === 'cplp' ? '<b>Título CPLP:</b> em princípio, esse tempo conta, mas títulos em papel e a troca para cartão podem mudar a contagem. Vale confirmar antes de pedir.' : '',
+      S.buraco ? '<b>Período sem título:</b> pode atrasar a data ou reiniciar a contagem. Confirme o seu caso antes de pedir.' : ''
+    ],
+    docs: ['Passaporte válido', 'Título de residência válido', 'Comprovativo de meios de subsistência (contrato, recibos ou IRS)', 'Comprovativo de alojamento (contrato de arrendamento e recibo, ou certidão predial; atestado da Junta não é aceite)', 'Comprovativo de português básico (certificado ou diploma reconhecido)', 'Autorização para a AIMA consultar o registo criminal', 'Declarações de não dívida das Finanças e da Segurança Social']
+  }),
+  es_arr: () => ({
+    years: 2, name: 'arraigo na Espanha', ex: '2025-01-10',
+    q: 'Data em que você começou a morar na Espanha',
+    help: 'Use a data do seu primeiro empadronamento: é o que comprova o tempo no país.',
+    label: 'Pode pedir o arraigo a partir de',
+    rule: 'Regra usada: 2 anos de permanência na Espanha (Reglamento de Extranjería em vigor desde maio de 2025). Cada tipo de arraigo (social, sociolaboral, socioformativo, familiar) tem requisitos próprios.',
+    alerts: [ S.ausencia ? '<b>Ausência de mais de 90 dias:</b> quebra a continuidade dos 2 anos. A contagem pode ter de recomeçar a partir da volta.' : '' ],
+    docs: ['Passaporte válido', 'Histórico de empadronamento (os 2 anos)', 'Antecedentes penais do Brasil (e dos países onde viveu nos últimos 5 anos), apostilados', 'Formulário EX-10 e taxa modelo 790-052', 'Documentos do tipo de arraigo: contrato de trabalho, curso, meios económicos ou vínculo familiar']
+  }),
+  es_nac: () => ({
+    years: S.anos, name: 'nacionalidade espanhola', ex: '2024-09-01',
+    q: 'Data da sua PRIMEIRA residência legal na Espanha',
+    help: 'Só conta o tempo com residência legal. O tempo irregular não entra.',
+    label: 'Pode pedir a nacionalidade espanhola a partir de',
+    rule: S.anos === 2 ? 'Regra usada: 2 anos de residência legal e contínua para nacionais de países ibero-americanos (Código Civil, art. 22). É preciso aprovar o DELE A2 e o CCSE.' : 'Regra usada: 10 anos de residência legal e contínua (regra geral do Código Civil, art. 22). Refugiados e outros casos têm prazos diferentes. É preciso aprovar o DELE A2 e o CCSE.',
+    alerts: [],
+    docs: ['Passaporte válido (cópia de todas as páginas)', 'NIE/TIE válido', 'Certidão de nascimento, apostilada e com tradução jurada', 'Antecedentes penais do país de origem, apostilados e com tradução jurada', 'Certificado de antecedentes penales da Espanha', 'Certificado de empadronamento', 'Aprovação no DELE A2', 'Aprovação no CCSE', 'Taxa modelo 790, código 026']
+  })
+};
+
+/* ---------- Finais sem data ---------- */
+const END = {
+  fora: { h: 'O seu caminho começa no consulado', p: 'Para morar legalmente em Portugal ou na Espanha, o processo começa no seu país, com o visto certo para o seu caso (trabalho, procura de trabalho, estudo, rendimentos, nómada digital, família…). Em Portugal, desde outubro de 2025, a autorização de residência CPLP também exige entrar com visto de residência.', wa: 'Ainda não moro na Europa e quero saber qual visto é o certo para mim.' },
+  pt_sem: { h: 'Primeiro, o título de residência', p: 'A contagem para a residência permanente só começa com o primeiro título. Se o seu pedido está pendente, se fez manifestação de interesse ou se entrou como turista, o caminho depende muito do seu caso, e as regras mudaram em 2024 e 2025.', wa: 'Moro em Portugal e ainda não tenho título de residência.' },
+  indef: { h: 'Indeferimento ou processo parado', p: 'Há prazos curtos para reagir a um indeferimento, e um processo parado às vezes anda com uma reclamação bem feita. Não deixe passar o tempo.', wa: 'O meu pedido foi indeferido ou está parado.' },
+  pt_nac: { h: 'Nacionalidade portuguesa', p: 'As regras da nacionalidade portuguesa por tempo de residência estão em mudança. O prazo e a contagem do tempo dependem da lei em vigor na data do seu pedido e do seu histórico de títulos.', wa: 'Quero pedir a nacionalidade portuguesa.' }
+};
+
+/* ---------- Estado ---------- */
+let S = {}; let path = ['pais']; let mode = 'q'; let curCalc = null; let curEnd = null;
 const $ = id => document.getElementById(id);
+const app = $('app');
 const store = { get(x) { try { return localStorage.getItem(x); } catch (e) { return null; } }, set(x, v) { try { localStorage.setItem(x, v); } catch (e) {} } };
+function wa(text) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); }
 function addYears(d, n) { const r = new Date(d.getFullYear() + n, d.getMonth(), d.getDate()); if (r.getMonth() !== d.getMonth()) r.setDate(0); return r; }
 const fmt = d => d.toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' });
 function monthsBetween(a, b) { let m = (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth()); if (b.getDate() < a.getDate()) m--; return Math.max(0, m); }
-function wa(text) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); }
+function stepsBar(n) { const total = 4; let h = '<div class="steps" aria-hidden="true">'; for (let i = 0; i < total; i++) h += '<i class="' + (i < n ? 'on' : '') + '"></i>'; return h + '</div>'; }
+function backBtn() { return path.length > 1 || mode !== 'q' ? '<button class="back" id="back" type="button">← Voltar</button>' : ''; }
+function bindBack() { const b = $('back'); if (b) b.onclick = () => { if (mode !== 'q') { mode = 'q'; } else { path.pop(); } render(); }; }
+
 function render() {
-  const c = C[k];
-  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.k === k ? 'true' : 'false'));
-  $('q').textContent = c.q; $('qhelp').textContent = c.help; $('klabel').textContent = c.label; $('rule').textContent = c.rule;
-  const saved = store.get('calc_' + k);
-  const inp = $('d');
-  if (!inp.dataset.k || inp.dataset.k !== k) { inp.value = saved || c.ex; inp.dataset.k = k; inp.dataset.ex = saved ? '' : '1'; }
-  const ul = $('docs'); ul.innerHTML = '';
-  c.docs.forEach((t, i) => { const li = document.createElement('li'); const id = 'doc_' + k + '_' + i; li.innerHTML = '<input type="checkbox" id="' + id + '"><label for="' + id + '" style="font-weight:400">' + t + '</label>'; ul.appendChild(li); });
-  calc();
+  if (mode === 'q') return renderQ();
+  if (mode === 'calc') return renderCalc();
+  return renderEnd();
 }
-function calc() {
-  const c = C[k]; const v = $('d').value; const ctas = $('ctas');
+function renderQ() {
+  const node = Q[path[path.length - 1]];
+  app.innerHTML = stepsBar(path.length) + backBtn() + '<p class="q">' + node.q + '</p>' + (node.help ? '<p class="qhelp">' + node.help + '</p>' : '') +
+    '<div class="opts">' + node.opts.map((o, i) => '<button class="opt" type="button" data-i="' + i + '">' + o.t + (o.s ? '<small>' + o.s + '</small>' : '') + '</button>').join('') + '</div>';
+  app.querySelectorAll('.opt').forEach(b => b.onclick = () => {
+    const o = node.opts[+b.dataset.i];
+    if (o.set) Object.assign(S, o.set);
+    if (o.go) { path.push(o.go); mode = 'q'; }
+    else if (o.calc) { curCalc = o.calc; mode = 'calc'; }
+    else if (o.end) { curEnd = o.end; mode = 'end'; }
+    render(); app.scrollIntoView({ block: 'nearest' });
+  });
+  bindBack();
+}
+function renderEnd() {
+  const e = END[curEnd];
+  app.innerHTML = stepsBar(4) + backBtn() + '<p class="q">' + e.h + '</p><p style="margin:0">' + e.p + '</p>' +
+    '<p class="hook">Uma conversa rápida mostra o caminho certo para o seu caso.</p>' +
+    '<div class="ctas"><a class="btn primary" target="_blank" rel="noopener" href="' + CONSULTA_PAY + '">Agendar consultoria de 30 minutos</a>' +
+    '<a class="btn ghost" target="_blank" rel="noopener" href="' + wa('Olá! Usei a calculadora da Loja do Imigrante. ' + e.wa) + '">Falar no WhatsApp</a>' +
+    '<button class="btn ghost" id="restart" type="button">Recomeçar</button></div>';
+  bindBack(); $('restart').onclick = restart;
+}
+function renderCalc() {
+  const c = CALC[curCalc]();
+  const key = 'calc_' + curCalc;
+  const saved = store.get(key);
+  const alerts = c.alerts.filter(Boolean).map(a => '<div class="alert">' + a + '</div>').join('');
+  app.innerHTML = stepsBar(4) + backBtn() +
+    '<label class="d" for="d"><span>' + c.q + '</span><small>' + c.help + '</small><input type="date" id="d" value="' + (saved || c.ex) + '"></label>' +
+    '<div class="stamp"><span class="k">' + c.label + '</span><span class="date" id="out">—</span><span class="status" id="st"></span><div class="bar" aria-hidden="true"><i id="bar"></i></div></div>' +
+    alerts +
+    '<h2>Documentos que você vai precisar</h2><ul class="check">' + c.docs.map((t, i) => '<li><input type="checkbox" id="doc' + i + '"><label for="doc' + i + '">' + t + '</label></li>').join('') + '</ul>' +
+    '<div class="ctas" id="ctas"></div><p class="note">' + c.rule + '</p><button class="btn ghost" id="restart" type="button">Recomeçar</button>';
+  const inp = $('d'); inp.dataset.ex = saved ? '' : '1';
+  inp.addEventListener('input', () => { inp.dataset.ex = ''; store.set(key, inp.value); calc(c); });
+  bindBack(); $('restart').onclick = restart;
+  calc(c);
+}
+function calc(c) {
+  const v = $('d').value; const ctas = $('ctas');
   if (!v) { $('out').textContent = '—'; $('st').textContent = 'Escolha uma data.'; $('st').className = 'status'; $('bar').style.width = '0'; ctas.innerHTML = ''; return; }
   const start = new Date(v + 'T00:00:00'); const end = addYears(start, c.years); const today = new Date(); today.setHours(0, 0, 0, 0);
-  const isEx = $('d').dataset.ex === '1';
-  $('out').innerHTML = fmt(end) + (isEx ? '<span class="ex">exemplo</span>' : '');
+  $('out').innerHTML = fmt(end) + ($('d').dataset.ex === '1' ? '<span class="ex">exemplo</span>' : '');
   const total = end - start, done = Math.min(Math.max(today - start, 0), total);
   $('bar').style.width = (total > 0 ? Math.round(done / total * 100) : 0) + '%';
   const ok = today >= end; const m = monthsBetween(today, end);
@@ -163,13 +238,12 @@ function calc() {
       '<ul><li>Cada documento explicado: onde pedir, validade e como entregar</li><li>Quanto custa o pedido em 2026 (com as taxas oficiais)</li><li>Os erros mais comuns que atrasam o pedido</li><li>A ordem certa para juntar tudo</li></ul>' +
       '<p class="note">PDF de 8 páginas. Depois do pagamento, o guia abre na hora.</p>' +
       '<div class="price">9,90 €</div>' +
-      '<a class="btn primary" target="_blank" rel="noopener" href="' + (CHECKLIST_PAY || wa(msg + ' Quero o checklist completo de 9,90 €.')) + '">Quero o meu checklist</a>' +
+      '<a class="btn primary" target="_blank" rel="noopener" href="' + CHECKLIST_PAY + '">Quero o meu checklist</a>' +
     '</div>' +
     '<a class="btn ghost" target="_blank" rel="noopener" href="' + wa(msg + ' Quero ajuda.') + '">Prefiro falar no WhatsApp</a>';
   $('wantck').addEventListener('click', () => { $('offer').hidden = false; $('wantck').hidden = true; });
 }
-document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => { k = t.dataset.k; render(); }));
-$('d').addEventListener('input', () => { $('d').dataset.ex = ''; store.set('calc_' + k, $('d').value); calc(); });
+function restart() { S = {}; path = ['pais']; mode = 'q'; curCalc = null; curEnd = null; render(); }
 render();
 </script>
 
