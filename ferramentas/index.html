@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ferramentas de PDF · A Loja do Imigrante</title>
+<meta name="description" content="Ferramentas grátis para preparar os seus documentos para a AIMA e o consulado: fotos para PDF, juntar, assinar e comprimir PDF. Os arquivos não saem do seu celular.">
+<link rel="icon" href="../logo.png">
+<style>
+:root{--bg:#0c0c0b;--panel:#161614;--line:#2b2a26;--ink:#f3efe4;--mute:#a29d90;--yel:#ffd447;--ok:#8ad49a;--warn:#ffb15c;
+  --body:"Inter","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.wrap{max-width:640px;margin:0 auto;display:grid;gap:18px}
+a{color:var(--yel)}
+.brand{font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+h1{font:900 clamp(30px,7vw,48px)/1 var(--body);letter-spacing:-.03em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--yel)}
+.lede{color:var(--mute);margin:0}
+.safe{display:flex;gap:10px;align-items:flex-start;background:#13200f;border:1px solid #2e4a26;border-radius:12px;padding:12px 14px;font-size:14px}
+.tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:560px){.tabs{grid-template-columns:repeat(4,1fr)}}
+.tab{font:700 14px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 8px;cursor:pointer;text-align:center}
+.tab[aria-selected="true"]{background:var(--yel);color:#141414;border-color:var(--yel)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:14px}
+.panel h2{font:800 20px/1.2 var(--body);margin:0}
+.hint{color:var(--mute);font-size:14px;margin:0}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;font:700 16px var(--body);border-radius:12px;padding:14px 16px;border:0;cursor:pointer}
+.btn.primary{background:var(--yel);color:#141414}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,.tab:focus-visible,.mini:focus-visible{outline:2px solid var(--yel);outline-offset:2px}
+.pick{position:relative}
+.pick input{position:absolute;inset:0;opacity:0;cursor:pointer}
+ul.files{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ul.files li{display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px}
+ul.files img,ul.files .ico{width:48px;height:48px;object-fit:cover;border-radius:6px;background:#222;display:grid;place-items:center;font:700 11px var(--mono);color:var(--mute)}
+ul.files .nm{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ul.files .nm small{display:block;color:var(--mute);font-size:12px}
+.acts{display:flex;gap:4px}
+.mini{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:16px;cursor:pointer}
+.status{font-size:14px;color:var(--ok);margin:0;min-height:1.2em}
+.status.err{color:var(--warn)}
+.sigpad{width:100%;height:180px;background:#fff;border-radius:10px;touch-action:none;display:block}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row label{font-size:14px;color:var(--mute)}
+select,input[type=range]{accent-color:var(--yel)}
+select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px}
+.stage{position:relative;background:#222;border-radius:10px;overflow:hidden}
+.stage canvas{width:100%;height:auto;display:block}
+.stage img.sig{position:absolute;pointer-events:none}
+.levels{display:grid;gap:8px}
+.levels label{display:flex;gap:8px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15px;cursor:pointer}
+.cta{border:1px solid var(--yel);border-radius:14px;padding:18px;display:grid;gap:10px}
+.cta h3{margin:0;font:800 18px var(--body)}
+.note{font-size:12px;color:var(--mute);margin:0}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="../">← A Loja do Imigrante</a>
+  <h1>Prepare os seus <em>documentos em PDF</em></h1>
+  <p class="lede">Grátis, para mandar à AIMA, ao consulado ou à Extranjería: transforme fotos em PDF, junte, assine e comprima.</p>
+  <div class="safe"><span>🔒</span><span><b>Os seus documentos não saem do seu celular.</b> Tudo é feito aqui no seu navegador: nada é enviado para nenhum servidor.</span></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-t="fotos">📷 Fotos → PDF</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="juntar">📎 Juntar PDFs</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="assinar">✍️ Assinar PDF</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="comprimir">🗜️ Comprimir</button>
+  </div>
+
+  <!-- FOTOS -->
+  <section class="panel" id="p-fotos">
+    <h2>Fotos para PDF</h2>
+    <p class="hint">Tire foto de cada página do documento (passaporte, contrato, certidão…). Fotografe numa mesa, com boa luz e sem sombra.</p>
+    <div class="pick"><button class="btn ghost" type="button">+ Escolher ou tirar fotos</button><input type="file" id="f-in" accept="image/*" multiple></div>
+    <ul class="files" id="f-list"></ul>
+    <button class="btn primary" id="f-go" disabled>Criar PDF</button>
+    <p class="status" id="f-st"></p>
+  </section>
+
+  <!-- JUNTAR -->
+  <section class="panel" id="p-juntar" hidden>
+    <h2>Juntar PDFs</h2>
+    <p class="hint">Junte vários PDFs (e fotos) num arquivo só, na ordem que quiser. Use ↑ ↓ para organizar.</p>
+    <div class="pick"><button class="btn ghost" type="button">+ Adicionar PDFs ou fotos</button><input type="file" id="j-in" accept="application/pdf,image/*" multiple></div>
+    <ul class="files" id="j-list"></ul>
+    <button class="btn primary" id="j-go" disabled>Juntar e baixar</button>
+    <p class="status" id="j-st"></p>
+  </section>
+
+  <!-- ASSINAR -->
+  <section class="panel" id="p-assinar" hidden>
+    <h2>Assinar PDF</h2>
+    <p class="hint">1) Escolha o PDF. 2) Desenhe a sua assinatura com o dedo. 3) Toque no documento onde ela deve ficar.</p>
+    <div class="pick"><button class="btn ghost" type="button" id="a-pickbtn">+ Escolher PDF</button><input type="file" id="a-in" accept="application/pdf"></div>
+    <div id="a-work" hidden style="display:grid;gap:12px">
+      <canvas class="sigpad" id="a-pad"></canvas>
+      <div class="row"><button class="btn ghost" type="button" id="a-clear" style="width:auto;padding:8px 14px">Limpar assinatura</button>
+        <label>Tamanho <input type="range" id="a-size" min="10" max="50" value="28"></label></div>
+      <div class="row"><label for="a-page">Página</label><select id="a-page"></select></div>
+      <div class="stage" id="a-stage"><canvas id="a-view"></canvas><img class="sig" id="a-sig" alt="" hidden></div>
+      <p class="hint" style="margin:0">Toque no documento para posicionar a assinatura.</p>
+      <button class="btn primary" id="a-go" disabled>Assinar e baixar</button>
+    </div>
+    <p class="status" id="a-st"></p>
+    <p class="note">Esta é uma <b>assinatura simples</b> (como no papel), boa para declarações e formulários. Não substitui a assinatura digital qualificada (Chave Móvel Digital ou certificado digital), quando ela for exigida.</p>
+  </section>
+
+  <!-- COMPRIMIR -->
+  <section class="panel" id="p-comprimir" hidden>
+    <h2>Comprimir PDF</h2>
+    <p class="hint">Para quando o portal diz que o arquivo é grande demais. Funciona melhor em documentos escaneados ou fotografados.</p>
+    <div class="pick"><button class="btn ghost" type="button" id="c-pickbtn">+ Escolher PDF</button><input type="file" id="c-in" accept="application/pdf"></div>
+    <div class="levels" id="c-levels" hidden>
+      <label><input type="radio" name="lv" value="1.6,0.75"> Leve: melhor qualidade</label>
+      <label><input type="radio" name="lv" value="1.3,0.6" checked> Média: recomendada</label>
+      <label><input type="radio" name="lv" value="1.0,0.5"> Forte: arquivo bem pequeno</label>
+    </div>
+    <button class="btn primary" id="c-go" disabled>Comprimir e baixar</button>
+    <p class="status" id="c-st"></p>
+    <p class="note">Ao comprimir, as páginas viram imagem (o texto deixa de poder ser selecionado). Confira se tudo continua legível antes de enviar.</p>
+  </section>
+
+  <div class="cta">
+    <h3>Os documentos estão prontos. E agora?</h3>
+    <a class="btn primary" href="../calculadora.html">📅 Veja quando pode pedir: calculadora grátis</a>
+    <a class="btn ghost" href="../checklist/">✅ Checklist completo do pedido</a>
+    <a class="btn ghost" href="https://wa.me/351935149920?text=Ol%C3%A1!%20Usei%20as%20ferramentas%20de%20PDF%20da%20Loja%20do%20Imigrante%20e%20quero%20ajuda%20com%20os%20meus%20documentos." target="_blank" rel="noopener">💬 Prefere que a gente organize os seus documentos? Fale no WhatsApp</a>
+  </div>
+  <p class="note">A Loja do Imigrante · @alojadoimigrante.pt · Consultoria de orientação, não é escritório de advocacia.</p>
+</div>
+
+<script src="js/pdf-lib.min.js"></script>
+<script src="js/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/pdf.worker.min.js';
+const { PDFDocument } = PDFLib;
+const $ = id => document.getElementById(id);
+const A4 = [595.28, 841.89];
+const fmtKB = b => b > 1048576 ? (b / 1048576).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB';
+const stamp = () => new Date().toISOString().slice(0, 10);
+
+/* abas */
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === t ? 'true' : 'false'));
+  ['fotos', 'juntar', 'assinar', 'comprimir'].forEach(k => $('p-' + k).hidden = k !== t.dataset.t);
+});
+
+function download(bytes, name) {
+  const blob = new Blob([bytes], { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+  return blob.size;
+}
+function setSt(id, msg, err) { $(id).textContent = msg; $(id).className = 'status' + (err ? ' err' : ''); }
+
+/* imagem -> JPEG reduzido (A4 ~ 200 dpi) */
+async function imageToJpeg(file, maxSide = 1754, q = 0.82) {
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((ok, bad) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => bad(new Error('img')); i.src = url; });
+    const s = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+    const c = document.createElement('canvas'); c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+    const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+    const blob = await new Promise(r => c.toBlob(r, 'image/jpeg', q));
+    return { bytes: new Uint8Array(await blob.arrayBuffer()), w: c.width, h: c.height };
+  } finally { URL.revokeObjectURL(url); }
+}
+async function addImagePage(doc, file) {
+  const j = await imageToJpeg(file);
+  const img = await doc.embedJpg(j.bytes);
+  const land = j.w > j.h; const [pw, ph] = land ? [A4[1], A4[0]] : A4; const m = 24;
+  const s = Math.min((pw - 2 * m) / j.w, (ph - 2 * m) / j.h);
+  const page = doc.addPage([pw, ph]);
+  page.drawImage(img, { x: (pw - j.w * s) / 2, y: (ph - j.h * s) / 2, width: j.w * s, height: j.h * s });
+}
+
+/* lista com ordem */
+function makeList(listEl, items, onChange) {
+  listEl.innerHTML = '';
+  items.forEach((f, i) => {
+    const li = document.createElement('li');
+    const isImg = f.type.startsWith('image/');
+    const thumb = isImg ? '<img alt="" src="' + (f._u ||= URL.createObjectURL(f)) + '">' : '<span class="ico">PDF</span>';
+    li.innerHTML = thumb + '<span class="nm">' + (i + 1) + '. ' + f.name.replace(/</g, '&lt;') + '<small>' + fmtKB(f.size) + '</small></span>' +
+      '<span class="acts"><button class="mini" aria-label="Subir" data-a="up">↑</button><button class="mini" aria-label="Descer" data-a="dn">↓</button><button class="mini" aria-label="Remover" data-a="rm">✕</button></span>';
+    li.querySelectorAll('.mini').forEach(b => b.onclick = () => {
+      const a = b.dataset.a;
+      if (a === 'up' && i > 0) [items[i - 1], items[i]] = [items[i], items[i - 1]];
+      if (a === 'dn' && i < items.length - 1) [items[i + 1], items[i]] = [items[i], items[i + 1]];
+      if (a === 'rm') items.splice(i, 1);
+      makeList(listEl, items, onChange); onChange();
+    });
+    listEl.appendChild(li);
+  });
+}
+
+/* FOTOS -> PDF */
+const fotos = [];
+$('f-in').onchange = e => { fotos.push(...e.target.files); e.target.value = ''; makeList($('f-list'), fotos, fUpd); fUpd(); };
+function fUpd() { $('f-go').disabled = !fotos.length; setSt('f-st', fotos.length ? fotos.length + (fotos.length === 1 ? ' foto' : ' fotos') + ' na ordem acima.' : ''); }
+$('f-go').onclick = async () => {
+  $('f-go').disabled = true; setSt('f-st', 'A criar o PDF…');
+  try {
+    const doc = await PDFDocument.create();
+    for (const f of fotos) await addImagePage(doc, f);
+    const size = download(await doc.save(), 'documento_' + stamp() + '.pdf');
+    setSt('f-st', '✓ PDF criado (' + fmtKB(size) + '). Veja nos seus downloads.');
+  } catch (e) { setSt('f-st', 'Não foi possível ler uma das fotos. Tente tirar a foto de novo (formato JPG ou PNG).', true); }
+  $('f-go').disabled = false;
+};
+
+/* JUNTAR */
+const junt = [];
+$('j-in').onchange = e => { junt.push(...e.target.files); e.target.value = ''; makeList($('j-list'), junt, jUpd); jUpd(); };
+function jUpd() { $('j-go').disabled = junt.length < 1; setSt('j-st', junt.length ? junt.length + ' arquivo(s) na ordem acima.' : ''); }
+$('j-go').onclick = async () => {
+  $('j-go').disabled = true; setSt('j-st', 'A juntar…');
+  const out = await PDFDocument.create(); let bad = [];
+  for (const f of junt) {
+    try {
+      if (f.type.startsWith('image/')) { await addImagePage(out, f); continue; }
+      const src = await PDFDocument.load(await f.arrayBuffer(), { ignoreEncryption: true });
+      const pages = await out.copyPages(src, src.getPageIndices()); pages.forEach(p => out.addPage(p));
+    } catch (e) { bad.push(f.name); }
+  }
+  if (out.getPageCount()) {
+    const size = download(await out.save(), 'documentos_juntos_' + stamp() + '.pdf');
+    setSt('j-st', '✓ PDF criado com ' + out.getPageCount() + ' páginas (' + fmtKB(size) + ').' + (bad.length ? ' Não deu para ler: ' + bad.join(', ') : ''), !!bad.length);
+  } else setSt('j-st', 'Não foi possível ler os arquivos. Se o PDF tem senha, abra-o e guarde uma cópia sem senha.', true);
+  $('j-go').disabled = false;
+};
+
+/* ASSINAR */
+let aBytes = null, aPdf = null, aPos = null, sigEmpty = true;
+const pad = $('a-pad'), pg = pad.getContext('2d');
+function sizePad() { const r = pad.getBoundingClientRect(); const d = window.devicePixelRatio || 1; pad.width = r.width * d; pad.height = r.height * d; pg.setTransform(d, 0, 0, d, 0, 0); pg.lineWidth = 2.6; pg.lineCap = 'round'; pg.lineJoin = 'round'; pg.strokeStyle = '#0b2a6b'; sigEmpty = true; }
+let drawing = false;
+const pt = e => { const r = pad.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+pad.addEventListener('pointerdown', e => { drawing = true; pad.setPointerCapture(e.pointerId); const [x, y] = pt(e); pg.beginPath(); pg.moveTo(x, y); });
+pad.addEventListener('pointermove', e => { if (!drawing) return; const [x, y] = pt(e); pg.lineTo(x, y); pg.stroke(); sigEmpty = false; });
+pad.addEventListener('pointerup', () => { drawing = false; aRefresh(); });
+$('a-clear').onclick = () => { pg.clearRect(0, 0, pad.width, pad.height); sigEmpty = true; aRefresh(); };
+function sigPng() {
+  /* recorta a assinatura ao conteúdo */
+  const w = pad.width, h = pad.height, data = pg.getImageData(0, 0, w, h).data;
+  let x0 = w, y0 = h, x1 = 0, y1 = 0;
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (data[(y * w + x) * 4 + 3] > 10) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+  if (x1 <= x0) return null;
+  const c = document.createElement('canvas'); c.width = x1 - x0 + 8; c.height = y1 - y0 + 8;
+  c.getContext('2d').drawImage(pad, x0 - 4, y0 - 4, c.width, c.height, 0, 0, c.width, c.height);
+  return { url: c.toDataURL('image/png'), ratio: c.height / c.width };
+}
+$('a-in').onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    aBytes = new Uint8Array(await f.arrayBuffer());
+    aPdf = await pdfjsLib.getDocument({ data: aBytes.slice() }).promise;
+    $('a-page').innerHTML = Array.from({ length: aPdf.numPages }, (_, i) => '<option value="' + (i + 1) + '">' + (i + 1) + ' de ' + aPdf.numPages + '</option>').join('');
+    $('a-page').value = aPdf.numPages; /* assinatura costuma ir na última página */
+    $('a-work').hidden = false; $('a-pickbtn').textContent = '📄 ' + f.name;
+    sizePad(); aPos = null; await renderPage(); setSt('a-st', '');
+  } catch (err) { setSt('a-st', 'Não foi possível abrir este PDF. Se tem senha, guarde uma cópia sem senha.', true); }
+};
+async function renderPage() {
+  const page = await aPdf.getPage(+$('a-page').value);
+  const vp0 = page.getViewport({ scale: 1 }); const w = $('a-stage').clientWidth || 600;
+  const vp = page.getViewport({ scale: (w * (window.devicePixelRatio || 1)) / vp0.width });
+  const c = $('a-view'); c.width = vp.width; c.height = vp.height;
+  await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+  aRefresh();
+}
+$('a-page').onchange = () => { aPos = null; renderPage(); };
+$('a-size').oninput = aRefresh;
+$('a-view').addEventListener('click', e => { const r = e.target.getBoundingClientRect(); aPos = [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; aRefresh(); });
+function aRefresh() {
+  const s = sigEmpty ? null : sigPng(); const img = $('a-sig');
+  if (s && aPos) {
+    const st = $('a-stage').getBoundingClientRect(); const wPct = +$('a-size').value / 100;
+    const w = st.width * wPct, h = w * s.ratio;
+    img.src = s.url; img.style.width = w + 'px'; img.style.left = (aPos[0] * st.width - w / 2) + 'px'; img.style.top = (aPos[1] * $('a-view').getBoundingClientRect().height - h / 2) + 'px'; img.hidden = false;
+  } else img.hidden = true;
+  $('a-go').disabled = !(s && aPos);
+  if (!sigEmpty && !aPos) setSt('a-st', 'Agora toque no documento, onde a assinatura deve ficar.');
+}
+$('a-go').onclick = async () => {
+  $('a-go').disabled = true; setSt('a-st', 'A assinar…');
+  try {
+    const s = sigPng(); const doc = await PDFDocument.load(aBytes, { ignoreEncryption: true });
+    const png = await doc.embedPng(s.url); const page = doc.getPage(+$('a-page').value - 1);
+    const { width: pw, height: ph } = page.getSize(); const rot = page.getRotation().angle % 360;
+    const w = pw * (+$('a-size').value / 100), h = w * s.ratio;
+    if (rot === 0) page.drawImage(png, { x: aPos[0] * pw - w / 2, y: ph - aPos[1] * ph - h / 2, width: w, height: h });
+    else { setSt('a-st', 'Esta página está rodada; a assinatura foi posta no centro.', true); page.drawImage(png, { x: pw / 2 - w / 2, y: ph / 2 - h / 2, width: w, height: h }); }
+    const size = download(await doc.save(), 'documento_assinado_' + stamp() + '.pdf');
+    setSt('a-st', '✓ PDF assinado (' + fmtKB(size) + '). Veja nos seus downloads.');
+  } catch (e) { setSt('a-st', 'Não foi possível assinar este PDF.', true); }
+  $('a-go').disabled = false;
+};
+window.addEventListener('resize', () => { if (aPdf) { const keep = sigEmpty; renderPage(); } });
+
+/* COMPRIMIR */
+let cFile = null;
+$('c-in').onchange = e => { cFile = e.target.files[0] || null; $('c-go').disabled = !cFile; $('c-levels').hidden = !cFile; if (cFile) { $('c-pickbtn').textContent = '📄 ' + cFile.name; setSt('c-st', 'Tamanho atual: ' + fmtKB(cFile.size) + '.'); } };
+$('c-go').onclick = async () => {
+  $('c-go').disabled = true;
+  const [scale, q] = document.querySelector('input[name=lv]:checked').value.split(',').map(Number);
+  try {
+    const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await cFile.arrayBuffer()) }).promise;
+    const out = await PDFDocument.create();
+    for (let i = 1; i <= pdf.numPages; i++) {
+      setSt('c-st', 'A comprimir página ' + i + ' de ' + pdf.numPages + '…');
+      const page = await pdf.getPage(i); const vp1 = page.getViewport({ scale: 1 }); const vp = page.getViewport({ scale });
+      const c = document.createElement('canvas'); c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+      const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
+      await page.render({ canvasContext: g, viewport: vp }).promise;
+      const blob = await new Promise(r => c.toBlob(r, 'image/jpeg', q));
+      const img = await out.embedJpg(new Uint8Array(await blob.arrayBuffer()));
+      const p = out.addPage([vp1.width, vp1.height]); p.drawImage(img, { x: 0, y: 0, width: vp1.width, height: vp1.height });
+    }
+    const bytes = await out.save();
+    if (bytes.length >= cFile.size) { setSt('c-st', 'Este PDF já está leve (' + fmtKB(cFile.size) + '). Comprimir não reduz mais: pode enviar o original.', true); }
+    else { download(bytes, cFile.name.replace(/\.pdf$/i, '') + '_comprimido.pdf'); setSt('c-st', '✓ De ' + fmtKB(cFile.size) + ' para ' + fmtKB(bytes.length) + '. Confira se está legível.'); }
+  } catch (e) { setSt('c-st', 'Não foi possível comprimir este PDF. Se tem senha, guarde uma cópia sem senha.', true); }
+  $('c-go').disabled = false;
+};
+</script>
+</body>
+</html>
