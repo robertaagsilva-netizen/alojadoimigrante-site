@@ -86,7 +86,10 @@ footer { font-size: 12px; color: var(--muted); display: grid; gap: 6px; }
   </footer>
 </div>
 
+<script>window.LC_PAGINA = 'calc';</script>
+<script src="/contador/c.js"></script>
 <script>
+const lc = (f, e) => { try { if (window.LC) window.LC[f](e); } catch (_) {} };
 const WA = '351935149920';
 const CHECKLIST_PAY = 'https://buy.stripe.com/4gM8wR3RE3671J93pD0VO0a'; // checklist 9,90 €
 const CONSULTA_PAY = 'https://buy.stripe.com/28E6oJ73QeOPcnNbW90VO0b'; // consultoria 30 min
@@ -186,6 +189,7 @@ function renderQ() {
     '<div class="opts">' + node.opts.map((o, i) => '<button class="opt" type="button" data-i="' + i + '">' + o.t + (o.s ? '<small>' + o.s + '</small>' : '') + '</button>').join('') + '</div>';
   app.querySelectorAll('.opt').forEach(b => b.onclick = () => {
     const o = node.opts[+b.dataset.i];
+    if (path[path.length - 1] === 'pais') lc('conta', 'calc_pais_' + (o.go || o.end));
     if (o.set) Object.assign(S, o.set);
     if (o.go) { path.push(o.go); mode = 'q'; }
     else if (o.calc) { curCalc = o.calc; mode = 'calc'; }
@@ -206,6 +210,7 @@ function renderEnd() {
 function renderCalc() {
   const c = CALC[curCalc]();
   const key = 'calc_' + curCalc;
+  lc('conta', 'calc_resultado_' + curCalc);
   const saved = store.get(key);
   const alerts = c.alerts.filter(Boolean).map(a => '<div class="alert">' + a + '</div>').join('');
   app.innerHTML = stepsBar(4) + backBtn() +
@@ -215,7 +220,7 @@ function renderCalc() {
     '<h2>Documentos que você vai precisar</h2><ul class="check">' + c.docs.map((t, i) => '<li><input type="checkbox" id="doc' + i + '"><label for="doc' + i + '">' + t + '</label></li>').join('') + '</ul>' +
     '<div class="ctas" id="ctas"></div><p class="note">' + c.rule + '</p><button class="btn ghost" id="restart" type="button">Recomeçar</button>';
   const inp = $('d'); inp.dataset.ex = saved ? '' : '1';
-  inp.addEventListener('input', () => { inp.dataset.ex = ''; store.set(key, inp.value); calc(c); });
+  inp.addEventListener('input', () => { lc('contaUmaVez', 'calc_mudou_data'); inp.dataset.ex = ''; store.set(key, inp.value); calc(c); });
   bindBack(); $('restart').onclick = restart;
   calc(c);
 }
@@ -241,8 +246,10 @@ function calc(c) {
       '<a class="btn primary" target="_blank" rel="noopener" href="' + CHECKLIST_PAY + '">Quero o meu checklist</a>' +
     '</div>' +
     '<a class="btn ghost" target="_blank" rel="noopener" href="' + wa(msg + ' Quero ajuda.') + '">Prefiro falar no WhatsApp</a>';
-  $('wantck').addEventListener('click', () => { $('offer').hidden = false; $('wantck').hidden = true; });
+  $('wantck').addEventListener('click', () => { lc('conta', 'calc_quero_checklist'); $('offer').hidden = false; $('wantck').hidden = true; });
 }
+lc('contaUmaVez', 'calc_abriu');
+if (/[?&]o=bio/.test(location.search)) lc('contaUmaVez', 'calc_vindo_bio');
 function restart() { S = {}; path = ['pais']; mode = 'q'; curCalc = null; curEnd = null; render(); }
 render();
 </script>

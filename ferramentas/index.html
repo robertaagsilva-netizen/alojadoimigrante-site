@@ -78,7 +78,7 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
     <p class="hint">Tire foto de cada página do documento (passaporte, contrato, certidão…). Fotografe numa mesa, com boa luz e sem sombra.</p>
     <div class="pick"><button class="btn ghost" type="button">+ Escolher ou tirar fotos</button><input type="file" id="f-in" accept="image/*" multiple></div>
     <ul class="files" id="f-list"></ul>
-    <button class="btn primary" id="f-go" disabled>Criar PDF</button>
+    <button class="btn primary" id="f-go" data-c="fotos_pdf" disabled>Criar PDF</button>
     <p class="status" id="f-st"></p>
   </section>
 
@@ -88,7 +88,7 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
     <p class="hint">Junte vários PDFs (e fotos) num arquivo só, na ordem que quiser. Use ↑ ↓ para organizar.</p>
     <div class="pick"><button class="btn ghost" type="button">+ Adicionar PDFs ou fotos</button><input type="file" id="j-in" accept="application/pdf,image/*" multiple></div>
     <ul class="files" id="j-list"></ul>
-    <button class="btn primary" id="j-go" disabled>Juntar e baixar</button>
+    <button class="btn primary" id="j-go" data-c="juntar" disabled>Juntar e baixar</button>
     <p class="status" id="j-st"></p>
   </section>
 
@@ -104,7 +104,7 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
       <div class="row"><label for="a-page">Página</label><select id="a-page"></select></div>
       <div class="stage" id="a-stage"><canvas id="a-view"></canvas><img class="sig" id="a-sig" alt="" hidden></div>
       <p class="hint" style="margin:0">Toque no documento para posicionar a assinatura.</p>
-      <button class="btn primary" id="a-go" disabled>Assinar e baixar</button>
+      <button class="btn primary" id="a-go" data-c="assinar" disabled>Assinar e baixar</button>
     </div>
     <p class="status" id="a-st"></p>
     <p class="note">Esta é uma <b>assinatura simples</b> (como no papel), boa para declarações e formulários. Não substitui a assinatura digital qualificada (Chave Móvel Digital ou certificado digital), quando ela for exigida.</p>
@@ -120,7 +120,7 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
       <label><input type="radio" name="lv" value="1.3,0.6" checked> Média: recomendada</label>
       <label><input type="radio" name="lv" value="1.0,0.5"> Forte: arquivo bem pequeno</label>
     </div>
-    <button class="btn primary" id="c-go" disabled>Comprimir e baixar</button>
+    <button class="btn primary" id="c-go" data-c="comprimir" disabled>Comprimir e baixar</button>
     <p class="status" id="c-st"></p>
     <p class="note">Ao comprimir, as páginas viram imagem (o texto deixa de poder ser selecionado). Confira se tudo continua legível antes de enviar.</p>
   </section>
@@ -134,6 +134,9 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
   <p class="note">A Loja do Imigrante · @alojadoimigrante.pt · Consultoria de orientação, não é escritório de advocacia.</p>
 </div>
 
+<script>window.LC_PAGINA = 'ferr';</script>
+<script src="/contador/c.js"></script>
+<script>try { LC.contaUmaVez('ferr_abriu'); } catch (e) {}</script>
 <script src="js/pdf-lib.min.js"></script>
 <script src="js/pdf.min.js"></script>
 <script>
