@@ -5,6 +5,7 @@ $PAG = array(
   'rp'    => 'https://buy.stripe.com/bJe14pgEq4ab5Zpd0d0VO04',  // residência permanente 125 €
   'nie'   => 'https://buy.stripe.com/dRmcN787UeOPevV1hv0VO05',  // NIE 115 €
   'indef' => 'https://buy.stripe.com/28E28tcoa7mn3Rh0dr0VO06',  // indeferido 195 €
+  'casam' => 'https://wa.me/351935149920?text=' . rawurlencode('Olá! Acabei de fazer o meu pedido no site: quero registrar o meu casamento no Brasil.'),
   'reag'  => 'https://buy.stripe.com/28E6oJ73QeOPcnNbW90VO0b',  // consultoria 35 €
   'outro' => 'https://buy.stripe.com/28E6oJ73QeOPcnNbW90VO0b',  // consultoria 35 €
 );

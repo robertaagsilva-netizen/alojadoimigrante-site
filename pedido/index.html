@@ -74,6 +74,7 @@ a { color: var(--accent); }
       <label class="opt"><input type="radio" name="servico" value="rp" required><span>Residência permanente em Portugal<small>Conferimos os documentos, fazemos o pedido no formulário novo da AIMA e acompanhamos.</small></span></label>
       <label class="opt"><input type="radio" name="servico" value="nie"><span>NIE na Espanha<small>Organizamos o pedido e o agendamento do seu NIE.</small></span></label>
       <label class="opt"><input type="radio" name="servico" value="indef"><span>Pedido indeferido ou parado<small>Analisamos o seu caso e orientamos o próximo passo.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="casam"><span>Registrar o casamento no Brasil<small>Casou fora do Brasil? A gente cuida do registro e da transcrição no cartório, com ou sem mudança de nome.</small></span></label>
       <label class="opt"><input type="radio" name="servico" value="reag"><span>Reagrupamento familiar<small>Começamos com uma conversa por chamada para ver o caminho certo para a sua família.</small></span></label>
       <label class="opt"><input type="radio" name="servico" value="outro"><span>Outro assunto<small>Renovação, autorização de residência, arraigo, nacionalidade e outros. Começamos com uma conversa por chamada.</small></span></label>
     </fieldset>
@@ -125,7 +126,7 @@ a { color: var(--accent); }
 <script>
 try { LC.contaUmaVez('pedido_abriu'); } catch (e) {}
 const f = document.getElementById('f');
-const S = { rp: 'Residência permanente em Portugal', nie: 'NIE na Espanha', indef: 'Pedido indeferido ou parado', reag: 'Reagrupamento familiar', outro: 'Outro assunto' };
+const S = { rp: 'Residência permanente em Portugal', nie: 'NIE na Espanha', indef: 'Pedido indeferido ou parado', casam: 'Registrar o casamento no Brasil', reag: 'Reagrupamento familiar', outro: 'Outro assunto' };
 // permite abrir já com o serviço escolhido: /pedido/?s=rp
 const pre = new URLSearchParams(location.search).get('s');
 if (pre && S[pre]) { const r = f.querySelector('input[name=servico][value=' + pre + ']'); if (r) r.checked = true; }

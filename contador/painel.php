@@ -84,7 +84,7 @@ p.note{color:var(--mut);font-size:13px}
 <?php
 $pf = __DIR__ . '/dados/pedidos.jsonl'; $ped = array();
 if (is_file($pf)) { foreach (array_reverse(file($pf, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)) as $ln) { $x = json_decode($ln, true); if (is_array($x)) $ped[] = $x; if (count($ped) >= 60) break; } }
-$SN = array('rp' => 'Residência permanente 125 €', 'nie' => 'NIE 115 €', 'indef' => 'Indeferido 195 €', 'reag' => 'Reagrupamento (consultoria 35 €)', 'outro' => 'Consultoria 35 €');
+$SN = array('rp' => 'Residência permanente 125 €', 'nie' => 'NIE 115 €', 'indef' => 'Indeferido 195 €', 'casam' => 'Registro de casamento no Brasil (WhatsApp)', 'reag' => 'Reagrupamento (consultoria 35 €)', 'outro' => 'Consultoria 35 €');
 $RS = array('sim' => 'sim', 'nao' => 'não', 'nao_sei' => 'não sabe', '' => '–');
 echo '<h2>Pedidos recebidos (' . count($ped) . ')</h2>';
 if (!$ped) echo '<p class="note">Nenhum pedido ainda. Quem preenche o formulário aparece aqui, mesmo que não termine o pagamento: confira no Stripe quem pagou.</p>';
