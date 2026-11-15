@@ -46,6 +46,9 @@ $L = array(
   'ferr_whatsapp' => 'Clicaram no WhatsApp (ferramentas)',
   'link_checklist' => 'Link curto /checklist (foi para o pagamento)',
   'link_consultoria' => 'Link curto /consultoria (foi para o pagamento)',
+  'pedido_abriu' => 'Abriram o formulário de pedido',
+  'pedido_pagar_outro' => 'Foram para o pagamento (pedido)',
+  'site_pedido' => 'Clicaram em Fazer o meu pedido',
   'ferr_abriu' => 'Abriram as ferramentas de PDF',
   'ferr_fotos_pdf' => 'Geraram PDF de fotos',
   'ferr_juntar' => 'Juntaram PDFs',
@@ -65,6 +68,7 @@ h1{font-size:20px;margin:4px 0 12px}h2{font-size:15px;color:var(--gold);margin:2
 table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden}
 td{padding:10px 12px;border-bottom:1px solid #2b2824;font-size:14px}td.n{text-align:right;font-weight:700;font-size:16px;white-space:nowrap}
 .big{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.big div{background:var(--card);border-radius:12px;padding:12px}.big b{display:block;font-size:26px;color:var(--gold)}.big span{font-size:13px;color:var(--mut)}
+.ped{background:var(--card);border-radius:12px;padding:12px;margin:0 0 8px;font-size:14px;line-height:1.5}.ped a.wa{display:inline-block;margin-top:6px;background:#25d366;color:#04210f;font-weight:700;padding:6px 12px;border-radius:99px;text-decoration:none}
 p.note{color:var(--mut);font-size:13px}
 </style></head><body><main>
 <h1>Contador da Loja do Imigrante</h1>
@@ -77,9 +81,27 @@ p.note{color:var(--mut);font-size:13px}
   <div><b><?= v($T, 'calc_quero_checklist') ?></b><span>viram o preço do checklist</span></div>
   <div><b><?= v($T, 'calc_pagar_checklist') + v($T, 'link_checklist') ?></b><span>foram para o pagamento do checklist</span></div>
 </div>
+<?php
+$pf = __DIR__ . '/dados/pedidos.jsonl'; $ped = array();
+if (is_file($pf)) { foreach (array_reverse(file($pf, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)) as $ln) { $x = json_decode($ln, true); if (is_array($x)) $ped[] = $x; if (count($ped) >= 60) break; } }
+$SN = array('rp' => 'Residência permanente 125 €', 'nie' => 'NIE 115 €', 'indef' => 'Indeferido 195 €', 'reag' => 'Reagrupamento (consultoria 35 €)', 'outro' => 'Consultoria 35 €');
+$RS = array('sim' => 'sim', 'nao' => 'não', 'nao_sei' => 'não sabe', '' => '–');
+echo '<h2>Pedidos recebidos (' . count($ped) . ')</h2>';
+if (!$ped) echo '<p class="note">Nenhum pedido ainda. Quem preenche o formulário aparece aqui, mesmo que não termine o pagamento: confira no Stripe quem pagou.</p>';
+foreach ($ped as $x) {
+  $h = function ($k) use ($x) { return htmlspecialchars(isset($x[$k]) ? $x[$k] : ''); };
+  $num = preg_replace('/\D/', '', isset($x['whatsapp']) ? $x['whatsapp'] : '');
+  $msg = rawurlencode('Olá, ' . (isset($x['nome']) ? $x['nome'] : '') . '! Aqui é a Loja do Imigrante. Recebemos o seu pedido e já vamos tratar do seu caso 😊');
+  echo '<div class="ped"><b>' . $h('nome') . '</b> · ' . htmlspecialchars(isset($SN[$x['servico']]) ? $SN[$x['servico']] : $x['servico']) . '<br><span class="note">' . $h('quando') . ' · ' . $h('cidade') . '</span>';
+  if ($x['servico'] === 'rp') echo '<br>1.º título: <b>' . $h('primeiro_titulo') . '</b> · sem buraco: ' . $RS[$x['sem_buraco']] . ' · em dia: ' . $RS[$x['em_dia']] . ' · português: ' . $RS[$x['portugues']];
+  if (!empty($x['caso'])) echo '<br><i>' . $h('caso') . '</i>';
+  if (!empty($x['email'])) echo '<br>' . $h('email');
+  echo '<br><a class="wa" target="_blank" rel="noopener" href="https://wa.me/' . $num . '?text=' . $msg . '">WhatsApp ' . $h('whatsapp') . '</a></div>';
+}
+?>
 <p class="note">"Abriram" conta uma vez por visita. Ir para o pagamento não quer dizer que pagou: as vendas confirmadas estão no Stripe.</p>
 <?php
-$grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Ferramentas de PDF' => 'ferr_');
+$grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Formulário de pedido' => 'pedido_', 'Ferramentas de PDF' => 'ferr_');
 foreach ($grupos as $g => $ps) {
   $ps = (array)$ps; $rows = '';
   foreach ($T as $e => $n) { foreach ($ps as $p) if (strpos($e, $p) === 0) { $rows .= '<tr><td>' . htmlspecialchars(isset($L[$e]) ? $L[$e] : str_replace('_', ' ', $e)) . '</td><td class="n">' . $n . '</td></tr>'; } }

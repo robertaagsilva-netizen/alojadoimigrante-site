@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Faça o seu pedido com a Loja do Imigrante: responda a algumas perguntas, pague com segurança e a gente fala com você pelo WhatsApp.">
+<link rel="icon" href="../logo.png">
+<title>Fazer o meu pedido · A Loja do Imigrante</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --bg: #12110f; --panel: #1c1a17; --line: #34302a; --fg: #f4eedf; --muted: #b3aa98;
+  --accent: #ffd34d; --accent-ink: #1a1405; --warn: #ff8a5c;
+  --display: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.5; margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+.wrap { max-width: 560px; margin: 0 auto; display: grid; gap: 20px; }
+.brand { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-size: clamp(30px, 8vw, 44px); line-height: 1.02; margin: 0; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--accent); }
+.lead { color: var(--muted); margin: 0; }
+.how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.how div { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px; font-size: 13px; color: var(--muted); }
+.how b { display: block; font-family: var(--display); color: var(--accent); font-size: 20px; }
+form { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 18px; }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+legend, label.f { font-weight: 700; margin-bottom: 4px; padding: 0; }
+.hint { color: var(--muted); font-size: 13px; font-weight: 400; display: block; }
+.opt { display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: start; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+.opt:has(input:checked) { border-color: var(--accent); }
+.opt input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); }
+.opt small { display: block; color: var(--muted); font-size: 13px; }
+.opt .p { color: var(--accent); font-weight: 700; }
+input[type=text], input[type=tel], input[type=email], input[type=month], select, textarea {
+  font: 500 16px var(--body); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; width: 100%; }
+textarea { min-height: 90px; resize: vertical; }
+.row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.row label { text-align: center; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 4px; cursor: pointer; font-size: 14px; }
+.row label:has(input:checked) { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+.row input { position: absolute; opacity: 0; pointer-events: none; }
+.btn { display: block; width: 100%; text-align: center; border: 0; cursor: pointer; font: 700 17px var(--body); border-radius: 12px; padding: 15px 16px; background: var(--accent); color: var(--accent-ink); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.box { border: 1px dashed var(--accent); border-radius: 12px; padding: 14px; font-size: 14px; display: grid; gap: 6px; }
+.box b { color: var(--accent); }
+.err { color: var(--warn); font-weight: 600; font-size: 14px; margin: 0; }
+.check { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14px; color: var(--muted); }
+.check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
+[hidden] { display: none !important; }
+footer { font-size: 12px; color: var(--muted); display: grid; gap: 6px; }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">A Loja do Imigrante · @alojadoimigrante.pt</div>
+  <h1>A gente faz o <em>seu pedido</em> por você</h1>
+  <p class="lead">Responda a algumas perguntas, faça o pagamento com segurança e a Loja do Imigrante fala com você pelo WhatsApp.</p>
+  <div class="how">
+    <div><b>1</b>Responda às perguntas</div>
+    <div><b>2</b>Faça o pagamento</div>
+    <div><b>3</b>A gente chama você no WhatsApp</div>
+  </div>
+
+  <form id="f" method="post" action="enviar.php" novalidate>
+    <fieldset>
+      <legend>O que você precisa?</legend>
+      <label class="opt"><input type="radio" name="servico" value="rp" required><span>Residência permanente em Portugal <span class="p">· 125 €</span><small>Conferimos os documentos, fazemos o pedido no formulário novo da AIMA e acompanhamos.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="nie"><span>NIE na Espanha <span class="p">· 115 €</span><small>Organizamos o pedido e o agendamento do seu NIE.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="indef"><span>Pedido indeferido ou parado <span class="p">· 195 €</span><small>Analisamos o seu caso e orientamos o próximo passo.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="reag"><span>Reagrupamento familiar <span class="p">· consultoria 35 €</span><small>Começamos com 30 minutos por chamada para ver o caminho certo para a sua família.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="outro"><span>Outro assunto <span class="p">· consultoria 35 €</span><small>Renovação, autorização de residência, arraigo, nacionalidade e outros.</small></span></label>
+    </fieldset>
+
+    <label class="f" for="nome">O seu nome</label>
+    <input type="text" id="nome" name="nome" autocomplete="name" maxlength="80" required>
+
+    <label class="f" for="wa">O seu WhatsApp <span class="hint">Com o indicativo do país, por exemplo +351 912 345 678</span></label>
+    <input type="tel" id="wa" name="whatsapp" autocomplete="tel" inputmode="tel" maxlength="25" required>
+
+    <label class="f" for="email">O seu e-mail <span class="hint">Opcional</span></label>
+    <input type="email" id="email" name="email" autocomplete="email" maxlength="100">
+
+    <div id="rpq" hidden style="display:grid;gap:18px">
+      <label class="f" for="data">Mês e ano do seu PRIMEIRO título de residência <span class="hint">Do primeiro cartão, não da chegada a Portugal</span></label>
+      <input type="month" id="data" name="primeiro_titulo">
+      <fieldset><legend>Os seus títulos ficaram sempre válidos, sem buraco entre eles?</legend>
+        <div class="row"><label><input type="radio" name="sem_buraco" value="sim">Sim</label><label><input type="radio" name="sem_buraco" value="nao">Não</label><label><input type="radio" name="sem_buraco" value="nao_sei">Não sei</label></div></fieldset>
+      <fieldset><legend>Finanças e Segurança Social estão em dia?</legend>
+        <div class="row"><label><input type="radio" name="em_dia" value="sim">Sim</label><label><input type="radio" name="em_dia" value="nao">Não</label><label><input type="radio" name="em_dia" value="nao_sei">Não sei</label></div></fieldset>
+      <fieldset><legend>Tem certificado de português (nível A2 ou mais)?</legend>
+        <div class="row"><label><input type="radio" name="portugues" value="sim">Sim</label><label><input type="radio" name="portugues" value="nao">Não</label><label><input type="radio" name="portugues" value="nao_sei">Não sei</label></div></fieldset>
+    </div>
+
+    <label class="f" for="cidade">Cidade onde mora</label>
+    <input type="text" id="cidade" name="cidade" maxlength="60">
+
+    <label class="f" for="caso">Conte rapidamente o seu caso <span class="hint">Opcional. Não escreva números de documentos.</span></label>
+    <textarea id="caso" name="caso" maxlength="800"></textarea>
+
+    <div class="box" id="resumo" hidden></div>
+
+    <label class="check"><input type="checkbox" id="ok" name="aceito" value="1" required><span>Autorizo a Loja do Imigrante a usar estes dados só para me contactar sobre o meu pedido. A Loja do Imigrante não é escritório de advocacia.</span></label>
+
+    <p class="err" id="err" hidden></p>
+    <input type="text" name="site" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <button class="btn" id="go" type="submit">Continuar para o pagamento</button>
+    <p class="hint" style="margin:0;text-align:center">Pagamento seguro pelo Stripe. Depois do pagamento, a Loja do Imigrante chama você no WhatsApp, por ordem de chegada.</p>
+  </form>
+
+  <footer>
+    <p><b>Importante:</b> quem marca a data do atendimento é a AIMA ou a Extranjería. O nosso trabalho é fazer o seu pedido do jeito certo, com os documentos certos, e acompanhar com você.</p>
+    <p>WhatsApp da Loja do Imigrante: <b>+351 935 149 920</b> · <a href="../">Voltar aos links</a></p>
+  </footer>
+</div>
+
+<script>window.LC_PAGINA = 'pedido';</script>
+<script src="/contador/c.js"></script>
+<script>
+try { LC.contaUmaVez('pedido_abriu'); } catch (e) {}
+const f = document.getElementById('f');
+const S = { rp: ['Residência permanente em Portugal', '125 €'], nie: ['NIE na Espanha', '115 €'], indef: ['Pedido indeferido ou parado', '195 €'], reag: ['Consultoria: reagrupamento familiar', '35 €'], outro: ['Consultoria de 30 minutos', '35 €'] };
+// permite abrir já com o serviço escolhido: /pedido/?s=rp
+const pre = new URLSearchParams(location.search).get('s');
+if (pre && S[pre]) { const r = f.querySelector('input[name=servico][value=' + pre + ']'); if (r) r.checked = true; }
+function upd() {
+  const s = (f.servico.value || '');
+  document.getElementById('rpq').hidden = s !== 'rp';
+  const r = document.getElementById('resumo');
+  if (S[s]) { r.hidden = false; r.innerHTML = 'Você escolheu: <b>' + S[s][0] + '</b><br>Valor: <b>' + S[s][1] + '</b>'; } else r.hidden = true;
+  document.getElementById('go').textContent = S[s] ? 'Continuar para o pagamento · ' + S[s][1] : 'Continuar para o pagamento';
+}
+f.addEventListener('change', upd); upd();
+f.addEventListener('submit', e => {
+  const err = document.getElementById('err'); let m = '';
+  if (!f.servico.value) m = 'Escolha o que você precisa.';
+  else if (f.nome.value.trim().length < 2) m = 'Escreva o seu nome.';
+  else if (f.whatsapp.value.replace(/\D/g, '').length < 8) m = 'Escreva o seu WhatsApp com o indicativo do país.';
+  else if (!document.getElementById('ok').checked) m = 'Marque a autorização para podermos contactar você.';
+  if (m) { e.preventDefault(); err.textContent = m; err.hidden = false; return; }
+  err.hidden = true; document.getElementById('go').disabled = true; document.getElementById('go').textContent = 'A abrir o pagamento…';
+});
+window.addEventListener('pageshow', () => { document.getElementById('go').disabled = false; upd(); });
+</script>
+</body>
+</html>
