@@ -71,11 +71,11 @@ a { color: var(--accent); }
   <form id="f" method="post" action="enviar.php" novalidate>
     <fieldset>
       <legend>O que você precisa?</legend>
-      <label class="opt"><input type="radio" name="servico" value="rp" required><span>Residência permanente em Portugal <span class="p">· 125 €</span><small>Conferimos os documentos, fazemos o pedido no formulário novo da AIMA e acompanhamos.</small></span></label>
-      <label class="opt"><input type="radio" name="servico" value="nie"><span>NIE na Espanha <span class="p">· 115 €</span><small>Organizamos o pedido e o agendamento do seu NIE.</small></span></label>
-      <label class="opt"><input type="radio" name="servico" value="indef"><span>Pedido indeferido ou parado <span class="p">· 195 €</span><small>Analisamos o seu caso e orientamos o próximo passo.</small></span></label>
-      <label class="opt"><input type="radio" name="servico" value="reag"><span>Reagrupamento familiar <span class="p">· consultoria 35 €</span><small>Começamos com 30 minutos por chamada para ver o caminho certo para a sua família.</small></span></label>
-      <label class="opt"><input type="radio" name="servico" value="outro"><span>Outro assunto <span class="p">· consultoria 35 €</span><small>Renovação, autorização de residência, arraigo, nacionalidade e outros.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="rp" required><span>Residência permanente em Portugal<small>Conferimos os documentos, fazemos o pedido no formulário novo da AIMA e acompanhamos.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="nie"><span>NIE na Espanha<small>Organizamos o pedido e o agendamento do seu NIE.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="indef"><span>Pedido indeferido ou parado<small>Analisamos o seu caso e orientamos o próximo passo.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="reag"><span>Reagrupamento familiar<small>Começamos com uma conversa por chamada para ver o caminho certo para a sua família.</small></span></label>
+      <label class="opt"><input type="radio" name="servico" value="outro"><span>Outro assunto<small>Renovação, autorização de residência, arraigo, nacionalidade e outros. Começamos com uma conversa por chamada.</small></span></label>
     </fieldset>
 
     <label class="f" for="nome">O seu nome</label>
@@ -110,7 +110,7 @@ a { color: var(--accent); }
 
     <p class="err" id="err" hidden></p>
     <input type="text" name="site" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-    <button class="btn" id="go" type="submit">Continuar para o pagamento</button>
+    <button class="btn" id="go" type="submit">Continuar</button>
     <p class="hint" style="margin:0;text-align:center">Pagamento seguro pelo Stripe. Depois do pagamento, a Loja do Imigrante chama você no WhatsApp, por ordem de chegada.</p>
   </form>
 
@@ -125,7 +125,7 @@ a { color: var(--accent); }
 <script>
 try { LC.contaUmaVez('pedido_abriu'); } catch (e) {}
 const f = document.getElementById('f');
-const S = { rp: ['Residência permanente em Portugal', '125 €'], nie: ['NIE na Espanha', '115 €'], indef: ['Pedido indeferido ou parado', '195 €'], reag: ['Consultoria: reagrupamento familiar', '35 €'], outro: ['Consultoria de 30 minutos', '35 €'] };
+const S = { rp: 'Residência permanente em Portugal', nie: 'NIE na Espanha', indef: 'Pedido indeferido ou parado', reag: 'Reagrupamento familiar', outro: 'Outro assunto' };
 // permite abrir já com o serviço escolhido: /pedido/?s=rp
 const pre = new URLSearchParams(location.search).get('s');
 if (pre && S[pre]) { const r = f.querySelector('input[name=servico][value=' + pre + ']'); if (r) r.checked = true; }
@@ -133,8 +133,8 @@ function upd() {
   const s = (f.servico.value || '');
   document.getElementById('rpq').hidden = s !== 'rp';
   const r = document.getElementById('resumo');
-  if (S[s]) { r.hidden = false; r.innerHTML = 'Você escolheu: <b>' + S[s][0] + '</b><br>Valor: <b>' + S[s][1] + '</b>'; } else r.hidden = true;
-  document.getElementById('go').textContent = S[s] ? 'Continuar para o pagamento · ' + S[s][1] : 'Continuar para o pagamento';
+  if (S[s]) { r.hidden = false; r.innerHTML = 'Você escolheu: <b>' + S[s] + '</b>'; } else r.hidden = true;
+  document.getElementById('go').textContent = 'Continuar';
 }
 f.addEventListener('change', upd); upd();
 f.addEventListener('submit', e => {
@@ -144,7 +144,7 @@ f.addEventListener('submit', e => {
   else if (f.whatsapp.value.replace(/\D/g, '').length < 8) m = 'Escreva o seu WhatsApp com o indicativo do país.';
   else if (!document.getElementById('ok').checked) m = 'Marque a autorização para podermos contactar você.';
   if (m) { e.preventDefault(); err.textContent = m; err.hidden = false; return; }
-  err.hidden = true; document.getElementById('go').disabled = true; document.getElementById('go').textContent = 'A abrir o pagamento…';
+  err.hidden = true; document.getElementById('go').disabled = true; document.getElementById('go').textContent = 'A abrir…';
 });
 window.addEventListener('pageshow', () => { document.getElementById('go').disabled = false; upd(); });
 </script>
