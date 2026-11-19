@@ -34,7 +34,7 @@ $L = array(
   'calc_resultado_es_arr' => 'Viram a data: arraigo ES',
   'calc_resultado_es_nac' => 'Viram a data: nacionalidade ES',
   'calc_mudou_data' => 'Digitaram a própria data',
-  'calc_quero_checklist' => 'Clicaram "Quero o checklist completo" (viram o preço)',
+  'calc_quero_checklist' => 'Foram para a página do Kit (9,90 €)',
   'calc_pagar_checklist' => 'Foram para o pagamento do checklist (9,90 €)',
   'calc_pagar_consultoria' => 'Foram para o pagamento da consultoria (35 €)',
   'calc_whatsapp' => 'Clicaram no WhatsApp',
@@ -54,6 +54,16 @@ $L = array(
   'ferr_juntar' => 'Juntaram PDFs',
   'ferr_assinar' => 'Assinaram um PDF',
   'ferr_comprimir' => 'Comprimiram um PDF',
+  'ferr_download' => 'Baixaram um PDF (pessoas)',
+  'ferr_ver_proximo' => 'Tocaram em "Veja o próximo passo"',
+  'ferr_kit' => 'Foram para a página do Kit (9,90 €)',
+  'ferr_orientacao' => 'Foram para a página da Orientação (35 €)',
+  'ferr_calculadora' => 'Foram para a calculadora',
+  'calc_quero_orientacao' => 'Foram para a página da Orientação (35 €)',
+  'ckpag_abriu' => 'Abriram a página do Kit',
+  'ckpag_comprar' => 'Clicaram em Comprar o Kit (foram ao Stripe)',
+  'orient_abriu' => 'Abriram a página da Orientação',
+  'orient_comprar' => 'Clicaram em Contratar orientação (foram ao Stripe)',
 );
 ?><!doctype html>
 <html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -101,7 +111,7 @@ foreach ($ped as $x) {
 ?>
 <p class="note">"Abriram" conta uma vez por visita. Ir para o pagamento não quer dizer que pagou: as vendas confirmadas estão no Stripe.</p>
 <?php
-$grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Formulário de pedido' => 'pedido_', 'Ferramentas de PDF' => 'ferr_');
+$grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Formulário de pedido' => 'pedido_', 'Ferramentas de PDF' => 'ferr_', 'Página do Kit (9,90 €)' => 'ckpag_', 'Página da Orientação (35 €)' => 'orient_');
 foreach ($grupos as $g => $ps) {
   $ps = (array)$ps; $rows = '';
   foreach ($T as $e => $n) { foreach ($ps as $p) if (strpos($e, $p) === 0) { $rows .= '<tr><td>' . htmlspecialchars(isset($L[$e]) ? $L[$e] : str_replace('_', ' ', $e)) . '</td><td class="n">' . $n . '</td></tr>'; } }

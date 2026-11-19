@@ -55,6 +55,22 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
 .cta{border:1px solid var(--yel);border-radius:14px;padding:18px;display:grid;gap:10px}
 .cta h3{margin:0;font:800 18px var(--body)}
 .note{font-size:12px;color:var(--mute);margin:0}
+.next{border:1px solid var(--yel);border-radius:14px;padding:18px;display:grid;gap:12px;scroll-margin-top:16px;transition:box-shadow .4s}
+.next.flash{box-shadow:0 0 0 4px rgba(255,212,71,.35)}
+.next h2{font:800 20px/1.25 var(--body);margin:0;text-wrap:balance}
+.kick{font:700 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--yel);margin:0}
+.offers{display:grid;gap:10px}
+@media(min-width:560px){.offers{grid-template-columns:1fr 1fr}}
+.offer{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:6px;align-content:start}
+.offer.kit{background:#1d1808;border-color:#4a3d12}
+.offer .for{font-size:13px;color:var(--mute);margin:0}
+.offer h3{margin:0;font:800 19px var(--body)}
+.offer .price{font:900 28px/1.1 var(--body);color:var(--yel);margin:0}
+.offer .desc{font-size:14px;color:#d8d3c6;margin:0 0 6px}
+.offer .btn{margin-top:auto}
+.small{font-size:14px;text-align:center}
+.nextbar{margin:0;font-size:14px;background:#1d1808;border:1px solid #4a3d12;border-radius:10px;padding:10px 12px}
+.nextbar a{font-weight:700}
 [hidden]{display:none!important}
 </style>
 </head>
@@ -125,12 +141,29 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
     <p class="note">Ao comprimir, as páginas viram imagem (o texto deixa de poder ser selecionado). Confira se tudo continua legível antes de enviar.</p>
   </section>
 
-  <div class="cta">
-    <h3>Os documentos estão prontos. E agora?</h3>
-    <a class="btn primary" href="../calculadora.html">📅 Veja quando pode pedir: calculadora grátis</a>
-    <a class="btn ghost" href="../checklist/">✅ Checklist completo do pedido</a>
-    <a class="btn ghost" href="https://wa.me/351935149920?text=Ol%C3%A1!%20Usei%20as%20ferramentas%20de%20PDF%20da%20Loja%20do%20Imigrante%20e%20quero%20ajuda%20com%20os%20meus%20documentos." target="_blank" rel="noopener">💬 Prefere que a gente organize os seus documentos? Fale no WhatsApp</a>
-  </div>
+  <section class="next" id="proximo" aria-labelledby="next-h">
+    <p class="kick">Próximo passo</p>
+    <h2 id="next-h">Já organizou seus PDFs? Agora prepare a documentação para o seu procedimento</h2>
+    <p class="hint">O que você precisa fazer agora? Escolha conforme a sua situação.</p>
+    <div class="offers">
+      <div class="offer kit">
+        <p class="for">Vai pedir a residência permanente em Portugal?</p>
+        <h3>Kit de Ajuda</h3>
+        <p class="price">9,90 €</p>
+        <p class="desc">Guia digital de 12 páginas: requisitos, documentos e onde obter cada um, formulários oficiais, passo a passo do agendamento na AIMA e taxas oficiais verificadas.</p>
+        <a class="btn primary" id="go-kit" href="../checklist/">Conhecer o Kit</a>
+      </div>
+      <div class="offer ori">
+        <p class="for">Tem uma dúvida sobre o seu caso, em Portugal ou Espanha?</p>
+        <h3>Orientação Individual</h3>
+        <p class="price">35 €</p>
+        <p class="desc">Atendimento administrativo de 30 minutos por chamada com a Roberta: organiza as suas dúvidas e mostra os próximos passos. Você paga e escolhe o horário.</p>
+        <a class="btn ghost" id="go-ori" href="../consultoria/">Ver como funciona</a>
+      </div>
+    </div>
+    <a class="small" id="go-calc" href="../calculadora.html">📅 Ainda não sabe quando pode pedir? Use a calculadora grátis</a>
+    <p class="note">Dúvidas gerais ou suporte: <a id="go-wa" href="https://wa.me/351935149920?text=Ol%C3%A1!%20Usei%20as%20ferramentas%20de%20PDF%20da%20Loja%20do%20Imigrante%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">WhatsApp</a>. Respondemos de segunda a sexta, das 14h às 16h, e aos sábados, das 14h às 19h (hora de Espanha).</p>
+  </section>
   <p class="note">A Loja do Imigrante · @alojadoimigrante.pt · Consultoria de orientação, não é escritório de advocacia.</p>
 </div>
 
@@ -147,6 +180,20 @@ const A4 = [595.28, 841.89];
 const fmtKB = b => b > 1048576 ? (b / 1048576).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB';
 const stamp = () => new Date().toISOString().slice(0, 10);
 
+
+/* próximo passo: aparece depois de usar uma ferramenta, sem bloquear o download */
+function showNext() {
+  try { LC.contaUmaVez('ferr_download'); } catch (e) {}
+  const panel = document.querySelector('.panel:not([hidden])');
+  if (panel && !panel.querySelector('.nextbar')) {
+    const p = document.createElement('p'); p.className = 'nextbar';
+    p.innerHTML = 'Pronto! Já organizou seus PDFs? <a href="#proximo">Veja o próximo passo para a sua documentação ↓</a>';
+    p.querySelector('a').onclick = () => { try { LC.conta('ferr_ver_proximo'); } catch (e) {} const n = $('proximo'); n.classList.add('flash'); setTimeout(() => n.classList.remove('flash'), 1600); };
+    panel.appendChild(p);
+  }
+}
+[['go-kit', 'ferr_kit'], ['go-ori', 'ferr_orientacao'], ['go-calc', 'ferr_calculadora'], ['go-wa', 'ferr_whatsapp']].forEach(([id, ev]) => { const el = $(id); if (el) el.addEventListener('click', () => { try { LC.conta(ev); } catch (e) {} }); });
+
 /* abas */
 document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
   document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === t ? 'true' : 'false'));
@@ -158,6 +205,7 @@ function download(bytes, name) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 60000);
+  setTimeout(showNext, 400);
   return blob.size;
 }
 function setSt(id, msg, err) { $(id).textContent = msg; $(id).className = 'status' + (err ? ' err' : ''); }
