@@ -235,8 +235,8 @@ function calc(c) {
   const msg = 'Olá! Usei a calculadora da Loja do Imigrante. Pedido: ' + c.name + '. Data informada: ' + fmt(start) + '. Estimativa: ' + fmt(end) + '.';
   const lead = ok ? 'Chegou a sua vez? Evite atrasos por causa de um documento errado ou vencido.' : 'Aproveite esse tempo para deixar tudo pronto antes da hora do pedido.';
   ctas.innerHTML = '<p class="hook">' + lead + '</p>' + (curCalc === 'pt_perm'
-    ? '<a class="btn primary" id="wantck" href="/checklist/">Ver meu checklist de documentos · 9,90 €</a>' +
-      '<p class="note" style="text-align:center">PDF digital, com informações de organização e links oficiais. Não substitui análise individual.</p>' +
+    ? '<a class="btn primary" id="wantck" href="/checklist/">Ver o Kit da Residência Permanente · 9,90 €</a>' +
+      '<p class="note" style="text-align:center">Guia digital de 12 páginas: documentos, formulários, agendamento e taxas. Não substitui análise individual.</p>' +
       '<a class="btn ghost" id="wantor" href="/consultoria/">Prefiro orientação individual de 30 min · 35 €</a>'
     : '<a class="btn primary" id="wantor" href="/consultoria/">Orientação individual de 30 min · 35 €</a>' +
       '<a class="btn ghost" target="_blank" rel="noopener" href="' + wa(msg + ' Quero ajuda.') + '">Prefiro falar no WhatsApp</a>');
