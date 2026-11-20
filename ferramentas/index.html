@@ -71,6 +71,11 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
 .small{font-size:14px;text-align:center}
 .nextbar{margin:0;font-size:14px;background:#1d1808;border:1px solid #4a3d12;border-radius:10px;padding:10px 12px}
 .nextbar a{font-weight:700}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.segb{font:700 14px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 6px;cursor:pointer}
+.segb[aria-selected="true"]{background:var(--yel);color:#141414;border-color:var(--yel)}
+.sigprev{background:#fff;border-radius:10px;padding:12px;display:grid;place-items:center;min-height:100px}
+.sigprev img{max-width:100%;max-height:160px}
 [hidden]{display:none!important}
 </style>
 </head>
@@ -111,9 +116,22 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
   <!-- ASSINAR -->
   <section class="panel" id="p-assinar" hidden>
     <h2>Assinar PDF</h2>
-    <p class="hint">1) Escolha o PDF. 2) Desenhe a sua assinatura com o dedo. 3) Toque no documento onde ela deve ficar.</p>
+    <p class="hint">1) Escolha o PDF. 2) Desenhe a sua assinatura com o dedo <b>ou</b> use uma foto dela. 3) Toque no documento onde ela deve ficar.</p>
     <div class="pick"><button class="btn ghost" type="button" id="a-pickbtn">+ Escolher PDF</button><input type="file" id="a-in" accept="application/pdf"></div>
     <div id="a-work" hidden style="display:grid;gap:12px">
+      <div class="seg" role="tablist" aria-label="Como quer assinar">
+        <button type="button" class="segb" id="a-m-draw" aria-selected="true">✍️ Desenhar com o dedo</button>
+        <button type="button" class="segb" id="a-m-photo" aria-selected="false">📷 Foto da assinatura</button>
+      </div>
+      <div id="a-photo" hidden style="display:grid;gap:10px">
+        <p class="hint" style="margin:0">Assine com caneta escura numa folha branca e fotografe de perto, com boa luz e sem sombra. O fundo branco é retirado automaticamente.</p>
+        <div class="pick"><button class="btn ghost" type="button" id="a-photobtn">+ Escolher ou tirar foto da assinatura</button><input type="file" id="a-photoin" accept="image/*"></div>
+        <div class="sigprev" id="a-prevbox" hidden><img id="a-prev" alt="Pré-visualização da assinatura"></div>
+        <div class="row" id="a-photoacts" hidden>
+          <button class="btn ghost" type="button" id="a-rot" style="width:auto;padding:8px 14px">↻ Girar</button>
+          <label>Limpeza do fundo <input type="range" id="a-thr" min="55" max="92" value="78"></label>
+        </div>
+      </div>
       <canvas class="sigpad" id="a-pad"></canvas>
       <div class="row"><button class="btn ghost" type="button" id="a-clear" style="width:auto;padding:8px 14px">Limpar assinatura</button>
         <label>Tamanho <input type="range" id="a-size" min="10" max="50" value="28"></label></div>
@@ -123,7 +141,7 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
       <button class="btn primary" id="a-go" data-c="assinar" disabled>Assinar e baixar</button>
     </div>
     <p class="status" id="a-st"></p>
-    <p class="note">Esta é uma <b>assinatura simples</b> (como no papel), boa para declarações e formulários. Não substitui a assinatura digital qualificada (Chave Móvel Digital ou certificado digital), quando ela for exigida.</p>
+    <p class="note">A foto da assinatura também é tratada só no seu celular. Esta é uma <b>assinatura simples</b> (como no papel), boa para declarações e formulários. Não substitui a assinatura digital qualificada (Chave Móvel Digital ou certificado digital), quando ela for exigida.</p>
   </section>
 
   <!-- COMPRIMIR -->
@@ -288,7 +306,7 @@ $('j-go').onclick = async () => {
 };
 
 /* ASSINAR */
-let aBytes = null, aPdf = null, aPos = null, sigEmpty = true;
+let aBytes = null, aPdf = null, aPos = null, sigEmpty = true, aMode = 'draw', photoSig = null, photoImg = null, photoRot = 0;
 const pad = $('a-pad'), pg = pad.getContext('2d');
 function sizePad() { const r = pad.getBoundingClientRect(); const d = window.devicePixelRatio || 1; pad.width = r.width * d; pad.height = r.height * d; pg.setTransform(d, 0, 0, d, 0, 0); pg.lineWidth = 2.6; pg.lineCap = 'round'; pg.lineJoin = 'round'; pg.strokeStyle = '#0b2a6b'; sigEmpty = true; }
 let drawing = false;
@@ -298,6 +316,7 @@ pad.addEventListener('pointermove', e => { if (!drawing) return; const [x, y] = 
 pad.addEventListener('pointerup', () => { drawing = false; aRefresh(); });
 $('a-clear').onclick = () => { pg.clearRect(0, 0, pad.width, pad.height); sigEmpty = true; aRefresh(); };
 function sigPng() {
+  if (aMode === 'photo') return photoSig;
   /* recorta a assinatura ao conteúdo */
   const w = pad.width, h = pad.height, data = pg.getImageData(0, 0, w, h).data;
   let x0 = w, y0 = h, x1 = 0, y1 = 0;
@@ -307,6 +326,57 @@ function sigPng() {
   c.getContext('2d').drawImage(pad, x0 - 4, y0 - 4, c.width, c.height, 0, 0, c.width, c.height);
   return { url: c.toDataURL('image/png'), ratio: c.height / c.width };
 }
+
+/* assinatura por foto: tira o fundo do papel e recorta */
+function setMode(m) {
+  aMode = m; $('a-m-draw').setAttribute('aria-selected', m === 'draw'); $('a-m-photo').setAttribute('aria-selected', m === 'photo');
+  $('a-photo').hidden = m !== 'photo'; pad.hidden = m === 'photo'; $('a-clear').hidden = m === 'photo';
+  if (m === 'draw') sizePad(); aRefresh();
+}
+$('a-m-draw').onclick = () => setMode('draw');
+$('a-m-photo').onclick = () => setMode('photo');
+$('a-photoin').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  const url = URL.createObjectURL(f); const im = new Image();
+  im.onload = () => { photoImg = im; photoRot = 0; processPhoto(); try { LC.contaUmaVez('ferr_assinatura_foto'); } catch (err) {} };
+  im.onerror = () => setSt('a-st', 'Não foi possível abrir esta foto. Tente uma foto JPG ou PNG.', true);
+  im.src = url;
+};
+$('a-rot').onclick = () => { photoRot = (photoRot + 90) % 360; processPhoto(); };
+$('a-thr').oninput = () => processPhoto();
+function processPhoto() {
+  if (!photoImg) return;
+  const max = 1400, sc = Math.min(1, max / Math.max(photoImg.naturalWidth, photoImg.naturalHeight));
+  let w = Math.round(photoImg.naturalWidth * sc), h = Math.round(photoImg.naturalHeight * sc);
+  const sw = photoRot % 180 ? h : w, sh = photoRot % 180 ? w : h;
+  const c = document.createElement('canvas'); c.width = sw; c.height = sh; const g = c.getContext('2d');
+  g.translate(sw / 2, sh / 2); g.rotate(photoRot * Math.PI / 180); g.drawImage(photoImg, -w / 2, -h / 2, w, h); g.setTransform(1, 0, 0, 1, 0, 0);
+  /* fundo estimado (desfoque forte) para compensar luz desigual */
+  const bw = Math.max(8, Math.round(sw / 24)), bh = Math.max(8, Math.round(sh / 24));
+  const b = document.createElement('canvas'); b.width = bw; b.height = bh; const bg = b.getContext('2d'); bg.imageSmoothingQuality = 'high'; bg.drawImage(c, 0, 0, bw, bh);
+  const B = document.createElement('canvas'); B.width = sw; B.height = sh; const Bg = B.getContext('2d'); Bg.filter = 'blur(6px)'; Bg.drawImage(b, 0, 0, sw, sh);
+  const img = g.getImageData(0, 0, sw, sh), d = img.data, bd = Bg.getImageData(0, 0, sw, sh).data;
+  const thr = +$('a-thr').value / 100, rows = new Uint32Array(sh), cols = new Uint32Array(sw);
+  for (let i = 0, p = 0; i < d.length; i += 4, p++) {
+    const L = .299 * d[i] + .587 * d[i + 1] + .114 * d[i + 2], Lb = Math.max(40, .299 * bd[i] + .587 * bd[i + 1] + .114 * bd[i + 2]);
+    const r = L / Lb; let a = (thr - r) / 0.18; a = a < 0 ? 0 : a > 1 ? 1 : a;
+    const k = Math.min(1, L / 255) * 0.35; /* escurece a tinta mantendo o tom */
+    d[i] = d[i] * k; d[i + 1] = d[i + 1] * k; d[i + 2] = Math.min(255, d[i + 2] * k + 40 * a); d[i + 3] = Math.round(a * 255);
+    if (a > 0.5) { rows[(p / sw) | 0]++; cols[p % sw]++; }
+  }
+  g.putImageData(img, 0, 0);
+  const minR = Math.max(2, sw * 0.004), minC = Math.max(2, sh * 0.004);
+  let y0 = 0, y1 = sh - 1, x0 = 0, x1 = sw - 1;
+  while (y0 < sh && rows[y0] < minR) y0++; while (y1 > y0 && rows[y1] < minR) y1--;
+  while (x0 < sw && cols[x0] < minC) x0++; while (x1 > x0 && cols[x1] < minC) x1--;
+  if (x1 - x0 < 10 || y1 - y0 < 5) { photoSig = null; $('a-prevbox').hidden = true; setSt('a-st', 'Não encontrei a assinatura na foto. Fotografe mais de perto, com boa luz, ou ajuste a "Limpeza do fundo".', true); aRefresh(); return; }
+  const o = document.createElement('canvas'); o.width = x1 - x0 + 12; o.height = y1 - y0 + 12;
+  o.getContext('2d').drawImage(c, x0 - 6, y0 - 6, o.width, o.height, 0, 0, o.width, o.height);
+  photoSig = { url: o.toDataURL('image/png'), ratio: o.height / o.width };
+  $('a-prev').src = photoSig.url; $('a-prevbox').hidden = false; $('a-photoacts').hidden = false; setSt('a-st', '');
+  aRefresh();
+}
+
 $('a-in').onchange = async e => {
   const f = e.target.files[0]; if (!f) return;
   try {
@@ -315,7 +385,7 @@ $('a-in').onchange = async e => {
     $('a-page').innerHTML = Array.from({ length: aPdf.numPages }, (_, i) => '<option value="' + (i + 1) + '">' + (i + 1) + ' de ' + aPdf.numPages + '</option>').join('');
     $('a-page').value = aPdf.numPages; /* assinatura costuma ir na última página */
     $('a-work').hidden = false; $('a-pickbtn').textContent = '📄 ' + f.name;
-    sizePad(); aPos = null; await renderPage(); setSt('a-st', '');
+    sizePad(); setMode(aMode); aPos = null; await renderPage(); setSt('a-st', '');
   } catch (err) { setSt('a-st', 'Não foi possível abrir este PDF. Se tem senha, guarde uma cópia sem senha.', true); }
 };
 async function renderPage() {
@@ -330,14 +400,14 @@ $('a-page').onchange = () => { aPos = null; renderPage(); };
 $('a-size').oninput = aRefresh;
 $('a-view').addEventListener('click', e => { const r = e.target.getBoundingClientRect(); aPos = [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; aRefresh(); });
 function aRefresh() {
-  const s = sigEmpty ? null : sigPng(); const img = $('a-sig');
+  const s = aMode === 'photo' ? photoSig : (sigEmpty ? null : sigPng()); const img = $('a-sig');
   if (s && aPos) {
     const st = $('a-stage').getBoundingClientRect(); const wPct = +$('a-size').value / 100;
     const w = st.width * wPct, h = w * s.ratio;
     img.src = s.url; img.style.width = w + 'px'; img.style.left = (aPos[0] * st.width - w / 2) + 'px'; img.style.top = (aPos[1] * $('a-view').getBoundingClientRect().height - h / 2) + 'px'; img.hidden = false;
   } else img.hidden = true;
   $('a-go').disabled = !(s && aPos);
-  if (!sigEmpty && !aPos) setSt('a-st', 'Agora toque no documento, onde a assinatura deve ficar.');
+  if (s && !aPos) setSt('a-st', 'Agora toque no documento, onde a assinatura deve ficar.');
 }
 $('a-go').onclick = async () => {
   $('a-go').disabled = true; setSt('a-st', 'A assinar…');

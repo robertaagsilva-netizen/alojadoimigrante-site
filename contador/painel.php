@@ -53,6 +53,7 @@ $L = array(
   'ferr_fotos_pdf' => 'Geraram PDF de fotos',
   'ferr_juntar' => 'Juntaram PDFs',
   'ferr_assinar' => 'Assinaram um PDF',
+  'ferr_assinatura_foto' => 'Usaram foto da assinatura',
   'ferr_comprimir' => 'Comprimiram um PDF',
   'ferr_download' => 'Baixaram um PDF (pessoas)',
   'ferr_ver_proximo' => 'Tocaram em "Veja o próximo passo"',
