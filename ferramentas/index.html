@@ -6,6 +6,11 @@
 <title>Ferramentas de PDF · A Loja do Imigrante</title>
 <meta name="description" content="Ferramentas grátis para preparar os seus documentos para a AIMA e o consulado: fotos para PDF, juntar, assinar e comprimir PDF. Os arquivos não saem do seu celular.">
 <link rel="icon" href="../logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0c0c0b">
+<link rel="apple-touch-icon" href="icons/apple-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PDF Imigrante">
 <style>
 :root{--bg:#0c0c0b;--panel:#161614;--line:#2b2a26;--ink:#f3efe4;--mute:#a29d90;--yel:#ffd447;--ok:#8ad49a;--warn:#ffb15c;
   --body:"Inter","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;color-scheme:dark}
@@ -69,6 +74,9 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
 .offer .desc{font-size:14px;color:#d8d3c6;margin:0 0 6px}
 .offer .btn{margin-top:auto}
 .small{font-size:14px;text-align:center}
+.install{background:#1d1808;border:1px solid #4a3d12;border-radius:12px;padding:12px 14px;display:grid;gap:10px;font-size:14px}
+.install > div > b{display:block;font-size:15px;margin-bottom:2px}
+.install span{color:#d8d3c6}
 .sharebox{display:grid;gap:6px}
 .nextbar{margin:0;font-size:14px;background:#1d1808;border:1px solid #4a3d12;border-radius:10px;padding:10px 12px}
 .nextbar a{font-weight:700}
@@ -85,6 +93,11 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
   <a class="brand" href="../">← A Loja do Imigrante</a>
   <h1>Prepare os seus <em>documentos em PDF</em></h1>
   <p class="lede">Grátis, para mandar à AIMA, ao consulado ou à Extranjería: transforme fotos em PDF, junte, assine e comprima.</p>
+  <div class="install" id="install" hidden>
+    <div><b>📲 Tenha este app no seu celular</b><span id="inst-txt">Instale grátis: fica com ícone na tela e funciona até sem internet.</span></div>
+    <button class="btn primary" type="button" id="inst-btn" hidden>Instalar o app</button>
+    <button class="btn ghost" type="button" id="inst-copy" hidden>Copiar o link</button>
+  </div>
   <div class="safe"><span>🔒</span><span><b>Os seus documentos não saem do seu celular.</b> Tudo é feito aqui no seu navegador: nada é enviado para nenhum servidor.</span></div>
 
   <div class="tabs" role="tablist">
@@ -212,6 +225,28 @@ function showNext() {
   }
 }
 [['go-kit', 'ferr_kit'], ['go-ori', 'ferr_orientacao'], ['go-calc', 'ferr_calculadora'], ['go-wa', 'ferr_whatsapp']].forEach(([id, ev]) => { const el = $(id); if (el) el.addEventListener('click', () => { try { LC.conta(ev); } catch (e) {} }); });
+
+
+/* instalar como app (PWA) */
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+(function () {
+  const ua = navigator.userAgent || '', box = $('install'), txt = $('inst-txt');
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (standalone) { try { LC.contaUmaVez('ferr_app_aberto'); } catch (e) {} return; }
+  const inApp = /Instagram|FBAN|FBAV|FB_IAB|WhatsApp|TikTok|musical_ly|Bytedance/i.test(ua);
+  const ios = /iPhone|iPad|iPod/i.test(ua);
+  if (inApp) {
+    box.hidden = false; $('inst-copy').hidden = false;
+    txt.innerHTML = 'Você abriu dentro do Instagram/WhatsApp/TikTok. Para <b>instalar o app</b> e <b>compartilhar os PDFs</b>, abra este link no Chrome ou no Safari: toque nos 3 pontinhos e em "Abrir no navegador", ou copie o link.';
+    $('inst-copy').onclick = async () => { try { await navigator.clipboard.writeText('https://alojadoimigrante.com/ferramentas/'); $('inst-copy').textContent = '✓ Link copiado: cole no Chrome ou no Safari'; } catch (e) { $('inst-copy').textContent = 'alojadoimigrante.com/ferramentas'; } };
+    return;
+  }
+  let deferred = null;
+  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; box.hidden = false; $('inst-btn').hidden = false; });
+  $('inst-btn').onclick = async () => { if (!deferred) return; try { LC.conta('ferr_instalar_clique'); } catch (e) {} deferred.prompt(); const r = await deferred.userChoice; if (r && r.outcome === 'accepted') { box.hidden = true; } deferred = null; };
+  window.addEventListener('appinstalled', () => { try { LC.conta('ferr_instalado'); } catch (e) {} box.hidden = true; });
+  if (ios) { box.hidden = false; txt.innerHTML = 'No iPhone: toque em <b>Compartilhar</b> (o quadrado com a seta) e depois em <b>"Adicionar à Tela de Início"</b>. O app fica com ícone e funciona até sem internet.'; }
+})();
 
 /* abas */
 document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
