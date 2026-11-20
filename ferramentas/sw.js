@@ -1,6 +1,6 @@
 /* App de PDF da Loja do Imigrante: funciona sem internet */
-const V = 'pdf-app-v1';
-const CORE = ['./', './index.html', './manifest.webmanifest', './js/pdf-lib.min.js', './js/pdf.min.js', './js/pdf.worker.min.js', './icons/icon-192.png', './icons/icon-512.png', '../logo.png'];
+const V = 'pdf-app-v2';
+const CORE = ['./', './index.html', './js/pdf-lib.min.js', './js/pdf.min.js', './js/pdf.worker.min.js', './icons/icon-192.png', './icons/icon-512.png', '../logo.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {

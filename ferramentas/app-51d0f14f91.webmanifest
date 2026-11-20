@@ -3,7 +3,7 @@
   "short_name": "PDF Imigrante",
   "description": "Ferramentas grátis para os seus documentos: fotos para PDF, juntar, assinar e comprimir. Funciona sem internet e os arquivos não saem do celular.",
   "lang": "pt",
-  "start_url": "/ferramentas/?app=1",
+  "start_url": "/ferramentas/?app=51d0f14f91",
   "scope": "/ferramentas/",
   "display": "standalone",
   "background_color": "#0c0c0b",

@@ -6,10 +6,8 @@
 <title>Ferramentas de PDF · A Loja do Imigrante</title>
 <meta name="description" content="Ferramentas grátis para preparar os seus documentos para a AIMA e o consulado: fotos para PDF, juntar, assinar e comprimir PDF. Os arquivos não saem do seu celular.">
 <link rel="icon" href="../logo.png">
-<link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0c0c0b">
 <link rel="apple-touch-icon" href="icons/apple-180.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="PDF Imigrante">
 <style>
 :root{--bg:#0c0c0b;--panel:#161614;--line:#2b2a26;--ink:#f3efe4;--mute:#a29d90;--yel:#ffd447;--ok:#8ad49a;--warn:#ffb15c;
@@ -227,25 +225,29 @@ function showNext() {
 [['go-kit', 'ferr_kit'], ['go-ori', 'ferr_orientacao'], ['go-calc', 'ferr_calculadora'], ['go-wa', 'ferr_whatsapp']].forEach(([id, ev]) => { const el = $(id); if (el) el.addEventListener('click', () => { try { LC.conta(ev); } catch (e) {} }); });
 
 
-/* instalar como app (PWA) */
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+/* app instalável: só para quem recebeu o link privado (?app=CHAVE) */
 (function () {
   const ua = navigator.userAgent || '', box = $('install'), txt = $('inst-txt');
+  const qs = new URLSearchParams(location.search).get('app');
+  let key = null; try { if (qs && /^[a-f0-9]{10}$/.test(qs)) localStorage.setItem('lojaAppKey', qs); key = localStorage.getItem('lojaAppKey'); } catch (e) { key = qs; }
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-  if (standalone) { try { LC.contaUmaVez('ferr_app_aberto'); } catch (e) {} return; }
   const inApp = /Instagram|FBAN|FBAV|FB_IAB|WhatsApp|TikTok|musical_ly|Bytedance/i.test(ua);
-  const ios = /iPhone|iPad|iPod/i.test(ua);
-  if (inApp) {
+  if (inApp) { /* navegador interno: não deixa compartilhar arquivos */
     box.hidden = false; $('inst-copy').hidden = false;
-    txt.innerHTML = 'Você abriu dentro do Instagram/WhatsApp/TikTok. Para <b>instalar o app</b> e <b>compartilhar os PDFs</b>, abra este link no Chrome ou no Safari: toque nos 3 pontinhos e em "Abrir no navegador", ou copie o link.';
-    $('inst-copy').onclick = async () => { try { await navigator.clipboard.writeText('https://alojadoimigrante.com/ferramentas/'); $('inst-copy').textContent = '✓ Link copiado: cole no Chrome ou no Safari'; } catch (e) { $('inst-copy').textContent = 'alojadoimigrante.com/ferramentas'; } };
+    box.querySelector('b').textContent = '📤 Para compartilhar os seus PDFs';
+    txt.innerHTML = 'Você abriu dentro do Instagram, WhatsApp ou TikTok. Para poder <b>compartilhar os PDFs</b>, abra este link no Chrome ou no Safari: toque nos 3 pontinhos e em "Abrir no navegador", ou copie o link.';
+    $('inst-copy').onclick = async () => { try { await navigator.clipboard.writeText(location.href); $('inst-copy').textContent = '✓ Link copiado: cole no Chrome ou no Safari'; } catch (e) { $('inst-copy').textContent = location.host + location.pathname; } };
     return;
   }
+  if (!key) return; /* público: versão web, sem instalação */
+  const m = document.createElement('link'); m.rel = 'manifest'; m.href = 'app-' + key + '.webmanifest'; document.head.appendChild(m);
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if (standalone) { try { LC.contaUmaVez('ferr_app_aberto'); } catch (e) {} return; }
   let deferred = null;
   window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; box.hidden = false; $('inst-btn').hidden = false; });
-  $('inst-btn').onclick = async () => { if (!deferred) return; try { LC.conta('ferr_instalar_clique'); } catch (e) {} deferred.prompt(); const r = await deferred.userChoice; if (r && r.outcome === 'accepted') { box.hidden = true; } deferred = null; };
+  $('inst-btn').onclick = async () => { if (!deferred) return; try { LC.conta('ferr_instalar_clique'); } catch (e) {} deferred.prompt(); const r = await deferred.userChoice; if (r && r.outcome === 'accepted') box.hidden = true; deferred = null; };
   window.addEventListener('appinstalled', () => { try { LC.conta('ferr_instalado'); } catch (e) {} box.hidden = true; });
-  if (ios) { box.hidden = false; txt.innerHTML = 'No iPhone: toque em <b>Compartilhar</b> (o quadrado com a seta) e depois em <b>"Adicionar à Tela de Início"</b>. O app fica com ícone e funciona até sem internet.'; }
+  if (/iPhone|iPad|iPod/i.test(ua)) { box.hidden = false; txt.innerHTML = 'No iPhone: toque em <b>Compartilhar</b> (o quadrado com a seta) e depois em <b>"Adicionar à Tela de Início"</b>.'; }
 })();
 
 /* abas */
