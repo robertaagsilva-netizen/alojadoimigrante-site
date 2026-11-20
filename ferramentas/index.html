@@ -69,6 +69,7 @@ select{font:500 15px var(--body);background:var(--bg);color:var(--ink);border:1p
 .offer .desc{font-size:14px;color:#d8d3c6;margin:0 0 6px}
 .offer .btn{margin-top:auto}
 .small{font-size:14px;text-align:center}
+.sharebox{display:grid;gap:6px}
 .nextbar{margin:0;font-size:14px;background:#1d1808;border:1px solid #4a3d12;border-radius:10px;padding:10px 12px}
 .nextbar a{font-weight:700}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
@@ -223,8 +224,25 @@ function download(bytes, name) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 60000);
+  setTimeout(() => showShare(new File([blob], name, { type: 'application/pdf' })), 50);
   setTimeout(showNext, 400);
   return blob.size;
+}
+/* compartilhar o PDF criado (WhatsApp, e-mail, Drive…) */
+function showShare(file) {
+  const panel = document.querySelector('.panel:not([hidden])'); if (!panel) return;
+  let box = panel.querySelector('.sharebox');
+  if (!box) { box = document.createElement('div'); box.className = 'sharebox'; const st = panel.querySelector('.status'); st.after(box); }
+  let can = false; try { can = !!(navigator.canShare && navigator.canShare({ files: [file] })); } catch (e) {}
+  if (can) {
+    box.innerHTML = '<button class="btn primary" type="button">📤 Compartilhar o PDF (WhatsApp, e-mail…)</button><p class="note">O PDF também ficou guardado nos downloads do seu celular.</p>';
+    box.querySelector('button').onclick = async () => {
+      try { LC.conta('ferr_compartilhar'); } catch (e) {}
+      try { await navigator.share({ files: [file], title: file.name }); } catch (e) { /* a pessoa cancelou */ }
+    };
+  } else {
+    box.innerHTML = '<p class="note">📥 O PDF foi para os <b>downloads</b> do seu aparelho (app "Arquivos" ou "Meus arquivos"). Para enviar, abra-o lá e toque em <b>Compartilhar</b>, ou anexe-o no WhatsApp ou no e-mail.</p>';
+  }
 }
 function setSt(id, msg, err) { $(id).textContent = msg; $(id).className = 'status' + (err ? ' err' : ''); }
 
