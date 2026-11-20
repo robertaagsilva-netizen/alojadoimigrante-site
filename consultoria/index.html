@@ -33,6 +33,7 @@ ol.st li::before { content: counter(s); position: absolute; left: 0; top: -2px; 
 .price small { font-family: var(--body); font-size: 15px; color: var(--muted); font-weight: 500; display: block; margin-top: 6px; }
 .btn { display: block; text-decoration: none; text-align: center; font: 700 18px var(--body); border-radius: 12px; padding: 16px; background: var(--accent); color: var(--ink); }
 .note { color: var(--muted); font-size: 13px; margin: 0; }
+.disc { margin: 0; background: #1d1808; border: 1px solid #4a3d12; border-radius: 10px; padding: 10px 12px; font-size: 15px; color: var(--fg); }
 footer { color: var(--muted); font-size: 12px; display: grid; gap: 6px; }
 a { color: var(--accent); }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
@@ -73,6 +74,7 @@ a { color: var(--accent); }
 
   <div class="buy">
     <div class="price">35 €<small>Sessão individual de 30 minutos</small></div>
+    <p class="disc">💛 Se depois você contratar o serviço completo com a Loja do Imigrante, os 35 € da orientação são descontados do valor.</p>
     <a class="btn" id="buy" href="https://buy.stripe.com/28E6oJ73QeOPcnNbW90VO0b">Contratar orientação · 35 €</a>
     <p class="note">Pague e escolha um horário disponível. Precisa remarcar? Avise pelo WhatsApp +351 935 149 920 com antecedência.</p>
   </div>
