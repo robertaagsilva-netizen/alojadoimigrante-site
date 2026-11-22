@@ -4,7 +4,7 @@
 date_default_timezone_set('Europe/Madrid');
 header('Cache-Control: no-store');
 header('X-Robots-Tag: noindex');
-$HASH = '488e2285613a4c99ffda09ee14d6962329c0ccf4adf238a1377df640ee9ec7e0';
+$HASH = 'dc65ef9573d2dd3d5d7f98a56e618a38ce3c400d35a9ee290a28ec94d411f6cb';
 $k = isset($_REQUEST['k']) ? $_REQUEST['k'] : '';
 if (!hash_equals($HASH, hash('sha256', $k))) { http_response_code(404); echo 'Página não encontrada.'; exit; }
 
