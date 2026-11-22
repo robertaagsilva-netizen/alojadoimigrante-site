@@ -1,2 +1,4 @@
 contador/dados/*.json
 contador/dados/*.jsonl
+painel/dados/*.json
+painel/dados/*.jsonl
