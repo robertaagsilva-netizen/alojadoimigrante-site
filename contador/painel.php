@@ -69,6 +69,17 @@ $L = array(
   'ckpag_comprar' => 'Clicaram em Comprar o Kit (foram ao Stripe)',
   'orient_abriu' => 'Abriram a página da Orientação',
   'orient_comprar' => 'Clicaram em Contratar orientação (foram ao Stripe)',
+  'serv_abriu' => 'Abriram a página de Serviços',
+  'serv_analise' => 'Pediram a análise grátis (botão de cima)',
+  'serv_analise2' => 'Pediram a análise grátis (botão de baixo)',
+  'serv_passaporte' => 'Serviço: passaporte',
+  'serv_certidao' => 'Serviço: certidões',
+  'serv_apostila' => 'Serviço: apostila',
+  'serv_agendamento' => 'Serviço: agendamentos',
+  'serv_reclamacao' => 'Serviço: reclamação',
+  'serv_diploma' => 'Serviço: diploma',
+  'serv_casamento' => 'Serviço: casamento na França',
+  'serv_outro' => 'Serviço: outro documento',
 );
 ?><!doctype html>
 <html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -116,7 +127,7 @@ foreach ($ped as $x) {
 ?>
 <p class="note">"Abriram" conta uma vez por visita. Ir para o pagamento não quer dizer que pagou: as vendas confirmadas estão no Stripe.</p>
 <?php
-$grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Formulário de pedido' => 'pedido_', 'Ferramentas de PDF' => 'ferr_', 'Página do Kit (9,90 €)' => 'ckpag_', 'Página da Orientação (35 €)' => 'orient_');
+$grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Formulário de pedido' => 'pedido_', 'Ferramentas de PDF' => 'ferr_', 'Página do Kit (9,90 €)' => 'ckpag_', 'Página da Orientação (35 €)' => 'orient_', 'Página de Serviços (análise grátis)' => 'serv_');
 foreach ($grupos as $g => $ps) {
   $ps = (array)$ps; $rows = '';
   foreach ($T as $e => $n) { foreach ($ps as $p) if (strpos($e, $p) === 0) { $rows .= '<tr><td>' . htmlspecialchars(isset($L[$e]) ? $L[$e] : str_replace('_', ' ', $e)) . '</td><td class="n">' . $n . '</td></tr>'; } }
