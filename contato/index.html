@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Fale com a Loja do Imigrante: serviços, parcerias, divulgação e imprensa. Respondemos em até 24 horas úteis.">
+<link rel="icon" href="../logo.png">
+<title>Fale conosco · A Loja do Imigrante</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --bg: #12110f; --panel: #1c1a17; --line: #34302a; --fg: #f4eedf; --muted: #b3aa98;
+  --accent: #ffd34d; --accent-ink: #1a1405; --warn: #ff8a5c; --ok: #7fd68a;
+  --display: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.5; margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+.wrap { max-width: 560px; margin: 0 auto; display: grid; gap: 20px; }
+.brand { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.brand img { width: 44px; height: 44px; border-radius: 50%; background: #fff; object-fit: contain; }
+h1 { font-family: var(--display); font-size: clamp(30px, 8vw, 44px); line-height: 1.02; margin: 0; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--accent); }
+.lead { color: var(--muted); margin: 0; }
+form { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 16px; }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+legend, label.f { font-weight: 700; margin-bottom: 4px; padding: 0; }
+.hint { color: var(--muted); font-size: 13px; font-weight: 400; display: block; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.grid label { display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px; cursor: pointer; font-size: 15px; }
+.grid label:has(input:checked) { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+.grid input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; flex: none; }
+@media (max-width: 380px) { .grid { grid-template-columns: 1fr; } }
+input[type=text], input[type=tel], input[type=email], textarea {
+  font: 500 16px var(--body); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; width: 100%; }
+textarea { min-height: 120px; resize: vertical; }
+.btn { display: block; width: 100%; text-align: center; border: 0; cursor: pointer; font: 700 17px var(--body); border-radius: 12px; padding: 15px 16px; background: var(--accent); color: var(--accent-ink); text-decoration: none; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.err { color: var(--warn); font-weight: 600; font-size: 14px; margin: 0; }
+.check { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14px; color: var(--muted); }
+.check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
+.done { background: var(--panel); border: 1px solid var(--ok); border-radius: 14px; padding: 22px; display: grid; gap: 12px; }
+.done h2 { margin: 0; font-family: var(--display); font-size: 26px; color: var(--ok); }
+.done p { margin: 0; color: var(--muted); }
+.tip { border: 1px dashed var(--accent); border-radius: 12px; padding: 14px; font-size: 14px; display: grid; gap: 8px; }
+.tip b { color: var(--accent); }
+[hidden] { display: none !important; }
+footer { font-size: 12px; color: var(--muted); display: grid; gap: 6px; }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><img src="../logo.png" alt="Logo A Loja do Imigrante">A Loja do Imigrante</div>
+
+  <div id="ok" class="done" hidden>
+    <h2>Recebemos a sua mensagem!</h2>
+    <p>A Loja do Imigrante responde em até 24 horas úteis, pelo e-mail ou WhatsApp que você deixou.</p>
+    <p>Enquanto isso, que tal pedir a sua <b>análise grátis de 15 minutos</b>?</p>
+    <a class="btn" href="../servicos/" data-c="ok_analise">Quero a análise grátis</a>
+    <a href="../">Voltar aos links</a>
+  </div>
+
+  <div id="topo">
+    <h1>Fale com a <em>Loja do Imigrante</em></h1>
+    <p class="lead">Serviços, parcerias, divulgação ou imprensa: conte o que você precisa e a gente responde em até 24 horas úteis.</p>
+  </div>
+
+  <form id="f" method="post" action="enviar.php" novalidate>
+    <fieldset>
+      <legend>Sobre o que é o contato?</legend>
+      <div class="grid">
+        <label><input type="radio" name="tipo" value="servico" required>Quero um serviço</label>
+        <label><input type="radio" name="tipo" value="parceria">Parceria</label>
+        <label><input type="radio" name="tipo" value="divulgacao">Divulgação</label>
+        <label><input type="radio" name="tipo" value="imprensa">Imprensa</label>
+        <label><input type="radio" name="tipo" value="outro">Outro assunto</label>
+      </div>
+    </fieldset>
+
+    <div class="tip" id="dica" hidden>
+      <span><b>Dica:</b> para serviços, o caminho mais rápido é a análise grátis de 15 minutos por chamada.</span>
+      <a href="../servicos/" data-c="dica_analise">Pedir a análise grátis →</a>
+    </div>
+
+    <label class="f" for="nome">O seu nome <span class="hint" id="nomeh" hidden>Ou o nome da empresa / perfil</span></label>
+    <input type="text" id="nome" name="nome" autocomplete="name" maxlength="80" required>
+
+    <label class="f" for="email">O seu e-mail</label>
+    <input type="email" id="email" name="email" autocomplete="email" maxlength="100" required>
+
+    <label class="f" for="wa">WhatsApp <span class="hint">Opcional. Com o indicativo do país, por exemplo +351 912 345 678</span></label>
+    <input type="tel" id="wa" name="whatsapp" autocomplete="tel" inputmode="tel" maxlength="25">
+
+    <label class="f" for="pais">País onde mora <span class="hint" id="paish">Opcional</span></label>
+    <input type="text" id="pais" name="pais" autocomplete="country-name" maxlength="40">
+
+    <label class="f" for="link" id="linkl" hidden>Instagram, site ou perfil <span class="hint">Opcional</span></label>
+    <input type="text" id="link" name="link" maxlength="120" hidden>
+
+    <label class="f" for="msg">A sua mensagem <span class="hint">Não escreva números de documentos.</span></label>
+    <textarea id="msg" name="mensagem" maxlength="1500" required></textarea>
+
+    <label class="check"><input type="checkbox" id="aceito" name="aceito" value="1" required><span>Autorizo a Loja do Imigrante a usar estes dados só para responder a este contato. A Loja do Imigrante não é escritório de advocacia.</span></label>
+
+    <p class="err" id="err" hidden></p>
+    <input type="text" name="site" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <input type="hidden" name="t" id="t">
+    <input type="hidden" name="de" id="de">
+    <button class="btn" id="go" type="submit">Enviar mensagem</button>
+  </form>
+
+  <footer>
+    <p>A Loja do Imigrante presta serviços documentais e orientação administrativa. Não é escritório de advocacia nem órgão do governo.</p>
+    <p>Instagram: <a href="https://ig.me/m/alojadoimigrante.pt" target="_blank" rel="noopener">@alojadoimigrante.pt</a> · <a href="../">Voltar aos links</a></p>
+  </footer>
+</div>
+
+<script>window.LC_PAGINA = 'contato';</script>
+<script src="/contador/c.js"></script>
+<script>
+const P = new URLSearchParams(location.search);
+const f = document.getElementById('f');
+if (P.get('ok') === '1') {
+  document.getElementById('ok').hidden = false; f.hidden = true; document.getElementById('topo').hidden = true;
+} else {
+  try { LC.contaUmaVez('cont_abriu'); } catch (e) {}
+}
+document.querySelectorAll('[data-c]').forEach(a => a.addEventListener('click', () => { try { LC.conta('cont_' + a.dataset.c); } catch (e) {} }));
+document.getElementById('t').value = Date.now();
+try { document.getElementById('de').value = sessionStorage.getItem('lc_de') || ''; } catch (e) {}
+// abrir já com o assunto escolhido: /contato/?tipo=parceria
+const pre = P.get('tipo');
+if (pre) { const r = f.querySelector('input[name=tipo][value="' + pre.replace(/[^a-z]/g, '') + '"]'); if (r) r.checked = true; }
+function upd() {
+  const t = f.tipo.value || '';
+  const neg = t === 'parceria' || t === 'divulgacao' || t === 'imprensa';
+  document.getElementById('dica').hidden = t !== 'servico';
+  document.getElementById('nomeh').hidden = !neg;
+  document.getElementById('linkl').hidden = !neg;
+  document.getElementById('link').hidden = !neg;
+  document.getElementById('msg').placeholder =
+    t === 'servico' ? 'Conte rapidamente o seu caso: o que precisa, em que país está e se tem prazo.' :
+    t === 'parceria' ? 'Conte quem você é, o que oferece e que tipo de parceria imagina.' :
+    t === 'divulgacao' ? 'O que você quer divulgar, em que formato (story, vídeo, post) e quando.' :
+    t === 'imprensa' ? 'Veículo, assunto da matéria e prazo.' : '';
+}
+f.addEventListener('change', upd); upd();
+f.addEventListener('submit', e => {
+  const err = document.getElementById('err'); let m = '';
+  if (!f.tipo.value) m = 'Escolha sobre o que é o contato.';
+  else if (f.nome.value.trim().length < 2) m = 'Escreva o seu nome.';
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) m = 'Escreva um e-mail válido.';
+  else if (f.mensagem.value.trim().length < 10) m = 'Escreva a sua mensagem.';
+  else if (!document.getElementById('aceito').checked) m = 'Marque a autorização para podermos responder.';
+  if (m) { e.preventDefault(); err.textContent = m; err.hidden = false; return; }
+  err.hidden = true;
+  try { LC.conta('cont_envio_' + f.tipo.value); } catch (x) {}
+  const go = document.getElementById('go'); go.disabled = true; go.textContent = 'A enviar…';
+});
+window.addEventListener('pageshow', () => { const go = document.getElementById('go'); go.disabled = false; go.textContent = 'Enviar mensagem'; });
+</script>
+</body>
+</html>

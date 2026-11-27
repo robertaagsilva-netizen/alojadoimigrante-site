@@ -85,6 +85,14 @@ $L = array(
   'curr_2' => 'Currículo: escolheram 2 modelos',
   'curr_pag1' => 'Currículo: foram ao pagamento (1 modelo)',
   'curr_pag2' => 'Currículo: foram ao pagamento (2 modelos)',
+  'cont_abriu' => 'Abriram a página Fale conosco',
+  'cont_envio_servico' => 'Contato enviado: serviço',
+  'cont_envio_parceria' => 'Contato enviado: parceria',
+  'cont_envio_divulgacao' => 'Contato enviado: divulgação',
+  'cont_envio_imprensa' => 'Contato enviado: imprensa',
+  'cont_envio_outro' => 'Contato enviado: outro assunto',
+  'cont_dica_analise' => 'Contato: foram para a análise grátis (dica)',
+  'cont_ok_analise' => 'Contato: depois de enviar, foram para a análise grátis',
 );
 ?><!doctype html>
 <html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -130,9 +138,25 @@ foreach ($ped as $x) {
   echo '<br><a class="wa" target="_blank" rel="noopener" href="https://wa.me/' . $num . '?text=' . $msg . '">WhatsApp ' . $h('whatsapp') . '</a></div>';
 }
 ?>
+<?php
+$cf = __DIR__ . '/dados/contatos.jsonl'; $cts = array();
+if (is_file($cf)) { foreach (array_reverse(file($cf, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)) as $ln) { $x = json_decode($ln, true); if (is_array($x)) $cts[] = $x; if (count($cts) >= 60) break; } }
+$TN = array('servico' => 'Serviço', 'parceria' => 'Parceria', 'divulgacao' => 'Divulgação', 'imprensa' => 'Imprensa', 'outro' => 'Outro');
+echo '<h2>Mensagens do Fale conosco (' . count($cts) . ')</h2>';
+if (!$cts) echo '<p class="note">Nenhuma mensagem ainda. Cada mensagem também chega no Gmail da Loja.</p>';
+foreach ($cts as $x) {
+  $h = function ($k) use ($x) { return htmlspecialchars(isset($x[$k]) ? $x[$k] : ''); };
+  echo '<div class="ped"><b>' . $h('nome') . '</b> · ' . htmlspecialchars(isset($TN[$x['tipo']]) ? $TN[$x['tipo']] : $x['tipo']) . '<br><span class="note">' . $h('quando') . ($x['pais'] !== '' ? ' · ' . $h('pais') : '') . ($x['origem'] !== '' ? ' · veio de ' . strtoupper($h('origem')) : '') . '</span>';
+  if (!empty($x['link'])) echo '<br>' . $h('link');
+  echo '<br><i>' . nl2br($h('mensagem')) . '</i><br><a href="mailto:' . $h('email') . '">' . $h('email') . '</a>';
+  $num = preg_replace('/\D/', '', isset($x['whatsapp']) ? $x['whatsapp'] : '');
+  if (strlen($num) >= 8) echo ' · ' . $h('whatsapp');
+  echo '</div>';
+}
+?>
 <p class="note">"Abriram" conta uma vez por visita. Ir para o pagamento não quer dizer que pagou: as vendas confirmadas estão no Stripe.</p>
 <?php
-$grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Formulário de pedido' => 'pedido_', 'Ferramentas de PDF' => 'ferr_', 'Página do Kit (9,90 €)' => 'ckpag_', 'Página da Orientação (35 €)' => 'orient_', 'Página de Serviços (análise grátis)' => 'serv_', 'Página do Currículo' => 'curr_');
+$grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Formulário de pedido' => 'pedido_', 'Ferramentas de PDF' => 'ferr_', 'Página do Kit (9,90 €)' => 'ckpag_', 'Página da Orientação (35 €)' => 'orient_', 'Página de Serviços (análise grátis)' => 'serv_', 'Página do Currículo' => 'curr_', 'Fale conosco (formulário de contato)' => 'cont_');
 // origem das visitas (?de=nome nos links das automações)
 $orig = array();
 foreach ($T as $e => $n) { if (preg_match('/^de_([a-z0-9]+)_(.+)$/', $e, $mm)) { $tg = strtoupper($mm[1]); if (!isset($orig[$tg])) $orig[$tg] = array('abriu' => 0, 'mensagem' => 0, 'pagamento' => 0);
