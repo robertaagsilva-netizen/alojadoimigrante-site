@@ -133,6 +133,14 @@ foreach ($ped as $x) {
 <p class="note">"Abriram" conta uma vez por visita. Ir para o pagamento não quer dizer que pagou: as vendas confirmadas estão no Stripe.</p>
 <?php
 $grupos = array('Calculadora' => 'calc_', 'Página de links e links curtos' => array('site_', 'link_'), 'Formulário de pedido' => 'pedido_', 'Ferramentas de PDF' => 'ferr_', 'Página do Kit (9,90 €)' => 'ckpag_', 'Página da Orientação (35 €)' => 'orient_', 'Página de Serviços (análise grátis)' => 'serv_', 'Página do Currículo' => 'curr_');
+// origem das visitas (?de=nome nos links das automações)
+$orig = array();
+foreach ($T as $e => $n) { if (preg_match('/^de_([a-z0-9]+)_(.+)$/', $e, $mm)) { $tg = strtoupper($mm[1]); if (!isset($orig[$tg])) $orig[$tg] = array('abriu' => 0, 'mensagem' => 0, 'pagamento' => 0);
+  if (strpos($mm[2], 'abriu') === 0) $orig[$tg]['abriu'] += $n; elseif ($mm[2] === 'mensagem') $orig[$tg]['mensagem'] += $n; elseif ($mm[2] === 'pagamento') $orig[$tg]['pagamento'] += $n; } }
+echo '<h2>De onde vieram (automações e vídeos)</h2>';
+if (!$orig) echo '<p class="note">Nada ainda neste período. Aparece aqui quem abre o site por um link com ?de=nome.</p>';
+else { echo '<table><tr><td><b>Origem</b></td><td class="n">abriram</td><td class="n">mensagem</td><td class="n">pagamento</td></tr>'; arsort($orig);
+  foreach ($orig as $tg => $o) echo '<tr><td>' . htmlspecialchars($tg) . '</td><td class="n">' . $o['abriu'] . '</td><td class="n">' . $o['mensagem'] . '</td><td class="n">' . $o['pagamento'] . '</td></tr>'; echo '</table>'; }
 foreach ($grupos as $g => $ps) {
   $ps = (array)$ps; $rows = '';
   foreach ($T as $e => $n) { foreach ($ps as $p) if (strpos($e, $p) === 0) { $rows .= '<tr><td>' . htmlspecialchars(isset($L[$e]) ? $L[$e] : str_replace('_', ' ', $e)) . '</td><td class="n">' . $n . '</td></tr>'; } }

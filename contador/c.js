@@ -30,5 +30,21 @@
     else if (h.indexOf('buy.stripe.com') > -1) conta(pg + '_pagar_outro');
     else if (h.indexOf('wa.me') > -1 || h.indexOf('whatsapp') > -1) conta(pg + '_whatsapp');
   }, true);
+  // origem: links com ?de=nome (ex.: automações do ManyChat), sem dados pessoais
+  var DE = '';
+  try {
+    var m = /[?&]de=([a-z0-9]{2,16})/i.exec(location.search);
+    if (m) { DE = m[1].toLowerCase(); try { sessionStorage.setItem('lc_de', DE); } catch (err) {} }
+    else { try { DE = sessionStorage.getItem('lc_de') || ''; } catch (err) {} }
+    if (m) contaUmaVez('de_' + DE + '_abriu_' + (window.LC_PAGINA || 'site').slice(0, 10));
+  } catch (err) {}
+  document.addEventListener('click', function (ev) {
+    if (!DE) return;
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    if (h.indexOf('buy.stripe.com') > -1 || /\/curriculo\/[12]/.test(h)) conta('de_' + DE + '_pagamento');
+    else if (h.indexOf('ig.me') > -1 || h.indexOf('wa.me') > -1) conta('de_' + DE + '_mensagem');
+  }, true);
   window.LC = { conta: conta, contaUmaVez: contaUmaVez };
 })();
